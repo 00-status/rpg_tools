@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text RPG</title>
+</head>
+<body>
+    <div id="app">
+        <event
+            v-on:update-player="updatePlayer"
+            :health-points="player.healthPoints"
+            :items="player.items"
+            :event="events[currentEventId]"
+        >
+        </event>
+    </div>
+
+    <script type="text/javascript" src="public/build/dist/bundle.js"></script>
+</body>
+</html>
