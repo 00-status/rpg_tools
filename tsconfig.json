@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "noImplicitOverride": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ESNext",
+        "jsx": "react-jsx",
+        "esModuleInterop": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
