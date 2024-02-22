@@ -16,3 +16,8 @@
     flex-direction: row;
     gap: 16px;
 }
+
+.area-maker--text-box {
+    height: 90px;
+    resize: vertical;
+}

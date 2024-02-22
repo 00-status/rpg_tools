@@ -25,12 +25,12 @@ html {
     box-sizing: inherit;
 }
 
-body, input, button {
-    font-size: 16px;
+body, input, textarea, button {
+    font-size: 17px;
     font-family: "Source Sans 3", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-input {
+input, textarea {
     padding: 4px 4px;
 
     background-color: #3b3b40;

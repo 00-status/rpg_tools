@@ -1,4 +1,4 @@
-type Area = {
+export type Area = {
     id: string;
     name: string;
     description: string;
@@ -7,26 +7,26 @@ type Area = {
     paths: Array<Path>;
 };
 
-type HiddenInfo = {
+export type HiddenInfo = {
     conditionIDs: Array<string>;
     description: string;
 };
 
-type PointOfInterest = {
+export type PointOfInterest = {
     conditionIDs: Array<string> | null;
     name: string;
     description: string;
     type: PointOfInterestType;
 };
 
-enum PointOfInterestType {
+export enum PointOfInterestType {
     social = 'social',
     item = 'item',
     combat = 'combat',
     experience = 'experience',
 };
 
-type Path = {
+export type Path = {
     conditionID: string | null;
     nextAreaID: string;
     shortDescription: string;

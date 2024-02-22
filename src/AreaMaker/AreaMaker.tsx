@@ -15,7 +15,7 @@ export const AreaMaker = (): ReactElement => {
     //      Paths
     //          Lead to other areas via an ID.
     //          An ID must be entered for it to be valid, adventure_end can be used if it is the last area.
-    // Create a way to make new, attached areaas.
+    // Create a way to make new, attached areas.
     // When Area A leads to Area B, link the two areas together in SigmaJS.
 
     return <Page title="RPG Tools">
@@ -39,22 +39,20 @@ export const AreaMaker = (): ReactElement => {
                 <input type="text" id="area-name" value={'testBalue'} />
 
                 <label htmlFor="area-description">Area Description</label>
-                <input type="text" id="area-description" value={'testBalue'} />
+                <textarea className="area-maker--text-box" id="area-description" />
             </div>
-            <div>
+            <div className="area-maker--form-stack">
                 <h2>Hidden Info</h2>
-                <div className="area-maker--form-inline">
-                    <div className="area-maker--form-stack">
-                        <label htmlFor="hidden-info-condition-ids">Hidden Info Condition IDs</label>
-                        <input type="text" id="hidden-info-condition-ids" />
-                    </div>
-                    <div className="area-maker--form-stack">
-                        <label htmlFor="hidden-info-description">Hidden Info Description</label>
-                        <input type="text" id="hidden-info-description" />
-                    </div>
+                <div className="area-maker--form-stack">
+                    <label htmlFor="hidden-info-condition-ids">Hidden Info Condition IDs</label>
+                    <input type="text" id="hidden-info-condition-ids" />
+                </div>
+                <div className="area-maker--form-stack">
+                    <label htmlFor="hidden-info-description">Hidden Info Description</label>
+                    <textarea className="area-maker--text-box" id="hidden-info-description" />
                 </div>
             </div>
-            <div>
+            <div className="area-maker--form-stack">
                 <h2>Points of Interest (POI)</h2>
                 <div className="area-maker--form-inline">
                     <div className="area-maker--form-stack">
@@ -66,16 +64,17 @@ export const AreaMaker = (): ReactElement => {
                         <input type="text" id="poi-name" />
                     </div>
                     <div className="area-maker--form-stack">
-                        <label htmlFor="poi-description">POI Description</label>
-                        <input type="text" id="poi-description" />
-                    </div>
-                    <div className="area-maker--form-stack">
+                        {/* TODO: Make this a dropdown */}
                         <label htmlFor="poi-type">POI Type</label>
                         <input type="text" id="poi-type" />
                     </div>
                 </div>
+                <div className="area-maker--form-stack">
+                    <label htmlFor="poi-description">POI Description</label>
+                    <textarea className="area-maker--text-box" id="poi-description" />
+                </div>
             </div>
-            <div>
+            <div className="area-maker--form-stack">
                 <h2>Paths</h2>
                 <div className="area-maker--form-inline">
                     <div className="area-maker--form-stack">
@@ -86,10 +85,10 @@ export const AreaMaker = (): ReactElement => {
                         <label htmlFor="path-next-area-id">Path Next-area ID</label>
                         <input type="text" id="path-next-area-id" />
                     </div>
-                    <div className="area-maker--form-stack">                    
-                        <label htmlFor="path-short-description">Path Short Description</label>
-                        <input type="text" id="path-short-description" />
-                    </div>
+                </div>
+                <div className="area-maker--form-stack">                    
+                    <label htmlFor="path-short-description">Path Short Description</label>
+                    <textarea className="area-maker--text-box" id="path-short-description" />
                 </div>
             </div>
         </div>
