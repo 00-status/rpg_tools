@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { AreaBuilder } from './AreaBuilder/AreaBuilder';
+import { AreaMaker } from './AreaMaker/AreaMaker';
 
 const rootDomNode = document.getElementById('app');
 
@@ -11,7 +11,7 @@ if (!rootDomNode) {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <AreaBuilder />,
+        element: <AreaMaker />,
     }
 ]);
 
