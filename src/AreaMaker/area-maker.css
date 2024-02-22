@@ -1,0 +1,18 @@
+.area-maker {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+}
+
+.area-maker--form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.area-maker--form-inline {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}

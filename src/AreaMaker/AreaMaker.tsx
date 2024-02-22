@@ -1,4 +1,6 @@
 import { ReactElement } from "react";
+
+import './area-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 
 export const AreaMaker = (): ReactElement => {
@@ -17,62 +19,78 @@ export const AreaMaker = (): ReactElement => {
     // When Area A leads to Area B, link the two areas together in SigmaJS.
 
     return <Page title="RPG Tools">
-        <h1>Adventure Maker</h1>
-        <div>
-            <label htmlFor="adventure-id">Adventure ID</label>
-            <input type="text" id="adventure-id" value={'testBalue'} />
+        <div className="area-maker">
+            <h1>Adventure Maker</h1>
+            <div className="area-maker--form-stack">
+                <label htmlFor="adventure-id">Adventure ID</label>
+                <input type="text" id="adventure-id" value={'testBalue'} />
 
-            <label htmlFor="adventure-name">Adventure Name</label>
-            <input type="text" id="adventure-name" value={'testBalue'} />
-        </div>
-        <div>
-            <h2>SigmaJS Container</h2>
-            <label htmlFor="area-id">Area ID</label>
-            <input type="text" id="area-id" value={'testBalue'} />
-
-            <label htmlFor="area-name">Area Name</label>
-            <input type="text" id="area-name" value={'testBalue'} />
-
-            <label htmlFor="area-description">Area Description</label>
-            <input type="text" id="area-description" value={'testBalue'} />
-        </div>
-        <div>
-            <h2>Hidden Info</h2>
-            <div>
-                <label htmlFor="hidden-info-condition-ids">Hidden Info Condition IDs</label>
-                <input type="text" id="hidden-info-condition-ids" />
-
-                <label htmlFor="hidden-info-description">Hidden Info Description</label>
-                <input type="text" id="hidden-info-description" />
+                <label htmlFor="adventure-name">Adventure Name</label>
+                <input type="text" id="adventure-name" value={'testBalue'} />
             </div>
-        </div>
-        <div>
-            <h2>Points of Interest (POI)</h2>
             <div>
-                <label htmlFor="poi-condition-ids">POI Condition IDs</label>
-                <input type="text" id="poi-condition-ids" />
-
-                <label htmlFor="poi-name">POI Name</label>
-                <input type="text" id="poi-name" />
-
-                <label htmlFor="poi-description">POI Description</label>
-                <input type="text" id="poi-description" />
-
-                <label htmlFor="poi-type">POI Type</label>
-                <input type="text" id="poi-type" />
+                <h2>SigmaJS Container</h2>
             </div>
-        </div>
-        <div>
-            <h2>Paths</h2>
-            <div>
-                <label htmlFor="path-condition-id">Path Condition ID</label>
-                <input type="text" id="path-condition-id" />
+            <div className="area-maker--form-stack">
+                <label htmlFor="area-id">Area ID</label>
+                <input type="text" id="area-id" value={'testBalue'} />
 
-                <label htmlFor="path-next-area-id">Path Next-area ID</label>
-                <input type="text" id="path-next-area-id" />
-                
-                <label htmlFor="path-short-description">Path Short Description</label>
-                <input type="text" id="path-short-description" />
+                <label htmlFor="area-name">Area Name</label>
+                <input type="text" id="area-name" value={'testBalue'} />
+
+                <label htmlFor="area-description">Area Description</label>
+                <input type="text" id="area-description" value={'testBalue'} />
+            </div>
+            <div>
+                <h2>Hidden Info</h2>
+                <div className="area-maker--form-inline">
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="hidden-info-condition-ids">Hidden Info Condition IDs</label>
+                        <input type="text" id="hidden-info-condition-ids" />
+                    </div>
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="hidden-info-description">Hidden Info Description</label>
+                        <input type="text" id="hidden-info-description" />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2>Points of Interest (POI)</h2>
+                <div className="area-maker--form-inline">
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="poi-condition-ids">POI Condition IDs</label>
+                        <input type="text" id="poi-condition-ids" />
+                    </div>
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="poi-name">POI Name</label>
+                        <input type="text" id="poi-name" />
+                    </div>
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="poi-description">POI Description</label>
+                        <input type="text" id="poi-description" />
+                    </div>
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="poi-type">POI Type</label>
+                        <input type="text" id="poi-type" />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2>Paths</h2>
+                <div className="area-maker--form-inline">
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="path-condition-id">Path Condition ID</label>
+                        <input type="text" id="path-condition-id" />
+                    </div>
+                    <div className="area-maker--form-stack">
+                        <label htmlFor="path-next-area-id">Path Next-area ID</label>
+                        <input type="text" id="path-next-area-id" />
+                    </div>
+                    <div className="area-maker--form-stack">                    
+                        <label htmlFor="path-short-description">Path Short Description</label>
+                        <input type="text" id="path-short-description" />
+                    </div>
+                </div>
             </div>
         </div>
     </Page>;
