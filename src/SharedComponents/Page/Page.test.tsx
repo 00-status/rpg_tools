@@ -30,23 +30,4 @@ describe('Page', () => {
 
         getByText("TEST FOOTER!");
     });
-
-    it('should switch to new route when clicking nav item', async () => {
-        const { getByText } = render(<Page title="This is a test title">Test</Page>);
-
-        expect(mockNavigate).toHaveBeenCalledTimes(0);
-        
-        await userEvent.click(getByText('Weapon Maker'));
-
-        expect(mockNavigate).toHaveBeenCalledTimes(1);
-        expect(mockNavigate).toHaveBeenCalledWith('/weapon_maker');
-    });
-
-    it('should NOT navigate when clicking the current nav item', async () => {
-        const { getByText } = render(<Page title="Testing page">Test</Page>);
-        
-        await userEvent.click(getByText('About Me'));
-
-        expect(mockNavigate).toHaveBeenCalledTimes(0);
-    });
 });

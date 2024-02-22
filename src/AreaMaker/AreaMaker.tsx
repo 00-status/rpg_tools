@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 import { Page } from "../SharedComponents/Page/Page";
 
 export const AreaMaker = (): ReactElement => {
-    // Create an Area object.
     // Create a form where the user can enter the Area's information into.
     //      Adventure Name
     //      Area ID
@@ -16,5 +15,10 @@ export const AreaMaker = (): ReactElement => {
     // Create a way to make new, attached areaas.
     // When Area A leads to Area B, link the two areas together in SigmaJS.
 
-    return <Page title="Area Builder"><div>Area Builder</div></Page>
+    return <Page title="Area Builder">
+        <div>
+            <label htmlFor="adventure-name">Adventure Name</label>
+            <input type="text" id="adventure-name" value={'testBalue'} />
+        </div>
+    </Page>;
 };
