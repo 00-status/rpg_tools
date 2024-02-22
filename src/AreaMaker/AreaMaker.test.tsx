@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
-import { AreaMaker } from "./AreaMaker";
 import { Children } from "react";
 
-
+import { AreaMaker } from "./AreaMaker";
 
 jest.mock('../SharedComponents/Page/Page', () => {
     return {
@@ -11,9 +10,43 @@ jest.mock('../SharedComponents/Page/Page', () => {
 });
 
 describe('AreaMaker', () => {
-    it('should display the adventure title', () => {
-        const { getByLabelText, getByRole } = render(<AreaMaker />);
+    it('should display the area maker\'s forms', () => {
+        const { getByLabelText, getByText } = render(<AreaMaker />);
 
-        expect(getByLabelText('Adventure Name')).toBeInTheDocument();
+        getByLabelText('Adventure ID');
+        getByLabelText('Adventure Name');
+
+        getByText('SigmaJS Container');
+
+        getByLabelText('Area ID');
+        getByLabelText('Area Name');
+        getByLabelText('Area Description');
+    });
+
+    it('should display the hidden info form.', () => {
+        const { getByLabelText, getByText } = render(<AreaMaker />);
+
+        getByText('Hidden Info');
+        getByLabelText('Hidden Info Condition IDs');
+        getByLabelText('Hidden Info Description');
+    });
+
+    it('should display the hidden info form.', () => {
+        const { getByLabelText, getByText } = render(<AreaMaker />);
+
+        getByText('Points of Interest (POI)');
+        getByLabelText('POI Condition IDs');
+        getByLabelText('POI Name');
+        getByLabelText('POI Description');
+        getByLabelText('POI Type');
+    });
+
+    it('should display the hidden info form.', () => {
+        const { getByLabelText, getByText } = render(<AreaMaker />);
+
+        getByText('Paths');
+        getByLabelText('Path Condition ID');
+        getByLabelText('Path Next-area ID');
+        getByLabelText('Path Short Description');
     });
 });
