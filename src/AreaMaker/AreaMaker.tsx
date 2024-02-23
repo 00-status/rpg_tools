@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 
 import './area-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
+import { HiddenInfo } from "./HiddenInfoContainer";
 
 export const AreaMaker = (): ReactElement => {
     // Create a form where the user can enter the Area's information into.
@@ -23,55 +24,47 @@ export const AreaMaker = (): ReactElement => {
             <h1>Adventure Maker</h1>
             <div className="area-maker--form-stack">
                 <label htmlFor="adventure-id">Adventure ID</label>
-                <input type="text" id="adventure-id" value={'testBalue'} />
+                <input type="text" id="adventure-id" />
 
                 <label htmlFor="adventure-name">Adventure Name</label>
-                <input type="text" id="adventure-name" value={'testBalue'} />
+                <input type="text" id="adventure-name" />
             </div>
             <div>
                 <h2>SigmaJS Container</h2>
             </div>
             <div className="area-maker--form-stack">
                 <label htmlFor="area-id">Area ID</label>
-                <input type="text" id="area-id" value={'testBalue'} />
+                <input type="text" id="area-id" />
 
                 <label htmlFor="area-name">Area Name</label>
-                <input type="text" id="area-name" value={'testBalue'} />
+                <input type="text" id="area-name" />
 
                 <label htmlFor="area-description">Area Description</label>
                 <textarea className="area-maker--text-box" id="area-description" />
             </div>
-            <div className="area-maker--form-stack">
-                <h2>Hidden Info</h2>
-                <div className="area-maker--form-stack">
-                    <label htmlFor="hidden-info-condition-ids">Hidden Info Condition IDs</label>
-                    <input type="text" id="hidden-info-condition-ids" />
-                </div>
-                <div className="area-maker--form-stack">
-                    <label htmlFor="hidden-info-description">Hidden Info Description</label>
-                    <textarea className="area-maker--text-box" id="hidden-info-description" />
-                </div>
-            </div>
-            <div className="area-maker--form-stack">
-                <h2>Points of Interest (POI)</h2>
-                <div className="area-maker--form-inline">
-                    <div className="area-maker--form-stack">
-                        <label htmlFor="poi-condition-ids">POI Condition IDs</label>
-                        <input type="text" id="poi-condition-ids" />
+            <div className="area-maker--section">
+                <HiddenInfo onSave={() => {}} />
+                <div className="area-maker--point-of-interest-container">
+                    <h2>Points of Interest (POI)</h2>
+                    <div className="area-maker--form-inline">
+                        <div className="area-maker--form-stack">
+                            <label htmlFor="poi-condition-ids">POI Condition IDs</label>
+                            <input type="text" id="poi-condition-ids" />
+                        </div>
+                        <div className="area-maker--form-stack">
+                            <label htmlFor="poi-name">POI Name</label>
+                            <input type="text" id="poi-name" />
+                        </div>
+                        <div className="area-maker--form-stack">
+                            {/* TODO: Make this a dropdown */}
+                            <label htmlFor="poi-type">POI Type</label>
+                            <input type="text" id="poi-type" />
+                        </div>
                     </div>
                     <div className="area-maker--form-stack">
-                        <label htmlFor="poi-name">POI Name</label>
-                        <input type="text" id="poi-name" />
+                        <label htmlFor="poi-description">POI Description</label>
+                        <textarea className="area-maker--text-box" id="poi-description" />
                     </div>
-                    <div className="area-maker--form-stack">
-                        {/* TODO: Make this a dropdown */}
-                        <label htmlFor="poi-type">POI Type</label>
-                        <input type="text" id="poi-type" />
-                    </div>
-                </div>
-                <div className="area-maker--form-stack">
-                    <label htmlFor="poi-description">POI Description</label>
-                    <textarea className="area-maker--text-box" id="poi-description" />
                 </div>
             </div>
             <div className="area-maker--form-stack">

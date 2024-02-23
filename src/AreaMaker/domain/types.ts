@@ -8,6 +8,7 @@ export type Area = {
 };
 
 export type HiddenInfo = {
+    id: string;
     conditionIDs: Array<string>;
     description: string;
 };

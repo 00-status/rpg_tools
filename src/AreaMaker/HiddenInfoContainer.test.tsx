@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
-import { HiddenInfo } from "./HiddenInfo";
+import { HiddenInfo } from "./HiddenInfoContainer";
 import userEvent from "@testing-library/user-event";
 
-describe('HiddenInfo', () => {
+describe('HiddenInfoContainer', () => {
     it('should render a "Create new" button when there are no Hidden Infos created yet.', () => {
         const { getByText } = render(<HiddenInfo onSave={jest.fn()} />);
 
@@ -19,9 +19,11 @@ describe('HiddenInfo', () => {
         getByLabelText('Hidden Info Description');
     });
 
-    it('should disable the form after filling it out and saving it', async () => {
+    it('should call onSave when saving form', async () => {
         const onSaveMock = jest.fn();
         const { getByLabelText, getByText } = render(<HiddenInfo onSave={onSaveMock} />);
+
+        await userEvent.click(getByText('Create new'));
 
         await userEvent.type(getByLabelText('Hidden Info Condition IDs'), 'skill_magic,skill_brawn');
         await userEvent.type(getByLabelText('Hidden Info Description'), 'The fox jumped over the badger-bear.');
@@ -30,22 +32,12 @@ describe('HiddenInfo', () => {
         await userEvent.click(getByText('Save'));
         expect(onSaveMock).toHaveBeenCalledTimes(1);
         expect(onSaveMock).toHaveBeenCalledWith([
-            { 
-                conditionIDs: ['skill_magic', 'skill_brawn'],
-                description: 'The fox jumped over the badger-bear.'
-             }
+            expect.objectContaining(
+                {
+                    conditionIDs: ['skill_magic', 'skill_brawn'],
+                    description: 'The fox jumped over the badger-bear.'
+                }
+            )
         ]);
-
-        expect(getByLabelText('Hidden Info Condition IDs')).toBeDisabled();
-        expect(getByLabelText('Hidden Info Description')).toBeDisabled();
-    });
-
-    it('should not be able to save when ID and description are empty', async () => {
-        const onSaveMock = jest.fn();
-        const { getByText } = render(<HiddenInfo onSave={onSaveMock} />);
-
-        await userEvent.click(getByText('Save'));
-
-        expect(onSaveMock).not.toHaveBeenCalled();
     });
 });

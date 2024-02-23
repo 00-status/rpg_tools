@@ -1,0 +1,19 @@
+.hidden-info-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden-info-form--delete-button {
+    align-self: center;
+    width: 90%;
+    margin: 8px 0;
+
+    background-color: #a02e2f;
+    border: none;
+}
+
+.hidden-info-form--delete-button:hover {
+    background-color: #CC1818;
+    transform: scale(1.05);
+    box-shadow: 1px 1px 4px #1f2028;
+}

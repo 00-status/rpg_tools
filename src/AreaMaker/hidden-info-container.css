@@ -1,0 +1,27 @@
+.hidden-info-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 50%;
+    height: 400px;
+    
+    padding: 0 8px;
+    overflow-y: scroll;
+}
+
+.hidden-info-container--title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.hidden-info-container--title-button {
+    width: 80px;
+    margin: 8px 0;
+
+    background-color: #708694;
+    border: none;
+}
+
+.hidden-info-container--title-button:hover {
+    background-color: #4a87ac;
+}

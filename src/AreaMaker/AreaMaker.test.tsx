@@ -23,14 +23,6 @@ describe('AreaMaker', () => {
         getByLabelText('Area Description');
     });
 
-    it('should display the hidden info form.', () => {
-        const { getByLabelText, getByText } = render(<AreaMaker />);
-
-        getByText('Hidden Info');
-        getByLabelText('Hidden Info Condition IDs');
-        getByLabelText('Hidden Info Description');
-    });
-
     it('should display the Points of Interest form.', () => {
         const { getByLabelText, getByText } = render(<AreaMaker />);
 
