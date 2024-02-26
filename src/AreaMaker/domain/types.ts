@@ -28,6 +28,7 @@ export enum PointOfInterestType {
 };
 
 export type Path = {
+    id: string;
     conditionID: string | null;
     nextAreaID: string;
     shortDescription: string;

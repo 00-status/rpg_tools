@@ -1,10 +1,14 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
 import './area-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 import { HiddenInfo } from "./HiddenInfoContainer";
+import { PathsList } from "./Paths/PathsList";
+import { Path } from "./domain/types";
 
 export const AreaMaker = (): ReactElement => {
+    const [paths, setPaths] = useState<Array<Path>>([]);
+
     // Create a form where the user can enter the Area's information into.
     //      Adventure ID
     //      Adventure Name
@@ -18,6 +22,11 @@ export const AreaMaker = (): ReactElement => {
     //          An ID must be entered for it to be valid, adventure_end can be used if it is the last area.
     // Create a way to make new, attached areas.
     // When Area A leads to Area B, link the two areas together in SigmaJS.
+
+    // Instantiate Paths array in the parent using useState
+    // Pass Paths and setPaths into PathList component.
+    // When the "Save" button is pressed, call setPaths
+    // Path form should be a one-liner
 
     return <Page title="RPG Tools">
         <div className="area-maker">
@@ -67,23 +76,7 @@ export const AreaMaker = (): ReactElement => {
                     </div>
                 </div>
             </div>
-            <div className="area-maker--form-stack">
-                <h2>Paths</h2>
-                <div className="area-maker--form-inline">
-                    <div className="area-maker--form-stack">
-                        <label htmlFor="path-condition-id">Path Condition ID</label>
-                        <input type="text" id="path-condition-id" />
-                    </div>
-                    <div className="area-maker--form-stack">
-                        <label htmlFor="path-next-area-id">Path Next-area ID</label>
-                        <input type="text" id="path-next-area-id" />
-                    </div>
-                </div>
-                <div className="area-maker--form-stack">                    
-                    <label htmlFor="path-short-description">Path Short Description</label>
-                    <textarea className="area-maker--text-box" id="path-short-description" />
-                </div>
-            </div>
+            <PathsList paths={paths} onChange={setPaths} />
         </div>
     </Page>;
 };
