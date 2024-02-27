@@ -1,0 +1,11 @@
+
+.adventure-maker {
+    width: 100%;
+}
+
+.adventure-maker--content {
+    display: flex;
+    flex-direction: row;
+
+    gap: 20px;
+}

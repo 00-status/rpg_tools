@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { Children } from "react";
 
-import { AreaMaker } from "./AreaMaker";
+import { AdventureMaker } from "./AdventureMaker";
 
 jest.mock('../SharedComponents/Page/Page', () => {
     return {
@@ -9,9 +9,9 @@ jest.mock('../SharedComponents/Page/Page', () => {
     };
 });
 
-describe('AreaMaker', () => {
+describe('AdventureMaker', () => {
     it('should display the area maker\'s forms', () => {
-        const { getByLabelText, getByText } = render(<AreaMaker />);
+        const { getByLabelText, getByText } = render(<AdventureMaker />);
 
         getByLabelText('Adventure ID');
         getByLabelText('Adventure Name');
@@ -24,7 +24,7 @@ describe('AreaMaker', () => {
     });
 
     it('should display the Points of Interest form.', () => {
-        const { getByLabelText, getByText } = render(<AreaMaker />);
+        const { getByLabelText, getByText } = render(<AdventureMaker />);
 
         getByText('Points of Interest (POI)');
         getByLabelText('POI Condition IDs');
@@ -34,7 +34,7 @@ describe('AreaMaker', () => {
     });
 
     it('should display the paths form.', () => {
-        const { getByLabelText, getByText } = render(<AreaMaker />);
+        const { getByLabelText, getByText } = render(<AdventureMaker />);
 
         getByText('Paths');
         getByLabelText('Path Condition ID');
