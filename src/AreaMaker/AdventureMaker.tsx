@@ -1,30 +1,31 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 import { SigmaContainer } from "@react-sigma/core";
 import { UndirectedGraph } from "graphology";
 import { AreaMaker } from "./AreaMaker";
+import { Area } from "./domain/types";
 
 export const AdventureMaker = (): ReactElement => {
-    // Create a form where the user can enter the Area's information into.
-    //      Adventure ID
-    //      Adventure Name
-    //      Area ID
-    //      Area name
-    //      Description
-    //      Hidden Info
-    //      Points of interest
-    //      Paths
-    //          Lead to other areas via an ID.
-    //          An ID must be entered for it to be valid, adventure_end can be used if it is the last area.
-    // Create a way to make new, attached areas.
-    // When Area A leads to Area B, link the two areas together in SigmaJS.
+    const [areas, setAreas] = useState<Array<Area>>([
+        {
+            id: '',
+            name: '',
+            description: '',
+            hiddenInfo: [],
+            pointsOfInterest: [],
+            paths: []
+        }
+    ]);
+    const [selectedArea, setSelectedArea] = useState<Area>(areas[0]);
 
-    // Instantiate Paths array in the parent using useState
-    // Pass Paths and setPaths into PathList component.
-    // When the "Save" button is pressed, call setPaths
-    // Path form should be a one-liner
+    // Create an array of areas with a default empty area in it.
+    // Create a selectedArea variable that we can pass into the AreaMaker component.
+    // Whenever the array is updated, update the graph.
+    //      Create an array of nodes
+    //      Create an array of edges.
+    //      Feed them both into the SigmaContainer
 
     const graph = new UndirectedGraph();
     graph.addNode("A", { x: 0, y: 0, label: "Node A", size: 10 });
@@ -47,7 +48,7 @@ export const AdventureMaker = (): ReactElement => {
                     <SigmaContainer style={{ height: '500px' }} graph={graph} />
                     <div>buttons</div>
                 </div>
-                <AreaMaker />
+                <AreaMaker area={selectedArea} />
             </div>
         </div>
     </Page>;
