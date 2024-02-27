@@ -5,6 +5,8 @@ import { Page } from "../SharedComponents/Page/Page";
 import { HiddenInfo } from "./HiddenInfoContainer";
 import { PathsList } from "./Paths/PathsList";
 import { Path } from "./domain/types";
+import { SigmaContainer } from "@react-sigma/core";
+import { UndirectedGraph } from "graphology";
 
 export const AreaMaker = (): ReactElement => {
     const [paths, setPaths] = useState<Array<Path>>([]);
@@ -28,6 +30,11 @@ export const AreaMaker = (): ReactElement => {
     // When the "Save" button is pressed, call setPaths
     // Path form should be a one-liner
 
+    const graph = new UndirectedGraph();
+    graph.addNode("A", { x: 0, y: 0, label: "Node A", size: 10 });
+    graph.addNode("B", { x: 1, y: 1, label: "Node B", size: 10 });
+    graph.addEdgeWithKey("rel1", "A", "B", { label: "REL_1" });
+
     return <Page title="RPG Tools">
         <div className="area-maker">
             <h1>Adventure Maker</h1>
@@ -40,6 +47,7 @@ export const AreaMaker = (): ReactElement => {
             </div>
             <div>
                 <h2>SigmaJS Container</h2>
+                <SigmaContainer style={{ height: '500px' }} graph={graph} />
             </div>
             <div className="area-maker--form-stack">
                 <label htmlFor="area-id">Area ID</label>

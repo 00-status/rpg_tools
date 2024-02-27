@@ -1,5 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
+import "@react-sigma/core/lib/react-sigma.min.css";
 import { AreaMaker } from './AreaMaker/AreaMaker';
 
 const rootDomNode = document.getElementById('app');
