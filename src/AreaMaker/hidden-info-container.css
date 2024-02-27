@@ -17,11 +17,4 @@
 .hidden-info-container--title-button {
     width: 80px;
     margin: 8px 0;
-
-    background-color: #708694;
-    border: none;
-}
-
-.hidden-info-container--title-button:hover {
-    background-color: #4a87ac;
 }

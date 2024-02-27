@@ -52,6 +52,16 @@ a:visited {
     color: #7d9db5;
 }
 
+button {
+    color: #FCFEFF;
+    background-color: #708694;
+    border: none;
+}
+
+button:hover {
+    background-color: #4a87ac;
+}
+
 /* Button and forms Styling */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
