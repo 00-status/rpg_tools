@@ -1,4 +1,4 @@
-import { EdgeEntry } from "graphology-types";
+import { EdgeEntry, SerializedEdge } from "graphology-types";
 import { convertAreasToEdges, convertAreasToNodes } from "./graphUtil";
 import { Area } from "./types";
 
@@ -28,10 +28,12 @@ describe('graphUtil', () => {
 
             expect(result).toEqual([
                 {
+                    key: 'area_1',
                     node: 'area_1',
                     attributes: { x: 1, y: 0, label: "Area one", size: 10 }
                 },
                 {
+                    key: 'area_2',
                     node: 'area_2',
                     attributes: { x: 1, y: 1, label: "Area two", size: 10 }
                 },
@@ -72,23 +74,19 @@ describe('graphUtil', () => {
 
             const result = convertAreasToEdges(areas);
 
-            const expected: Array<EdgeEntry> = [
+            const expected: Array<SerializedEdge> = [
                 {
+                    key: 'area_1-area_2',
                     undirected: false,
-                    edge: 'area_1-area_2',
                     source: 'area_1',
                     target: 'area_2',
-                    sourceAttributes: {},
-                    targetAttributes: {},
                     attributes: [ { label: 'description 1' } ]
                 },
                 {
+                    key: 'area_1-area_3',
                     undirected: false,
-                    edge: 'area_1-area_3',
                     source: 'area_1',
                     target: 'area_3',
-                    sourceAttributes: {},
-                    targetAttributes: {},
                     attributes: [ { label: 'description 2' } ]
                 },
             ];

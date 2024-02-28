@@ -1,17 +1,19 @@
 import { ReactElement, useEffect, useState } from "react";
+import { SigmaContainer } from "@react-sigma/core";
+import { DirectedGraph } from "graphology";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
-import { SigmaContainer } from "@react-sigma/core";
-import { UndirectedGraph } from "graphology";
 import { AreaMaker } from "./AreaMaker";
 import { Area } from "./domain/types";
+import { convertAreasToEdges, convertAreasToNodes } from "./domain/graphUtil";
+import { SerializedGraph } from "graphology-types";
 
 export const AdventureMaker = (): ReactElement => {
     const [areas, setAreas] = useState<Array<Area>>([
         {
-            id: '',
-            name: '',
+            id: 'area_1',
+            name: 'Area 1',
             description: '',
             hiddenInfo: [],
             pointsOfInterest: [],
@@ -37,10 +39,31 @@ export const AdventureMaker = (): ReactElement => {
         setSelectedArea(areas[currentIndex]);
     }, [areas, currentIndex]);
 
-    const graph = new UndirectedGraph();
-    graph.addNode("A", { x: 0, y: 0, label: "Node A", size: 10 });
-    graph.addNode("B", { x: 1, y: 1, label: "Node B", size: 10 });
-    graph.addEdgeWithKey("rel1", "A", "B", { label: "REL_1" });
+
+    const serializedGraph: SerializedGraph = {
+        attributes: { name: 'Adventure' },
+        options: {
+            allowSelfLoops: true,
+            multi: false,
+            type: 'directed'
+        },
+        nodes: convertAreasToNodes(areas),
+        edges: convertAreasToEdges(areas)
+    };
+    const graph = DirectedGraph.from(serializedGraph);
+
+    const createNewArea = () => {
+        const newArea = {
+            id: 'area_' + (areas.length + 1),
+            name: 'Area ' + (areas.length + 1),
+            description: '',
+            hiddenInfo: [],
+            pointsOfInterest: [],
+            paths: []
+        };
+
+        setAreas([...areas, newArea]);
+    };
 
     return <Page title="RPG Tools">
         <div className="adventure-maker">
@@ -56,7 +79,9 @@ export const AdventureMaker = (): ReactElement => {
                 <div className="sigma-container">
                     <h2>SigmaJS Container</h2>
                     <SigmaContainer style={{ height: '500px' }} graph={graph} />
-                    <div>buttons</div>
+                    <div>
+                        <button onClick={createNewArea}>Create area</button>
+                    </div>
                 </div>
                 <AreaMaker area={selectedArea} onSave={onSave}/>
             </div>
