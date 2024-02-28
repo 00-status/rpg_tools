@@ -7,23 +7,34 @@ import { Area, Path } from "./domain/types";
 
 type Props = {
     area: Area;
+    onSave: (area: Area) => void;
 };
 
 export const AreaMaker = (props: Props): ReactElement => {
-    const { area } = props;
+    const { area, onSave } = props;
 
     const [areaID, setAreaID] = useState<string>(area.id);
     const [areaName, setAreaName] = useState<string>(area.name);
     const [areaDescription, setAreaDescription] = useState<string>(area.description);
     const [paths, setPaths] = useState<Array<Path>>(props.area.paths);
 
-    // Track the area ID, name, and description.
-    // When pressing "Save area", call an onChange event in the parent that will update the overall array of areas.
+    const onSaveClick = () => {
+        const updatedArea: Area = {
+            id: areaID,
+            name: areaName,
+            description: areaDescription,
+            paths,
+            hiddenInfo: [],
+            pointsOfInterest: []
+        };
+
+        onSave(updatedArea);
+    };
 
     return <div className="area-maker">
         <div className="area-maker--title">
             <h2>Area</h2>
-            <button className="area-maker--title-button">Save area</button>
+            <button onClick={onSaveClick} className="area-maker--title-button">Save area</button>
         </div>
         <div className="area-maker--form-inline">
             <div className="area-maker--form-stack">

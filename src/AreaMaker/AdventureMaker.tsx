@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
@@ -18,14 +18,24 @@ export const AdventureMaker = (): ReactElement => {
             paths: []
         }
     ]);
-    const [selectedArea, setSelectedArea] = useState<Area>(areas[0]);
+    const [selectedArea, setSelectedArea] = useState<Area>(areas[0])
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-    // Create an array of areas with a default empty area in it.
-    // Create a selectedArea variable that we can pass into the AreaMaker component.
     // Whenever the array is updated, update the graph.
     //      Create an array of nodes
     //      Create an array of edges.
     //      Feed them both into the SigmaContainer
+
+    const onSave = (updatedArea: Area) => {
+        const copiedAreas = [...areas];
+        copiedAreas[currentIndex] = updatedArea;
+
+        setAreas(copiedAreas);
+    };
+
+    useEffect(() => {
+        setSelectedArea(areas[currentIndex]);
+    }, [areas, currentIndex]);
 
     const graph = new UndirectedGraph();
     graph.addNode("A", { x: 0, y: 0, label: "Node A", size: 10 });
@@ -48,7 +58,7 @@ export const AdventureMaker = (): ReactElement => {
                     <SigmaContainer style={{ height: '500px' }} graph={graph} />
                     <div>buttons</div>
                 </div>
-                <AreaMaker area={selectedArea} />
+                <AreaMaker area={selectedArea} onSave={onSave}/>
             </div>
         </div>
     </Page>;
