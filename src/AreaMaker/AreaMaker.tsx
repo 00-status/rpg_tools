@@ -21,42 +21,46 @@ export const AreaMaker = (props: Props): ReactElement => {
     // When pressing "Save area", call an onChange event in the parent that will update the overall array of areas.
 
     return <div className="area-maker">
-        <h2>Area</h2>
-        <button>Save area</button>
-        <div className="area-maker--form-stack">
-            <label htmlFor="area-id">Area ID</label>
-            <input
-                type="text"
-                id="area-id"
-                onChange={(event) => {
-                    const newValue = event.target.value ?? '';
-                    setAreaID(newValue);
-                }}
-                value={areaID}
-            />
-
-            <label htmlFor="area-name">Area Name</label>
-            <input
-                type="text"
-                id="area-name"
-                onChange={(event) => {
-                    const newValue = event.target.value ?? '';
-                    setAreaName(newValue);
-                }}
-                value={areaName}
-            />
-
-            <label htmlFor="area-description">Area Description</label>
-            <textarea
-                className="area-maker--text-box"
-                id="area-description"
-                onChange={(event) => {
-                    const newValue = event.target.value ?? '';
-                    setAreaDescription(newValue);
-                }}
-                value={areaDescription}
-            />
+        <div className="area-maker--title">
+            <h2>Area</h2>
+            <button className="area-maker--title-button">Save area</button>
         </div>
+        <div className="area-maker--form-inline">
+            <div className="area-maker--form-stack">
+                <label htmlFor="area-id">Area ID</label>
+                <input
+                    type="text"
+                    id="area-id"
+                    onChange={(event) => {
+                        const newValue = event.target.value ?? '';
+                        setAreaID(newValue);
+                    }}
+                    value={areaID}
+                />
+            </div>
+            <div className="area-maker--form-stack">
+                <label htmlFor="area-name">Area Name</label>
+                <input
+                    type="text"
+                    id="area-name"
+                    onChange={(event) => {
+                        const newValue = event.target.value ?? '';
+                        setAreaName(newValue);
+                    }}
+                    value={areaName}
+                />
+            </div>
+        </div>
+        <label htmlFor="area-description">Area Description</label>
+        <textarea
+            className="area-maker--text-box"
+            id="area-description"
+            onChange={(event) => {
+                const newValue = event.target.value ?? '';
+                setAreaDescription(newValue);
+            }}
+            value={areaDescription}
+        />
         <PathsList paths={paths} onChange={setPaths} />
         <hr className="divider" />
         <div className="area-maker--section">

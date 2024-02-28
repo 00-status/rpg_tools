@@ -5,6 +5,16 @@
     gap: 16px;
 }
 
+.area-maker--title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.area-maker--title-button {
+    margin: 8px 0;
+}
+
 .area-maker--section {
     display: flex;
     flex-direction: row;
@@ -32,7 +42,7 @@
 
 .area-maker--form-inline {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     gap: 16px;
 }
 
