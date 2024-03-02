@@ -30,7 +30,7 @@ describe('graphUtil', () => {
                 {
                     key: 'area_1',
                     node: 'area_1',
-                    attributes: { x: 1, y: 0, label: "Area one", size: 10 }
+                    attributes: { x: 0, y: 0, label: "Area one", size: 10 }
                 },
                 {
                     key: 'area_2',

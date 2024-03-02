@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from "react";
-import { SigmaContainer, useSigma } from "@react-sigma/core";
+import { SigmaContainer } from "@react-sigma/core";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";

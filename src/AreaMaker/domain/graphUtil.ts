@@ -6,7 +6,7 @@ export const convertAreasToNodes = (areas: Array<Area>): Array<SerializedNode> =
         return {
             key: area.id,
             node: area.id,
-            attributes: { x: 1, y: 1 * index, label: area.name, size: 10 }
+            attributes: { x: 1 * index, y: 1 * index, label: area.name, size: 10 }
         }
     });
 
