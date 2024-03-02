@@ -1,13 +1,11 @@
 import { ReactElement, useEffect, useState } from "react";
-import { SigmaContainer } from "@react-sigma/core";
-import { DirectedGraph } from "graphology";
+import { SigmaContainer, useSigma } from "@react-sigma/core";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 import { AreaMaker } from "./AreaMaker";
 import { Area } from "./domain/types";
-import { convertAreasToEdges, convertAreasToNodes } from "./domain/graphUtil";
-import { SerializedGraph } from "graphology-types";
+import { AdventureGraph } from "./AdventureGraph";
 
 export const AdventureMaker = (): ReactElement => {
     const [areas, setAreas] = useState<Array<Area>>([
@@ -23,11 +21,6 @@ export const AdventureMaker = (): ReactElement => {
     const [selectedArea, setSelectedArea] = useState<Area>(areas[0])
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-    // Whenever the array is updated, update the graph.
-    //      Create an array of nodes
-    //      Create an array of edges.
-    //      Feed them both into the SigmaContainer
-
     const onSave = (updatedArea: Area) => {
         const copiedAreas = [...areas];
         copiedAreas[currentIndex] = updatedArea;
@@ -38,19 +31,6 @@ export const AdventureMaker = (): ReactElement => {
     useEffect(() => {
         setSelectedArea(areas[currentIndex]);
     }, [areas, currentIndex]);
-
-
-    const serializedGraph: SerializedGraph = {
-        attributes: { name: 'Adventure' },
-        options: {
-            allowSelfLoops: true,
-            multi: false,
-            type: 'directed'
-        },
-        nodes: convertAreasToNodes(areas),
-        edges: convertAreasToEdges(areas)
-    };
-    const graph = DirectedGraph.from(serializedGraph);
 
     const createNewArea = () => {
         const newArea = {
@@ -63,6 +43,18 @@ export const AdventureMaker = (): ReactElement => {
         };
 
         setAreas([...areas, newArea]);
+    };
+
+    const onAreaClick = (areaID: string) => {
+        const clickedAreaIndex = areas.findIndex((area: Area) => {
+            return area.id === areaID;
+        });
+
+        if (clickedAreaIndex === -1) {
+            return;
+        }
+
+        setCurrentIndex(clickedAreaIndex);
     };
 
     return <Page title="RPG Tools">
@@ -78,7 +70,9 @@ export const AdventureMaker = (): ReactElement => {
             <div className="adventure-maker--content">
                 <div className="sigma-container">
                     <h2>SigmaJS Container</h2>
-                    <SigmaContainer style={{ height: '500px' }} graph={graph} />
+                    <SigmaContainer style={{ height: '500px' }}>
+                        <AdventureGraph areas={areas} onAreaClick={onAreaClick} />
+                    </SigmaContainer>
                     <div>
                         <button onClick={createNewArea}>Create area</button>
                     </div>

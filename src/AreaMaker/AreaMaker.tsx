@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import './area-maker.css';
 import { HiddenInfo } from "./HiddenInfoContainer";
@@ -17,6 +17,13 @@ export const AreaMaker = (props: Props): ReactElement => {
     const [areaName, setAreaName] = useState<string>(area.name);
     const [areaDescription, setAreaDescription] = useState<string>(area.description);
     const [paths, setPaths] = useState<Array<Path>>(props.area.paths);
+
+    useEffect(() => {
+        setAreaID(area.id);
+        setAreaName(area.name);
+        setAreaDescription(area.description);
+        setPaths(area.paths);
+    }, [ setAreaID, setAreaName, setAreaDescription, setPaths, area ]);
 
     const onSaveClick = () => {
         const updatedArea: Area = {
