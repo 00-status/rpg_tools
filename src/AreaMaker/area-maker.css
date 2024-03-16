@@ -8,7 +8,9 @@
 .area-maker--title {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+
+    gap: 20px;
 }
 
 .area-maker--title-button {

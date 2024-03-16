@@ -60,14 +60,18 @@ export const AdventureMaker = (): ReactElement => {
     return <Page title="RPG Tools">
         <div className="adventure-maker">
             <h1>Adventure Maker</h1>
-            <div className="area-maker--form-stack">
-                <label htmlFor="adventure-id">Adventure ID</label>
-                <input type="text" id="adventure-id" />
-
-                <label htmlFor="adventure-name">Adventure Name</label>
-                <input type="text" id="adventure-name" />
+            <div className="adventure-maker--container">
+                <div className="area-maker--form-stack">
+                    <label htmlFor="adventure-id">Adventure ID</label>
+                    <input type="text" id="adventure-id" />
+                </div>
+                <div className="area-maker--form-stack">
+                    <label htmlFor="adventure-name">Adventure Name</label>
+                    <input type="text" id="adventure-name" />
+                </div>
             </div>
             <div className="adventure-maker--content">
+                <AreaMaker area={selectedArea} onSave={onSave}/>
                 <div className="sigma-container">
                     <h2>SigmaJS Container</h2>
                     <SigmaContainer style={{ height: '500px' }}>
@@ -77,7 +81,6 @@ export const AdventureMaker = (): ReactElement => {
                         <button onClick={createNewArea}>Create area</button>
                     </div>
                 </div>
-                <AreaMaker area={selectedArea} onSave={onSave}/>
             </div>
         </div>
     </Page>;
