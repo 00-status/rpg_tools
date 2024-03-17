@@ -30,7 +30,6 @@ export const Page = (props: Props): ReactElement => {
             {props.children}
         </div>
         <div className="footer">
-            <hr className="divider" />
             {props.footer}
         </div>
     </div>;

@@ -75,7 +75,6 @@ export const PathsList = (props: Props): ReactElement => {
                 <button className="delete-button" onClick={() => onChange(null, index)}>Delete path</button>
             </div>;
         })}
-        <hr className="divider" />
         <button onClick={onAddNew}>Add path</button>
     </div>;
 };

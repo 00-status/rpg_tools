@@ -80,7 +80,6 @@ export const AreaMaker = (props: Props): ReactElement => {
             value={areaDescription}
         />
         <PathsList paths={paths} onChange={setPaths} />
-        <hr className="divider" />
         <div className="area-maker--section">
             <HiddenInfo onSave={() => {}} />
             <div className="area-maker--point-of-interest-container">
