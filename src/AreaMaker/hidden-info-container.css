@@ -1,11 +1,6 @@
 .hidden-info-container {
     display: flex;
     flex-direction: column;
-    flex: 0 0 50%;
-    height: 400px;
-    
-    padding: 0 8px;
-    overflow-y: scroll;
 }
 
 .hidden-info-container--title {

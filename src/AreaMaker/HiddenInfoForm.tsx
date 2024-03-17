@@ -55,6 +55,5 @@ export const HiddenInfoForm = (props: Props): ReactElement => {
             />
         </div>
         <button className="hidden-info-form--delete-button" onClick={() => onChange(null)}>Delete</button>
-        <hr className="divider" />
     </div>;
 };

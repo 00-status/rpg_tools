@@ -69,40 +69,40 @@ export const AreaMaker = (props: Props): ReactElement => {
                 />
             </div>
         </div>
-        <label htmlFor="area-description">Area Description</label>
-        <textarea
-            className="area-maker--text-box"
-            id="area-description"
-            onChange={(event) => {
-                const newValue = event.target.value ?? '';
-                setAreaDescription(newValue);
-            }}
-            value={areaDescription}
-        />
+        <div className="area-maker--description">
+            <label htmlFor="area-description">Area Description</label>
+            <textarea
+                className="area-maker--text-box"
+                id="area-description"
+                onChange={(event) => {
+                    const newValue = event.target.value ?? '';
+                    setAreaDescription(newValue);
+                }}
+                value={areaDescription}
+            />
+        </div>
         <PathsList paths={paths} onChange={setPaths} />
-        <div className="area-maker--section">
-            <HiddenInfo onSave={() => {}} />
-            <div className="area-maker--point-of-interest-container">
-                <h2>Points of Interest (POI)</h2>
-                <div className="area-maker--form-inline">
-                    <div className="area-maker--form-stack">
-                        <label htmlFor="poi-condition-ids">POI Condition IDs</label>
-                        <input type="text" id="poi-condition-ids" />
-                    </div>
-                    <div className="area-maker--form-stack">
-                        <label htmlFor="poi-name">POI Name</label>
-                        <input type="text" id="poi-name" />
-                    </div>
-                    <div className="area-maker--form-stack">
-                        {/* TODO: Make this a dropdown */}
-                        <label htmlFor="poi-type">POI Type</label>
-                        <input type="text" id="poi-type" />
-                    </div>
+        <HiddenInfo onSave={() => {}} />
+        <div className="area-maker--point-of-interest-container">
+            <h2>Points of Interest (POI)</h2>
+            <div className="area-maker--form-inline">
+                <div className="area-maker--form-stack">
+                    <label htmlFor="poi-condition-ids">POI Condition IDs</label>
+                    <input type="text" id="poi-condition-ids" />
                 </div>
                 <div className="area-maker--form-stack">
-                    <label htmlFor="poi-description">POI Description</label>
-                    <textarea className="area-maker--text-box" id="poi-description" />
+                    <label htmlFor="poi-name">POI Name</label>
+                    <input type="text" id="poi-name" />
                 </div>
+                <div className="area-maker--form-stack">
+                    {/* TODO: Make this a dropdown */}
+                    <label htmlFor="poi-type">POI Type</label>
+                    <input type="text" id="poi-type" />
+                </div>
+            </div>
+            <div className="area-maker--form-stack">
+                <label htmlFor="poi-description">POI Description</label>
+                <textarea className="area-maker--text-box" id="poi-description" />
             </div>
         </div>
     </div>;

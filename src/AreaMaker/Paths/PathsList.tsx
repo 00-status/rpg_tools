@@ -37,7 +37,7 @@ export const PathsList = (props: Props): ReactElement => {
         {paths.map((path: Path, index: number) => {
             return <div className="path-list-item" key={path.id}>
                 <input
-                    placeholder="Path Condition ID"
+                    placeholder="Condition ID"
                     type="text"
                     id="path-condition-id"
                     onChange={(value) => {
@@ -50,7 +50,7 @@ export const PathsList = (props: Props): ReactElement => {
                 />
                 <input
                     type="text"
-                    placeholder="Path Next-area ID"
+                    placeholder="Next-area ID"
                     id="path-next-area-id"
                     onChange={(value) => {
                         const newValue = value.target.value ?? '';
@@ -62,7 +62,7 @@ export const PathsList = (props: Props): ReactElement => {
                 />
                 <input
                     type='text'
-                    placeholder="Path Short Description"
+                    placeholder="Short Description"
                     id="path-short-description"
                     onChange={(value) => {
                         const newValue = value.target.value ?? '';

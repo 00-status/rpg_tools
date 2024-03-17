@@ -7,10 +7,10 @@
 
 .path-list-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 6fr 3fr;
+    grid-template-columns: 17% 17% 30% 30%;
+    column-gap: 2%;
     grid-template-rows: auto;
 
-    column-gap: 12px;
     margin: 12px 0;
 }
 

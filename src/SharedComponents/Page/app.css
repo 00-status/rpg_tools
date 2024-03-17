@@ -53,6 +53,9 @@ a:visited {
 }
 
 button {
+    height: 40px;
+    border-radius: 4px;
+
     color: #FCFEFF;
     background-color: #708694;
     border: none;
