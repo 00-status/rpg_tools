@@ -1,30 +1,26 @@
-import { ReactElement, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 
-import './hidden-info-container.css';
-import { HiddenInfo as HiddenInfoType } from "../domain/types";
+import './hidden-info-list.css';
+import { HiddenInfo } from "../domain/types";
 import { HiddenInfoForm } from "./HiddenInfoForm";
 
 type Props = {
-    onSave: (hiddenInfos: Array<HiddenInfoType>) => void;
+    hiddenInfos: Array<HiddenInfo>;
+    setHiddenInfos: Dispatch<SetStateAction<Array<HiddenInfo>>>;
 };
 
-export const HiddenInfo = (props: Props): ReactElement => {
-    const [hiddenInfos, setHiddenInfos] = useState<Array<HiddenInfoType>>([]);
+export const HiddenInfoList = (props: Props): ReactElement => {
+    const { hiddenInfos, setHiddenInfos } = props;
 
     return <div className="hidden-info-container">
-        <div className="hidden-info-container--title">
-            <h2>Hidden Info</h2>
-            <button className="hidden-info-container--title-button" onClick={() => props.onSave(hiddenInfos)}>
-                Save
-            </button>
-        </div>
+        <h2>Hidden Info</h2>
         {hiddenInfos.map((hiddenInfo, index) => {
             return <HiddenInfoForm
                 key={hiddenInfo.id}
                 id={hiddenInfo.id}
                 conditionIDs={hiddenInfo.conditionIDs}
                 description={hiddenInfo.description}
-                onChange={(hiddenInfo: HiddenInfoType|null) => {
+                onChange={(hiddenInfo: HiddenInfo|null) => {
                     const hiddenInfosCopy = [...hiddenInfos];
 
                     if (!hiddenInfo) {

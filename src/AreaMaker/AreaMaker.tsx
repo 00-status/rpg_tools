@@ -1,9 +1,9 @@
 import { ReactElement, useEffect, useState } from "react";
 
 import './area-maker.css';
-import { HiddenInfo } from "./HiddenInfo/HiddenInfoContainer";
+import { HiddenInfoList } from "./HiddenInfo/HiddenInfoList";
 import { PathsList } from "./Paths/PathsList";
-import { Area, Path } from "./domain/types";
+import { Area, HiddenInfo, Path } from "./domain/types";
 
 type Props = {
     area: Area;
@@ -17,13 +17,15 @@ export const AreaMaker = (props: Props): ReactElement => {
     const [areaName, setAreaName] = useState<string>(area.name);
     const [areaDescription, setAreaDescription] = useState<string>(area.description);
     const [paths, setPaths] = useState<Array<Path>>(props.area.paths);
+    const [hiddenInfos, setHiddenInfos] = useState<Array<HiddenInfo>>(props.area.hiddenInfo);
 
     useEffect(() => {
         setAreaID(area.id);
         setAreaName(area.name);
         setAreaDescription(area.description);
         setPaths(area.paths);
-    }, [ setAreaID, setAreaName, setAreaDescription, setPaths, area ]);
+        setHiddenInfos(area.hiddenInfo);
+    }, [ area, setAreaID, setAreaName, setAreaDescription, setPaths, setHiddenInfos ]);
 
     const onSaveClick = () => {
         const updatedArea: Area = {
@@ -31,7 +33,7 @@ export const AreaMaker = (props: Props): ReactElement => {
             name: areaName,
             description: areaDescription,
             paths,
-            hiddenInfo: [],
+            hiddenInfo: hiddenInfos,
             pointsOfInterest: []
         };
 
@@ -82,7 +84,10 @@ export const AreaMaker = (props: Props): ReactElement => {
             />
         </div>
         <PathsList paths={paths} onChange={setPaths} />
-        <HiddenInfo onSave={() => {}} />
+        <HiddenInfoList
+            hiddenInfos={hiddenInfos}
+            setHiddenInfos={setHiddenInfos}
+        />
         <div className="area-maker--point-of-interest-container">
             <h2>Points of Interest (POI)</h2>
             <div className="area-maker--form-inline">

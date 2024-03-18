@@ -1,17 +1,17 @@
 import { render } from "@testing-library/react";
-import { HiddenInfo } from "./HiddenInfoContainer";
+import { HiddenInfoList } from "./HiddenInfoList";
 import userEvent from "@testing-library/user-event";
 
-describe('HiddenInfoContainer', () => {
+describe('HiddenInfoList', () => {
     it('should render a "Create new" button when there are no Hidden Infos created yet.', () => {
-        const { getByText } = render(<HiddenInfo onSave={jest.fn()} />);
+        const { getByText } = render(<HiddenInfoList onSave={jest.fn()} />);
 
         getByText('Hidden Info');
         getByText('Create new');
     });
 
     it('should render a form after pressing the "create new" Button.', async () => {
-        const { getByText, getByLabelText } = render(<HiddenInfo onSave={jest.fn()} />);
+        const { getByText, getByLabelText } = render(<HiddenInfoList onSave={jest.fn()} />);
 
         await userEvent.click(getByText('Create new'));
 
@@ -21,7 +21,7 @@ describe('HiddenInfoContainer', () => {
 
     it('should call onSave when saving form', async () => {
         const onSaveMock = jest.fn();
-        const { getByLabelText, getByText } = render(<HiddenInfo onSave={onSaveMock} />);
+        const { getByLabelText, getByText } = render(<HiddenInfoList onSave={onSaveMock} />);
 
         await userEvent.click(getByText('Create new'));
 
