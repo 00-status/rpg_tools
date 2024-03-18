@@ -69,7 +69,23 @@ describe('graphUtil', () => {
                     ],
                     hiddenInfo: [],
                     pointsOfInterest: [],
-                }
+                },
+                {
+                    id: 'area_2',
+                    name: "Area two",
+                    description: 'Description two',
+                    paths: [],
+                    hiddenInfo: [],
+                    pointsOfInterest: [],
+                },
+                {
+                    id: 'area_3',
+                    name: "Area three",
+                    description: 'Description three',
+                    paths: [],
+                    hiddenInfo: [],
+                    pointsOfInterest: [],
+                },
             ];
 
             const result = convertAreasToEdges(areas);
@@ -91,6 +107,30 @@ describe('graphUtil', () => {
                 },
             ];
             expect(result).toEqual(expected);
+        });
+
+        it('should NOT map paths that point to nodes that do not exist', () => {
+            const areas: Array<Area> = [
+                {
+                    id: 'area_1',
+                    name: "Area one",
+                    description: 'Description one',
+                    paths: [
+                        {
+                            id: 'id_1',
+                            conditionID: '',
+                            nextAreaID: 'area_45',
+                            shortDescription: 'description 1',
+                        },
+                    ],
+                    hiddenInfo: [],
+                    pointsOfInterest: [],
+                }
+            ];
+
+            const result = convertAreasToEdges(areas);
+
+            expect(result).toHaveLength(0);
         });
 
         it('should return an empty array when areas is empty.', () => {

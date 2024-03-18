@@ -21,8 +21,6 @@ export const AdventureMaker = (): ReactElement => {
     const [selectedArea, setSelectedArea] = useState<Area>(areas[0])
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     
-    console.log(selectedArea);
-
     const onSave = (updatedArea: Area) => {
         const copiedAreas = [...areas];
         copiedAreas[currentIndex] = updatedArea;

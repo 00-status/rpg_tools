@@ -15,17 +15,20 @@ export const convertAreasToNodes = (areas: Array<Area>): Array<SerializedNode> =
 
 export const convertAreasToEdges = (areas: Array<Area>): Array<SerializedEdge> => {
     const mappedEdges = areas.reduce<Array<SerializedEdge>>((acc, area) => {
-        const edges: Array<SerializedEdge> = area.paths.map((path) => {
-            return {
-                key: area.id + '-' + path.nextAreaID,
-                undirected: false,
-                source: area.id,
-                target: path.nextAreaID,
-                attributes: [{ label: path.shortDescription }]
-             };
-        });
-
-        // TODO: Filter out edges that point to non-existant nodes.
+        const edges: Array<SerializedEdge> = area.paths
+            .filter((path) => {
+                // TODO: Make this more efficient
+                return areas.find(area => area.id === path.nextAreaID);
+            })
+            .map((path) => {
+                return {
+                    key: area.id + '-' + path.nextAreaID,
+                    undirected: false,
+                    source: area.id,
+                    target: path.nextAreaID,
+                    attributes: [{ label: path.shortDescription }]
+                };
+            });
 
         return [...acc, ...edges];
     }, []);
