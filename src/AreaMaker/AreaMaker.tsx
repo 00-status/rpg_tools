@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 
 import './area-maker.css';
-import { HiddenInfo } from "./HiddenInfoContainer";
+import { HiddenInfo } from "./HiddenInfo/HiddenInfoContainer";
 import { PathsList } from "./Paths/PathsList";
 import { Area, Path } from "./domain/types";
 

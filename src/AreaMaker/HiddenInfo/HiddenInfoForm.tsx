@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 import './hidden-info-form.css';
-import { HiddenInfo as HiddenInfoType } from "./domain/types";
+import { HiddenInfo as HiddenInfoType } from "../domain/types";
 
 type Props = {
     id: string;

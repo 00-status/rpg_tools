@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 
 import './hidden-info-container.css';
-import { HiddenInfo as HiddenInfoType } from "./domain/types";
+import { HiddenInfo as HiddenInfoType } from "../domain/types";
 import { HiddenInfoForm } from "./HiddenInfoForm";
 
 type Props = {
