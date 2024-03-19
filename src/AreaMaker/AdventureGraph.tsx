@@ -31,6 +31,9 @@ export const AdventureGraph = (props: Props) => {
     }, [loadgraph, areas]);
 
     const sigma = useSigma();
+
+    sigma.setSetting('labelColor', { color: '#FCFEFF' });
+
     sigma.removeAllListeners();
     sigma.addListener("clickNode", (sigmaEventPayload) => {
         sigmaEventPayload.preventSigmaDefault();

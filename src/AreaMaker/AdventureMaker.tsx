@@ -74,7 +74,7 @@ export const AdventureMaker = (): ReactElement => {
                 <AreaMaker area={selectedArea} onSave={onSave}/>
                 <div className="sigma-container">
                     <h2>SigmaJS Container</h2>
-                    <SigmaContainer style={{ height: '500px' }}>
+                    <SigmaContainer style={{ height: '500px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <AdventureGraph areas={areas} onAreaClick={onAreaClick} />
                     </SigmaContainer>
                     <div>
