@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLoadGraph, useSigma } from "@react-sigma/core";
+import { useLayoutCircular } from "@react-sigma/layout-circular";
 import { SerializedGraph } from "graphology-types";
 import { DirectedGraph } from "graphology";
 
@@ -13,6 +14,7 @@ type Props = {
 
 export const AdventureGraph = (props: Props) => {
     const { areas, onAreaClick } = props;
+    const { assign } = useLayoutCircular();
     const loadgraph = useLoadGraph();
 
     useEffect(() => {
@@ -27,7 +29,9 @@ export const AdventureGraph = (props: Props) => {
             edges: convertAreasToEdges(areas)
         };
         const graph = DirectedGraph.from(serializedGraph);
+
         loadgraph(graph);
+        assign();
     }, [loadgraph, areas]);
 
     const sigma = useSigma();
