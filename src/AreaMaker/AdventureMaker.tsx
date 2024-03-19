@@ -40,7 +40,7 @@ export const AdventureMaker = (): ReactElement => {
 
     const createNewArea = () => {
         const newArea = {
-            id: 'area_' + (areas.length + 1),
+            id: 'area_' + (Math.random().toString(36).slice(2, 7)),
             name: 'Area ' + (areas.length + 1),
             description: '',
             hiddenInfo: [],
