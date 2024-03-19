@@ -18,7 +18,6 @@ export const AdventureMaker = (): ReactElement => {
             paths: []
         }
     ]);
-    const [selectedArea, setSelectedArea] = useState<Area>(areas[0])
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     
     const onSave = (updatedArea: Area) => {
@@ -28,9 +27,16 @@ export const AdventureMaker = (): ReactElement => {
         setAreas(copiedAreas);
     };
 
-    useEffect(() => {
-        setSelectedArea(areas[currentIndex]);
-    }, [areas, currentIndex]);
+    const deleteArea = () => {
+        if (areas.length === 1) {
+            return;
+        }
+
+        const areasCopy = [...areas];
+        areasCopy.splice(currentIndex, 1);
+        setCurrentIndex(0);
+        setAreas(areasCopy);
+    };
 
     const createNewArea = () => {
         const newArea = {
@@ -71,7 +77,7 @@ export const AdventureMaker = (): ReactElement => {
                 </div>
             </div>
             <div className="adventure-maker--content">
-                <AreaMaker area={selectedArea} onSave={onSave}/>
+                <AreaMaker area={areas[currentIndex]} onSave={onSave} onDelete={deleteArea} />
                 <div className="sigma-container">
                     <h2>SigmaJS Container</h2>
                     <SigmaContainer style={{ height: '500px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>

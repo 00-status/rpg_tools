@@ -8,10 +8,11 @@ import { Area, HiddenInfo, Path } from "./domain/types";
 type Props = {
     area: Area;
     onSave: (area: Area) => void;
+    onDelete: () => void;
 };
 
 export const AreaMaker = (props: Props): ReactElement => {
-    const { area, onSave } = props;
+    const { area, onSave, onDelete } = props;
 
     const [areaID, setAreaID] = useState<string>(area.id);
     const [areaName, setAreaName] = useState<string>(area.name);
@@ -44,6 +45,7 @@ export const AreaMaker = (props: Props): ReactElement => {
         <div className="area-maker--title">
             <h2>Area</h2>
             <button onClick={onSaveClick} className="area-maker--title-button">Save area</button>
+            <button onClick={onDelete} className="area-maker--title-button">Delete area</button>
         </div>
         <div className="area-maker--form-inline">
             <div className="area-maker--form-stack">
