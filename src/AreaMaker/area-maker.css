@@ -32,7 +32,6 @@
     flex: 0 0 50%;
 
     gap: 8px;
-    overflow-y: scroll;
 }
 
 .area-maker--form-stack {

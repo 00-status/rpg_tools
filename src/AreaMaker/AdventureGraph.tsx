@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useLoadGraph, useSigma } from "@react-sigma/core";
+import { useEffect, useState } from "react";
+import { useLoadGraph, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { useLayoutCircular } from "@react-sigma/layout-circular";
 import { SerializedGraph } from "graphology-types";
 import { DirectedGraph } from "graphology";
@@ -14,10 +14,18 @@ type Props = {
 
 export const AdventureGraph = (props: Props) => {
     const { areas, onAreaClick } = props;
-    const { assign } = useLayoutCircular();
+    
+    const [draggedNode, setDraggedNode] = useState<string | null>(null);
+
+    const sigma = useSigma();
+    const registerEvents = useRegisterEvents();
     const loadgraph = useLoadGraph();
 
+    sigma.setSetting('labelColor', { color: '#FCFEFF' });
+
     useEffect(() => {
+        setDraggedNode(null);
+
         const serializedGraph: SerializedGraph = {
             attributes: { name: 'Adventure' },
             options: {
@@ -31,18 +39,43 @@ export const AdventureGraph = (props: Props) => {
         const graph = DirectedGraph.from(serializedGraph);
 
         loadgraph(graph);
-        assign();
     }, [loadgraph, areas]);
 
-    const sigma = useSigma();
+    useEffect(() => {
+        registerEvents({
+            clickNode: (event) => {
+                event.preventSigmaDefault();
+                onAreaClick(event.node);
+            },
+            downNode: (event) => {
+                console.log('DOWN');
+                setDraggedNode(event.node);
+            },
+            mouseup: () => {
+                console.log('UP');
+                if (draggedNode) {
+                    setDraggedNode(null);
+                }
+            },
+            mousedown: () => {
+                if (!sigma.getCustomBBox()) {
+                    sigma.setCustomBBox(sigma.getBBox());
+                }
+            },
+            mousemove: (event) => {
+                if (draggedNode) {
+                    const position = sigma.viewportToGraph(event);
+                    sigma.getGraph().setNodeAttribute(draggedNode, "x", position.x);
+                    sigma.getGraph().setNodeAttribute(draggedNode, "y", position.y);
 
-    sigma.setSetting('labelColor', { color: '#FCFEFF' });
-
-    sigma.removeAllListeners();
-    sigma.addListener("clickNode", (sigmaEventPayload) => {
-        sigmaEventPayload.preventSigmaDefault();
-        onAreaClick(sigmaEventPayload.node);
-    });
+                    // Prevent sigma from moving the camera
+                    event.preventSigmaDefault();
+                    event.original.preventDefault();
+                    event.original.stopPropagation();
+                }
+            }
+        });
+    }, [registerEvents, sigma, draggedNode, setDraggedNode]);
 
     return null;
 };
