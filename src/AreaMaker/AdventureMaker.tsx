@@ -19,7 +19,7 @@ export const AdventureMaker = (): ReactElement => {
         }
     ]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    
+
     const onSave = (updatedArea: Area) => {
         const copiedAreas = [...areas];
         copiedAreas[currentIndex] = updatedArea;
@@ -81,11 +81,12 @@ export const AdventureMaker = (): ReactElement => {
                 <div className="sigma-container">
                     <h2>SigmaJS Container</h2>
                     <SigmaContainer style={{ height: '500px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
-                        <AdventureGraph areas={areas} onAreaClick={onAreaClick} />
+                        <AdventureGraph
+                            areas={areas}
+                            onAreaClick={onAreaClick}
+                        />
                     </SigmaContainer>
-                    <div>
-                        <button onClick={createNewArea}>Create area</button>
-                    </div>
+                    <button onClick={() => createNewArea()}>Create area</button>
                 </div>
             </div>
         </div>

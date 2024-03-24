@@ -1,12 +1,22 @@
 import { SerializedEdge, SerializedNode } from "graphology-types";
 import { Area } from "./types";
 
-export const convertAreasToNodes = (areas: Array<Area>): Array<SerializedNode> => {
-    const nodes = areas.map((area: Area, index: number) => {
+type AreaMap = Map<string, { x: number, y: number }>;
+
+export const convertAreasToNodes = (areas: Array<Area>, existingAreas: AreaMap): Array<SerializedNode> => {
+    const nodes = areas.map((area: Area) => {
+        const graphArea = existingAreas.get(area.id);
+
         return {
             key: area.id,
             node: area.id,
-            attributes: { x: 1 * index, y: 1 * index, label: area.name, size: 20, color: '#CC1818' }
+            attributes: {
+                x: graphArea ? graphArea.x : 0,
+                y: graphArea ? graphArea.y : 0,
+                label: area.name,
+                size: 20,
+                color: '#CC1818'
+            }
         }
     });
 

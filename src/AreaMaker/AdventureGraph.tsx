@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useLoadGraph, useRegisterEvents, useSigma } from "@react-sigma/core";
-import { useLayoutCircular } from "@react-sigma/layout-circular";
 import { SerializedGraph } from "graphology-types";
 import { DirectedGraph } from "graphology";
 
@@ -14,18 +13,28 @@ type Props = {
 
 export const AdventureGraph = (props: Props) => {
     const { areas, onAreaClick } = props;
-    
+
     const [draggedNode, setDraggedNode] = useState<string | null>(null);
 
     const sigma = useSigma();
     const registerEvents = useRegisterEvents();
     const loadgraph = useLoadGraph();
 
+    const existingNodes = sigma.getGraph().reduceNodes((acc, node, nodeAttributes) => {
+        acc.set(
+            node,
+            {
+                x: nodeAttributes['x'],
+                y: nodeAttributes['y']
+            }
+        );
+
+        return acc;
+    }, new Map());
+
     sigma.setSetting('labelColor', { color: '#FCFEFF' });
 
     useEffect(() => {
-        setDraggedNode(null);
-
         const serializedGraph: SerializedGraph = {
             attributes: { name: 'Adventure' },
             options: {
@@ -33,7 +42,7 @@ export const AdventureGraph = (props: Props) => {
                 multi: false,
                 type: 'directed'
             },
-            nodes: convertAreasToNodes(areas),
+            nodes: convertAreasToNodes(areas, existingNodes),
             edges: convertAreasToEdges(areas)
         };
         const graph = DirectedGraph.from(serializedGraph);
@@ -48,11 +57,9 @@ export const AdventureGraph = (props: Props) => {
                 onAreaClick(event.node);
             },
             downNode: (event) => {
-                console.log('DOWN');
                 setDraggedNode(event.node);
             },
-            mouseup: () => {
-                console.log('UP');
+            mouseup: (event) => {
                 if (draggedNode) {
                     setDraggedNode(null);
                 }

@@ -1,10 +1,10 @@
-import { EdgeEntry, SerializedEdge } from "graphology-types";
+import { SerializedEdge } from "graphology-types";
 import { convertAreasToEdges, convertAreasToNodes } from "./graphUtil";
 import { Area } from "./types";
 
 describe('graphUtil', () => {
     describe('convertAreasToNodes', () => {
-        it('should convert areas to a list of node', () => {
+        it('should convert areas to a list of nodes', () => {
             const areas: Array<Area> = [
                 {
                     id: 'area_1',
@@ -12,7 +12,7 @@ describe('graphUtil', () => {
                     description: 'Description one',
                     paths: [],
                     hiddenInfo: [],
-                    pointsOfInterest: [],
+                    pointsOfInterest: []
                 },
                 {
                     id: 'area_2',
@@ -20,11 +20,11 @@ describe('graphUtil', () => {
                     description: 'Description two',
                     paths: [],
                     hiddenInfo: [],
-                    pointsOfInterest: [],
+                    pointsOfInterest: []
                 },
             ];
 
-            const result = convertAreasToNodes(areas);
+            const result = convertAreasToNodes(areas, new Map());
 
             expect(result).toEqual([
                 {
@@ -35,13 +35,53 @@ describe('graphUtil', () => {
                 {
                     key: 'area_2',
                     node: 'area_2',
-                    attributes: { x: 1, y: 1, label: "Area two", size: 20, color: '#CC1818' }
+                    attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#CC1818' }
+                },
+            ]);
+        });
+
+        it('should convert areas to a list of nodes with x and y coords provided', () => {
+            const areas: Array<Area> = [
+                {
+                    id: 'area_1',
+                    name: "Area one",
+                    description: 'Description one',
+                    paths: [],
+                    hiddenInfo: [],
+                    pointsOfInterest: []
+                },
+                {
+                    id: 'area_2',
+                    name: "Area two",
+                    description: 'Description two',
+                    paths: [],
+                    hiddenInfo: [],
+                    pointsOfInterest: []
+                },
+            ];
+
+            const coordsMap = new Map([
+                ['area_1', { x: 1, y: 2 }]
+            ]);
+
+            const result = convertAreasToNodes(areas, coordsMap);
+
+            expect(result).toEqual([
+                {
+                    key: 'area_1',
+                    node: 'area_1',
+                    attributes: { x: 1, y: 2, label: "Area one", size: 20, color: '#CC1818' }
+                },
+                {
+                    key: 'area_2',
+                    node: 'area_2',
+                    attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#CC1818' }
                 },
             ]);
         });
 
         it('should return an empty array when areas is empty', () => {
-            const result = convertAreasToNodes([]);
+            const result = convertAreasToNodes([], new Map());
             expect(result).toHaveLength(0);
         });
     });
@@ -68,7 +108,7 @@ describe('graphUtil', () => {
                         },
                     ],
                     hiddenInfo: [],
-                    pointsOfInterest: [],
+                    pointsOfInterest: []
                 },
                 {
                     id: 'area_2',
@@ -76,7 +116,7 @@ describe('graphUtil', () => {
                     description: 'Description two',
                     paths: [],
                     hiddenInfo: [],
-                    pointsOfInterest: [],
+                    pointsOfInterest: []
                 },
                 {
                     id: 'area_3',
@@ -84,7 +124,7 @@ describe('graphUtil', () => {
                     description: 'Description three',
                     paths: [],
                     hiddenInfo: [],
-                    pointsOfInterest: [],
+                    pointsOfInterest: []
                 },
             ];
 
@@ -146,7 +186,7 @@ describe('graphUtil', () => {
                     description: 'Description one',
                     paths: [],
                     hiddenInfo: [],
-                    pointsOfInterest: [],
+                    pointsOfInterest: []
                 }
             ];
 
