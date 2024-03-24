@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { SigmaContainer } from "@react-sigma/core";
 
 import './adventure-maker.css';
@@ -19,6 +19,16 @@ export const AdventureMaker = (): ReactElement => {
         }
     ]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+    const downloadURL = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(areas))}`
+
+    const getDownloadLink = (): string => {
+        const jsonString = JSON.stringify(areas, null, 4);
+        const file = new Blob([jsonString], { type: 'application/json' })
+        const href = URL.createObjectURL(file);
+
+        return href;
+    };
 
     const onSave = (updatedArea: Area) => {
         const copiedAreas = [...areas];
@@ -65,7 +75,14 @@ export const AdventureMaker = (): ReactElement => {
 
     return <Page title="RPG Tools">
         <div className="adventure-maker">
-            <h1>Adventure Maker</h1>
+            <div>
+                <h1>Adventure Maker</h1>
+                <a
+                    download={"adventure.json"}
+                    href={getDownloadLink()}>
+                    Download Adventure
+                </a>
+            </div>
             <div className="adventure-maker--container">
                 <div className="area-maker--form-stack">
                     <label htmlFor="adventure-id">Adventure ID</label>
