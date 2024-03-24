@@ -45,7 +45,7 @@ export const AreaMaker = (props: Props): ReactElement => {
         <div className="area-maker--title">
             <h2>Area</h2>
             <button onClick={onSaveClick} className="area-maker--title-button">Save area</button>
-            <button onClick={onDelete} className="area-maker--title-button">Delete area</button>
+            <button onClick={onDelete} className="area-maker--delete-button">Delete area</button>
         </div>
         <div className="area-maker--form-inline">
             <div className="area-maker--form-stack">

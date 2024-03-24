@@ -17,6 +17,15 @@
     margin: 8px 0;
 }
 
+.area-maker--delete-button { 
+    margin: 8px 0;
+    background-color: #a02e2f;
+}
+
+.area-maker--delete-button:hover {
+    background-color: #CC1818;
+}
+
 .area-maker--section {
     display: flex;
     flex-direction: row;

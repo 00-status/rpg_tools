@@ -55,6 +55,7 @@ a:visited {
 button {
     height: 40px;
     border-radius: 4px;
+    transition: all .1s ease-in-out;
 
     color: #FCFEFF;
     background-color: #708694;
@@ -62,7 +63,9 @@ button {
 }
 
 button:hover {
+    transform: scale(1.05);
     background-color: #4a87ac;
+    box-shadow: 1px 1px 4px #1f2028;
 }
 
 /* Button and forms Styling */
