@@ -1,10 +1,10 @@
 import { SerializedEdge, SerializedNode } from "graphology-types";
-import { Area } from "./types";
+import { Dialogue } from "./types";
 
 type AreaMap = Map<string, { x: number, y: number }>;
 
-export const convertAreasToNodes = (areas: Array<Area>, existingAreas: AreaMap): Array<SerializedNode> => {
-    const nodes = areas.map((area: Area) => {
+export const convertAreasToNodes = (areas: Array<Dialogue>, existingAreas: AreaMap): Array<SerializedNode> => {
+    const nodes = areas.map((area: Dialogue) => {
         const graphArea = existingAreas.get(area.id);
 
         return {
@@ -23,7 +23,7 @@ export const convertAreasToNodes = (areas: Array<Area>, existingAreas: AreaMap):
     return nodes;
 };
 
-export const convertAreasToEdges = (areas: Array<Area>): Array<SerializedEdge> => {
+export const convertAreasToEdges = (areas: Array<Dialogue>): Array<SerializedEdge> => {
     const mappedEdges = areas.reduce<Array<SerializedEdge>>((acc, area) => {
         const edges: Array<SerializedEdge> = area.paths
             .filter((path) => {

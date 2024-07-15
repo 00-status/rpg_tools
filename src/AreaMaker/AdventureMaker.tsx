@@ -3,12 +3,12 @@ import { SigmaContainer } from "@react-sigma/core";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
-import { AreaMaker } from "./AreaMaker/AreaMaker";
-import { Area } from "./domain/types";
+import { DialogueMaker } from "./AreaMaker/Dialogue";
+import { Dialogue } from "./domain/types";
 import { AdventureGraph } from "./AdventureGraph";
 
 export const AdventureMaker = (): ReactElement => {
-    const [areas, setAreas] = useState<Array<Area>>([
+    const [areas, setAreas] = useState<Array<Dialogue>>([
         {
             id: 'area_1',
             name: 'Area 1',
@@ -29,7 +29,7 @@ export const AdventureMaker = (): ReactElement => {
         return href;
     };
 
-    const onSave = (updatedArea: Area) => {
+    const onSave = (updatedArea: Dialogue) => {
         const copiedAreas = [...areas];
         copiedAreas[currentIndex] = updatedArea;
 
@@ -61,7 +61,7 @@ export const AdventureMaker = (): ReactElement => {
     };
 
     const onAreaClick = (areaID: string) => {
-        const clickedAreaIndex = areas.findIndex((area: Area) => {
+        const clickedAreaIndex = areas.findIndex((area: Dialogue) => {
             return area.id === areaID;
         });
 
@@ -105,7 +105,7 @@ export const AdventureMaker = (): ReactElement => {
                         />
                     </SigmaContainer>
                 </div>
-                <AreaMaker area={areas[currentIndex]} onSave={onSave} onDelete={deleteArea} />
+                <DialogueMaker dialogue={areas[currentIndex]} onSave={onSave} onDelete={deleteArea} />
             </div>
         </div>
     </Page>;

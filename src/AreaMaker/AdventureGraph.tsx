@@ -4,10 +4,10 @@ import { SerializedGraph } from "graphology-types";
 import { DirectedGraph } from "graphology";
 
 import { convertAreasToEdges, convertAreasToNodes } from "./domain/graphUtil";
-import { Area } from "./domain/types";
+import { Dialogue } from "./domain/types";
 
 type Props = {
-    areas: Array<Area>;
+    areas: Array<Dialogue>;
     onAreaClick: (clickedArea: string) => void;
 };
 

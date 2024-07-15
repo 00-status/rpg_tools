@@ -1,11 +1,11 @@
 import { SerializedEdge } from "graphology-types";
 import { convertAreasToEdges, convertAreasToNodes } from "./graphUtil";
-import { Area } from "./types";
+import { Dialogue } from "./types";
 
 describe('graphUtil', () => {
     describe('convertAreasToNodes', () => {
         it('should convert areas to a list of nodes', () => {
-            const areas: Array<Area> = [
+            const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",
@@ -41,7 +41,7 @@ describe('graphUtil', () => {
         });
 
         it('should convert areas to a list of nodes with x and y coords provided', () => {
-            const areas: Array<Area> = [
+            const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",
@@ -88,7 +88,7 @@ describe('graphUtil', () => {
 
     describe('convertAreasToEdges', () => {
         it('should return an edge for each path on a node.', () => {
-            const areas: Array<Area> = [
+            const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",
@@ -150,7 +150,7 @@ describe('graphUtil', () => {
         });
 
         it('should NOT map paths that point to nodes that do not exist', () => {
-            const areas: Array<Area> = [
+            const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",
@@ -179,7 +179,7 @@ describe('graphUtil', () => {
         });
 
         it('should return an empty array when each area has no paths.', () => {
-            const areas: Array<Area> = [
+            const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",

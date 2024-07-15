@@ -1,11 +1,11 @@
-.area-maker {
+.dialogue-maker {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 16px;
 }
 
-.area-maker--title {
+.dialogue-maker--title {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -13,51 +13,51 @@
     gap: 20px;
 }
 
-.area-maker--title-button {
+.dialogue-maker--title-button {
     margin: 8px 0;
 }
 
-.area-maker--delete-button { 
+.dialogue-maker--delete-button { 
     margin: 8px 0;
     background-color: #a02e2f;
 }
 
-.area-maker--delete-button:hover {
+.dialogue-maker--delete-button:hover {
     background-color: #CC1818;
 }
 
-.area-maker--form-stack {
+.dialogue-maker--form-stack {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.area-maker--form-inline {
+.dialogue-maker--form-inline {
     display: flex;
     flex-flow: row wrap;
     gap: 16px;
 }
 
-.area-maker--description {
+.dialogue-maker--description {
     display: flex;
     flex-direction: column;
 }
 
-.area-maker--text-box {
+.dialogue-maker--text-box {
     height: 90px;
     resize: vertical;
 }
 
-.area-maker--content {
+.dialogue-maker--content {
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.area-maker__description {
+.dialogue-maker__description {
     flex: 1;
 }
 
-.area-maker__choices {
+.dialogue-maker__choices {
     flex: 1;
 }

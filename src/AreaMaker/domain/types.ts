@@ -1,4 +1,4 @@
-export type Area = {
+export type Dialogue = {
     id: string;
     name: string;
     description: string;
