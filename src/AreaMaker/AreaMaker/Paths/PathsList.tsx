@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 import './path-list.css';
-import { Path } from "../domain/types";
+import { Path } from "../../domain/types";
 
 type Props = {
     paths: Array<Path>;

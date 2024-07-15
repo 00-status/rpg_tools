@@ -1,4 +1,4 @@
-.hidden-info-container {
+.hidden-info {
     display: flex;
     flex-direction: column;
 }

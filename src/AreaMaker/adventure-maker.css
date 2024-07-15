@@ -3,17 +3,17 @@
     width: 100%;
 }
 
-.adventure-maker--content {
-    display: flex;
-    flex-direction: row;
-
-    gap: 80px;
-}
-
 .adventure-maker--container {
     display: flex;
     flex-direction: row;
     gap: 20px;
 
     margin-bottom: 32px;
+}
+
+.adventure-maker--content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 80px;
 }

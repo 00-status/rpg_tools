@@ -1,14 +1,14 @@
 import { render } from "@testing-library/react";
 import { HiddenInfoList } from "./HiddenInfoList";
 import userEvent from "@testing-library/user-event";
-import { HiddenInfo } from "../domain/types";
+import { HiddenInfo } from "../../domain/types";
 
 describe('HiddenInfoList', () => {
     it('should render a "Create new" button when there are no Hidden Infos created yet.', () => {
         const { getByText } = render(<HiddenInfoList hiddenInfos={[]} setHiddenInfos={jest.fn()} />);
 
         getByText('Hidden Info');
-        getByText('Create new');
+        getByText('Create Hidden Info');
     });
 
     it('should render a form after pressing the "create new" Button.', async () => {
@@ -16,7 +16,7 @@ describe('HiddenInfoList', () => {
         const { getByText } = render(<HiddenInfoList hiddenInfos={[]} setHiddenInfos={onSaveMock} />);
 
         expect(onSaveMock).toHaveBeenCalledTimes(0);
-        await userEvent.click(getByText('Create new'));
+        await userEvent.click(getByText('Create Hidden Info'));
         expect(onSaveMock).toHaveBeenCalledTimes(1);
     });
 

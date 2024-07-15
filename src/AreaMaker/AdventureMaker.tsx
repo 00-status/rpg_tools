@@ -3,7 +3,7 @@ import { SigmaContainer } from "@react-sigma/core";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
-import { AreaMaker } from "./AreaMaker";
+import { AreaMaker } from "./AreaMaker/AreaMaker";
 import { Area } from "./domain/types";
 import { AdventureGraph } from "./AdventureGraph";
 
@@ -14,7 +14,6 @@ export const AdventureMaker = (): ReactElement => {
             name: 'Area 1',
             description: '',
             hiddenInfo: [],
-            pointsOfInterest: [],
             paths: []
         }
     ]);
@@ -94,17 +93,19 @@ export const AdventureMaker = (): ReactElement => {
                 </div>
             </div>
             <div className="adventure-maker--content">
-                <AreaMaker area={areas[currentIndex]} onSave={onSave} onDelete={deleteArea} />
-                <div className="sigma-container">
-                    <h2>SigmaJS Container</h2>
-                    <SigmaContainer style={{ height: '500px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
+                <div>
+                    <div>
+                        <h2>SigmaJS Container</h2>
+                        <button onClick={() => createNewArea()}>Create area</button>
+                    </div>
+                    <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <AdventureGraph
                             areas={areas}
                             onAreaClick={onAreaClick}
                         />
                     </SigmaContainer>
-                    <button onClick={() => createNewArea()}>Create area</button>
                 </div>
+                <AreaMaker area={areas[currentIndex]} onSave={onSave} onDelete={deleteArea} />
             </div>
         </div>
     </Page>;

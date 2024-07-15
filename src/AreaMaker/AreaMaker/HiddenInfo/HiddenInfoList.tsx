@@ -1,7 +1,7 @@
 import { Dispatch, ReactElement, SetStateAction } from "react";
 
 import './hidden-info-list.css';
-import { HiddenInfo } from "../domain/types";
+import { HiddenInfo } from "../../domain/types";
 import { HiddenInfoForm } from "./HiddenInfoForm";
 
 type Props = {
@@ -12,8 +12,7 @@ type Props = {
 export const HiddenInfoList = (props: Props): ReactElement => {
     const { hiddenInfos, setHiddenInfos } = props;
 
-    return <div className="hidden-info-container">
-        <h2>Hidden Info</h2>
+    return <div className="hidden-info">
         {hiddenInfos.map((hiddenInfo, index) => {
             return <HiddenInfoForm
                 key={hiddenInfo.id}
@@ -39,7 +38,7 @@ export const HiddenInfoList = (props: Props): ReactElement => {
                 { id: crypto.randomUUID(), conditionIDs: [''], description: '' }
             ]);
         }}>
-            Create new
+            Create Hidden Info
         </button>
     </div>;
 };

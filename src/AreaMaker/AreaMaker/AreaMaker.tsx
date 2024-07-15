@@ -1,9 +1,9 @@
 import { ReactElement, useEffect, useState } from "react";
 
 import './area-maker.css';
+import { Area, HiddenInfo, Path } from "../domain/types";
 import { HiddenInfoList } from "./HiddenInfo/HiddenInfoList";
 import { PathsList } from "./Paths/PathsList";
-import { Area, HiddenInfo, Path } from "./domain/types";
 
 type Props = {
     area: Area;
@@ -34,8 +34,7 @@ export const AreaMaker = (props: Props): ReactElement => {
             name: areaName,
             description: areaDescription,
             paths,
-            hiddenInfo: hiddenInfos,
-            pointsOfInterest: []
+            hiddenInfo: hiddenInfos
         };
 
         onSave(updatedArea);
@@ -50,66 +49,42 @@ export const AreaMaker = (props: Props): ReactElement => {
         <div className="area-maker--form-inline">
             <div className="area-maker--form-stack">
                 <label htmlFor="area-id">Area ID</label>
-                <input
-                    type="text"
-                    id="area-id"
+                <input type="text" id="area-id" value={areaID}
                     onChange={(event) => {
                         const newValue = event.target.value ?? '';
                         setAreaID(newValue);
                     }}
-                    value={areaID}
                 />
             </div>
             <div className="area-maker--form-stack">
                 <label htmlFor="area-name">Area Name</label>
-                <input
-                    type="text"
-                    id="area-name"
+                <input type="text" id="area-name" value={areaName}
                     onChange={(event) => {
                         const newValue = event.target.value ?? '';
                         setAreaName(newValue);
                     }}
-                    value={areaName}
                 />
             </div>
         </div>
-        <div className="area-maker--description">
-            <label htmlFor="area-description">Area Description</label>
-            <textarea
-                className="area-maker--text-box"
-                id="area-description"
-                onChange={(event) => {
-                    const newValue = event.target.value ?? '';
-                    setAreaDescription(newValue);
-                }}
-                value={areaDescription}
-            />
-        </div>
-        <PathsList paths={paths} onChange={setPaths} />
-        <HiddenInfoList
-            hiddenInfos={hiddenInfos}
-            setHiddenInfos={setHiddenInfos}
-        />
-        <div className="area-maker--point-of-interest-container">
-            <h2>Points of Interest (POI)</h2>
-            <div className="area-maker--form-inline">
-                <div className="area-maker--form-stack">
-                    <label htmlFor="poi-condition-ids">POI Condition IDs</label>
-                    <input type="text" id="poi-condition-ids" />
+        <div className="area-maker--content">
+            <div className="area-maker__description">
+                <h2>Description</h2>
+                <div className="area-maker--description">
+                    <label htmlFor="area-description">Area Description</label>
+                    <textarea className="area-maker--text-box" id="area-description" value={areaDescription}
+                        onChange={(event) => {
+                            const newValue = event.target.value ?? '';
+                            setAreaDescription(newValue);
+                        }}
+                    />
                 </div>
-                <div className="area-maker--form-stack">
-                    <label htmlFor="poi-name">POI Name</label>
-                    <input type="text" id="poi-name" />
-                </div>
-                <div className="area-maker--form-stack">
-                    {/* TODO: Make this a dropdown */}
-                    <label htmlFor="poi-type">POI Type</label>
-                    <input type="text" id="poi-type" />
-                </div>
+                <HiddenInfoList
+                    hiddenInfos={hiddenInfos}
+                    setHiddenInfos={setHiddenInfos}
+                />
             </div>
-            <div className="area-maker--form-stack">
-                <label htmlFor="poi-description">POI Description</label>
-                <textarea className="area-maker--text-box" id="poi-description" />
+            <div className="area-maker__choices">
+                <PathsList paths={paths} onChange={setPaths} />
             </div>
         </div>
     </div>;

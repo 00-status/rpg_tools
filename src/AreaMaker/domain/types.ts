@@ -3,7 +3,6 @@ export type Area = {
     name: string;
     description: string;
     hiddenInfo: Array<HiddenInfo>;
-    pointsOfInterest: Array<PointOfInterest>;
     paths: Array<Path>;
 };
 
@@ -11,13 +10,6 @@ export type HiddenInfo = {
     id: string;
     conditionIDs: Array<string>;
     description: string;
-};
-
-export type PointOfInterest = {
-    conditionIDs: Array<string> | null;
-    name: string;
-    description: string;
-    type: PointOfInterestType;
 };
 
 export enum PointOfInterestType {

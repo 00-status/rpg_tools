@@ -26,23 +26,6 @@
     background-color: #CC1818;
 }
 
-.area-maker--section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    overflow-y: scroll;
-}
-
-.area-maker--point-of-interest-container {
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    flex: 0 0 50%;
-
-    gap: 8px;
-}
-
 .area-maker--form-stack {
     display: flex;
     flex-direction: column;
@@ -63,4 +46,18 @@
 .area-maker--text-box {
     height: 90px;
     resize: vertical;
+}
+
+.area-maker--content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.area-maker__description {
+    flex: 1;
+}
+
+.area-maker__choices {
+    flex: 1;
 }
