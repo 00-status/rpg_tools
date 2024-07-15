@@ -3,6 +3,12 @@
     width: 100%;
 }
 
+.adventure-maker__dialogue-tree-title {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
 .adventure-maker--container {
     display: flex;
     flex-direction: row;

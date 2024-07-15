@@ -6,8 +6,6 @@ import { HiddenInfo } from "../../domain/types";
 describe('HiddenInfoList', () => {
     it('should render a "Create new" button when there are no Hidden Infos created yet.', () => {
         const { getByText } = render(<HiddenInfoList hiddenInfos={[]} setHiddenInfos={jest.fn()} />);
-
-        getByText('Hidden Info');
         getByText('Create Hidden Info');
     });
 

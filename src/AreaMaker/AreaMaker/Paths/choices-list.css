@@ -1,11 +1,11 @@
-.path-list {
+.choice-list {
     display: flex;
     flex-direction: column;
 
     margin-bottom: 20px;
 }
 
-.path-list-item {
+.choice-list-item {
     display: grid;
     grid-template-columns: 17% 17% 30% 30%;
     column-gap: 2%;

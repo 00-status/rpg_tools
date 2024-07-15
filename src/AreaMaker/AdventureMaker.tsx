@@ -14,7 +14,7 @@ export const AdventureMaker = (): ReactElement => {
             name: 'Area 1',
             description: '',
             hiddenInfo: [],
-            paths: []
+            choices: []
         }
     ]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -54,7 +54,7 @@ export const AdventureMaker = (): ReactElement => {
             description: '',
             hiddenInfo: [],
             pointsOfInterest: [],
-            paths: []
+            choices: []
         };
 
         setAreas([...areas, newArea]);
@@ -94,9 +94,9 @@ export const AdventureMaker = (): ReactElement => {
             </div>
             <div className="adventure-maker--content">
                 <div>
-                    <div>
-                        <h2>SigmaJS Container</h2>
-                        <button onClick={() => createNewArea()}>Create area</button>
+                    <div className="adventure-maker__dialogue-tree-title">
+                        <h2>Dialogue Tree</h2>
+                        <button onClick={() => createNewArea()}>Create dialogue</button>
                     </div>
                     <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <AdventureGraph

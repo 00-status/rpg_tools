@@ -1,9 +1,9 @@
 import { ReactElement, useEffect, useState } from "react";
 
 import './dialogue-maker.css';
-import { Dialogue, HiddenInfo, Path } from "../domain/types";
+import { Dialogue, HiddenInfo, Choice } from "../domain/types";
 import { HiddenInfoList } from "./HiddenInfo/HiddenInfoList";
-import { PathsList } from "./Paths/PathsList";
+import { ChoicesList } from "./Paths/ChoicesList";
 
 type Props = {
     dialogue: Dialogue;
@@ -17,23 +17,23 @@ export const DialogueMaker = (props: Props): ReactElement => {
     const [dialogueID, setDialogueID] = useState<string>(dialogue.id);
     const [dialogueName, setDialogueName] = useState<string>(dialogue.name);
     const [dialogueDescription, setDialogueDescription] = useState<string>(dialogue.description);
-    const [paths, setPaths] = useState<Array<Path>>(props.dialogue.paths);
+    const [choices, setChoices] = useState<Array<Choice>>(props.dialogue.choices);
     const [hiddenInfos, setHiddenInfos] = useState<Array<HiddenInfo>>(props.dialogue.hiddenInfo);
 
     useEffect(() => {
         setDialogueID(dialogue.id);
         setDialogueName(dialogue.name);
         setDialogueDescription(dialogue.description);
-        setPaths(dialogue.paths);
+        setChoices(dialogue.choices);
         setHiddenInfos(dialogue.hiddenInfo);
-    }, [ dialogue, setDialogueID, setDialogueName, setDialogueDescription, setPaths, setHiddenInfos ]);
+    }, [ dialogue, setDialogueID, setDialogueName, setDialogueDescription, setChoices, setHiddenInfos ]);
 
     const onSaveClick = () => {
         const updatedDialogue: Dialogue = {
             id: dialogueID,
             name: dialogueName,
             description: dialogueDescription,
-            paths,
+            choices,
             hiddenInfo: hiddenInfos
         };
 
@@ -84,7 +84,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 />
             </div>
             <div className="dialogue-maker__choices">
-                <PathsList paths={paths} onChange={setPaths} />
+                <ChoicesList choices={choices} onChange={setChoices} />
             </div>
         </div>
     </div>;

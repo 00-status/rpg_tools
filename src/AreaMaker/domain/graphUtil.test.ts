@@ -10,17 +10,15 @@ describe('graphUtil', () => {
                     id: 'area_1',
                     name: "Area one",
                     description: 'Description one',
-                    paths: [],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    choices: [],
+                    hiddenInfo: []
                 },
                 {
                     id: 'area_2',
                     name: "Area two",
                     description: 'Description two',
-                    paths: [],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    choices: [],
+                    hiddenInfo: []
                 },
             ];
 
@@ -46,17 +44,15 @@ describe('graphUtil', () => {
                     id: 'area_1',
                     name: "Area one",
                     description: 'Description one',
-                    paths: [],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    choices: [],
+                    hiddenInfo: []
                 },
                 {
                     id: 'area_2',
                     name: "Area two",
                     description: 'Description two',
-                    paths: [],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    choices: [],
+                    hiddenInfo: []
                 },
             ];
 
@@ -87,13 +83,13 @@ describe('graphUtil', () => {
     });
 
     describe('convertAreasToEdges', () => {
-        it('should return an edge for each path on a node.', () => {
+        it('should return an edge for each choice on a node.', () => {
             const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",
                     description: 'Description one',
-                    paths: [
+                    choices: [
                         {
                             id: 'id_1',
                             conditionID: '',
@@ -107,24 +103,21 @@ describe('graphUtil', () => {
                             shortDescription: 'description 2',
                         },
                     ],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    hiddenInfo: []
                 },
                 {
                     id: 'area_2',
                     name: "Area two",
                     description: 'Description two',
-                    paths: [],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    choices: [],
+                    hiddenInfo: []
                 },
                 {
                     id: 'area_3',
                     name: "Area three",
                     description: 'Description three',
-                    paths: [],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    choices: [],
+                    hiddenInfo: []
                 },
             ];
 
@@ -149,13 +142,13 @@ describe('graphUtil', () => {
             expect(result).toEqual(expected);
         });
 
-        it('should NOT map paths that point to nodes that do not exist', () => {
+        it('should NOT map choices that point to nodes that do not exist', () => {
             const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",
                     description: 'Description one',
-                    paths: [
+                    choices: [
                         {
                             id: 'id_1',
                             conditionID: '',
@@ -163,8 +156,7 @@ describe('graphUtil', () => {
                             shortDescription: 'description 1',
                         },
                     ],
-                    hiddenInfo: [],
-                    pointsOfInterest: [],
+                    hiddenInfo: []
                 }
             ];
 
@@ -178,15 +170,14 @@ describe('graphUtil', () => {
             expect(result).toHaveLength(0);
         });
 
-        it('should return an empty array when each area has no paths.', () => {
+        it('should return an empty array when each area has no choices.', () => {
             const areas: Array<Dialogue> = [
                 {
                     id: 'area_1',
                     name: "Area one",
                     description: 'Description one',
-                    paths: [],
-                    hiddenInfo: [],
-                    pointsOfInterest: []
+                    choices: [],
+                    hiddenInfo: []
                 }
             ];
 

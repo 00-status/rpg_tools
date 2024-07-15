@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react";
-import { PathsList } from "./PathsList";
-import { Path } from "../domain/types";
+import { ChoicesList } from "./ChoicesList";
+import { Choice } from "../../domain/types";
 import userEvent from "@testing-library/user-event";
 
 describe('PathsList', () => {
-    it('should display a list of paths', () => {
-        const paths: Array<Path> = [
+    it('should display a list of choices', () => {
+        const choices: Array<Choice> = [
             {
                 id: '1',
                 conditionID: null,
@@ -20,7 +20,7 @@ describe('PathsList', () => {
             },
         ];
 
-        const { getByDisplayValue } = render(<PathsList paths={paths} onChange={jest.fn()} />);
+        const { getByDisplayValue } = render(<ChoicesList choices={choices} onChange={jest.fn()} />);
 
         getByDisplayValue('area_library');
         getByDisplayValue('Open the heavy-looking oak door.');
@@ -31,14 +31,14 @@ describe('PathsList', () => {
     });
 
     it('should add a new path when the Add path button is pressed.', async () => {
-        const paths: Array<Path> = [];
+        const choices: Array<Choice> = [];
 
         const onChangeMock = jest.fn();
-        const { getByText } = render(<PathsList paths={paths} onChange={onChangeMock} />);
+        const { getByText } = render(<ChoicesList choices={choices} onChange={onChangeMock} />);
 
         expect(onChangeMock).toHaveBeenCalledTimes(0);
 
-        await userEvent.click(getByText('Add path'));
+        await userEvent.click(getByText('Add choice'));
 
         expect(onChangeMock).toHaveBeenCalledTimes(1);
         expect(onChangeMock).toHaveBeenCalledWith([
@@ -51,7 +51,7 @@ describe('PathsList', () => {
     });
 
     it('should call onChange when typing', async () => {
-        const paths: Array<Path> = [
+        const choices: Array<Choice> = [
             {
                 id: '1',
                 conditionID: null,
@@ -61,7 +61,7 @@ describe('PathsList', () => {
         ];
 
         const onChangeMock = jest.fn();
-        const { getByDisplayValue } = render(<PathsList paths={paths} onChange={onChangeMock} />);
+        const { getByDisplayValue } = render(<ChoicesList choices={choices} onChange={onChangeMock} />);
 
         getByDisplayValue('area_library');
 
@@ -81,7 +81,7 @@ describe('PathsList', () => {
     });
 
     it('should call onChange when deleting a Path', async () => {
-        const paths: Array<Path> = [
+        const choices: Array<Choice> = [
             {
                 id: '1',
                 conditionID: null,
@@ -91,10 +91,10 @@ describe('PathsList', () => {
         ];
 
         const onChangeMock = jest.fn();
-        const { getByText } = render(<PathsList paths={paths} onChange={onChangeMock} />);
+        const { getByText } = render(<ChoicesList choices={choices} onChange={onChangeMock} />);
 
         expect(onChangeMock).toHaveBeenCalledTimes(0);
-        await userEvent.click(getByText('Delete path'));
+        await userEvent.click(getByText('Delete choice'));
         expect(onChangeMock).toHaveBeenCalledTimes(1);
         expect(onChangeMock).toHaveBeenCalledWith([]);
     });

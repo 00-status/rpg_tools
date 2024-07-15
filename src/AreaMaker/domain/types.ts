@@ -3,7 +3,7 @@ export type Dialogue = {
     name: string;
     description: string;
     hiddenInfo: Array<HiddenInfo>;
-    paths: Array<Path>;
+    choices: Array<Choices>;
 };
 
 export type HiddenInfo = {
@@ -19,7 +19,7 @@ export enum PointOfInterestType {
     experience = 'experience',
 };
 
-export type Path = {
+export type Choice = {
     id: string;
     conditionID: string | null;
     nextAreaID: string;
