@@ -48,13 +48,9 @@ export const DialogueMaker = (props: Props): ReactElement => {
         </div>
         <div className="dialogue-maker--form-inline">
             <div className="dialogue-maker--form-stack">
+                {/* TODO: Replace these with TextInput compoennts */}
                 <label htmlFor="dialogue-id">Dialogue ID</label>
-                <input type="text" id="dialogue-id" value={dialogueID}
-                    onChange={(event) => {
-                        const newValue = event.target.value ?? '';
-                        setDialogueID(Number(newValue));
-                    }}
-                />
+                <input readOnly type="text" id="dialogue-id" value={dialogueID} />
             </div>
             <div className="dialogue-maker--form-stack">
                 <label htmlFor="dialogue-name">Dialogue name</label>

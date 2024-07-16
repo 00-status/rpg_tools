@@ -6,14 +6,16 @@ type Props = {
     id: string;
     placeholder?: string;
     onChange: (value?: string) => void;
+    readonly?: boolean;
 };
 
 export const TextInput = (props: Props) => {
-    const { label, value, id, placeholder, onChange } = props;
+    const { label, value, id, placeholder, onChange, readonly } = props;
 
     return <div className="text-input">
         {label && <label htmlFor="id">{label}</label>}
         <input
+            readOnly={readonly}
             type="text"
             id={id}
             placeholder={placeholder}
