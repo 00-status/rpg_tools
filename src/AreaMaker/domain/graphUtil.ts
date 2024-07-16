@@ -15,7 +15,7 @@ export const convertAreasToNodes = (areas: Array<Dialogue>, existingAreas: AreaM
                 y: graphArea ? graphArea.y : 0,
                 label: area.name,
                 size: 20,
-                color: '#CC1818'
+                color: '#d6a840'
             }
         }
     });

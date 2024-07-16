@@ -9,10 +9,10 @@ import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
 
 export const DialogueTreeMaker = (): ReactElement => {
-    const [areas, setAreas] = useState<Array<Dialogue>>([
+    const [dialogues, setDialogues] = useState<Array<Dialogue>>([
         {
-            id: 'area_1',
-            name: 'Area 1',
+            id: 'dialogue_1',
+            name: 'Dialogue 1',
             description: '',
             hiddenInfo: [],
             choices: []
@@ -21,7 +21,7 @@ export const DialogueTreeMaker = (): ReactElement => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     
     const getDownloadLink = (): string => {
-        const jsonString = JSON.stringify(areas, null, 4);
+        const jsonString = JSON.stringify(dialogues, null, 4);
         const file = new Blob([jsonString], { type: 'application/json' })
         const href = URL.createObjectURL(file);
 
@@ -29,38 +29,44 @@ export const DialogueTreeMaker = (): ReactElement => {
     };
 
     const onSave = (updatedArea: Dialogue) => {
-        const copiedAreas = [...areas];
+        const copiedAreas = [...dialogues];
         copiedAreas[currentIndex] = updatedArea;
 
-        setAreas(copiedAreas);
+        setDialogues(copiedAreas);
     };
 
     const deleteArea = () => {
-        if (areas.length === 1) {
+        if (dialogues.length === 1) {
             return;
         }
 
-        const areasCopy = [...areas];
+        const areasCopy = [...dialogues];
         areasCopy.splice(currentIndex, 1);
         setCurrentIndex(0);
-        setAreas(areasCopy);
+        setDialogues(areasCopy);
     };
 
     const createNewArea = () => {
+        let lastDialogueNumber = 1;
+        if (dialogues.length !== 0) {
+            const lastDialogue = dialogues[dialogues.length - 1];
+            lastDialogueNumber = Number(lastDialogue.id.split('_')[1]);
+        }
+
         const newArea = {
-            id: 'area_' + (Math.random().toString(36).slice(2, 7)),
-            name: 'Area ' + (areas.length + 1),
+            id: 'dialogue_' + (Number(lastDialogueNumber) + 1),
+            name: 'Dialogue ' + (Number(lastDialogueNumber) + 1),
             description: '',
             hiddenInfo: [],
             pointsOfInterest: [],
             choices: []
         };
 
-        setAreas([...areas, newArea]);
+        setDialogues([...dialogues, newArea]);
     };
 
     const onAreaClick = (areaID: string) => {
-        const clickedAreaIndex = areas.findIndex((area: Dialogue) => {
+        const clickedAreaIndex = dialogues.findIndex((area: Dialogue) => {
             return area.id === areaID;
         });
 
@@ -81,7 +87,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                     Download Adventure
                 </a>
             </div>
-            <div className="dialogue-tree-maker--container">
+            <div className="dialogue-tree-maker--form">
                 <TextInput id="dialogue-tree-id" label="Dialogue tree ID" value="" onChange={() => {}} />
                 <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
             </div>
@@ -93,12 +99,12 @@ export const DialogueTreeMaker = (): ReactElement => {
                     </div>
                     <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <DialogueTreeGraph
-                            areas={areas}
+                            areas={dialogues}
                             onAreaClick={onAreaClick}
                         />
                     </SigmaContainer>
                 </div>
-                <DialogueMaker dialogue={areas[currentIndex]} onSave={onSave} onDelete={deleteArea} />
+                <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteArea} />
             </div>
         </div>
     </Page>;
