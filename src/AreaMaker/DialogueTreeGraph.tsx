@@ -8,7 +8,7 @@ import { Dialogue } from "./domain/types";
 
 type Props = {
     areas: Array<Dialogue>;
-    onAreaClick: (clickedArea: string) => void;
+    onAreaClick: (clickedArea: number) => void;
 };
 
 export const DialogueTreeGraph = (props: Props) => {
@@ -22,7 +22,7 @@ export const DialogueTreeGraph = (props: Props) => {
 
     const existingNodes = sigma.getGraph().reduceNodes((acc, node, nodeAttributes) => {
         acc.set(
-            node,
+            Number(node),
             {
                 x: nodeAttributes['x'],
                 y: nodeAttributes['y']
@@ -54,7 +54,7 @@ export const DialogueTreeGraph = (props: Props) => {
         registerEvents({
             clickNode: (event) => {
                 event.preventSigmaDefault();
-                onAreaClick(event.node);
+                onAreaClick(Number(event.node));
             },
             downNode: (event) => {
                 setDraggedNode(event.node);

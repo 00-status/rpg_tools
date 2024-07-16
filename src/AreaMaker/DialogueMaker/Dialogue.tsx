@@ -14,7 +14,7 @@ type Props = {
 export const DialogueMaker = (props: Props): ReactElement => {
     const { dialogue, onSave, onDelete } = props;
 
-    const [dialogueID, setDialogueID] = useState<string>(dialogue.id);
+    const [dialogueID, setDialogueID] = useState<number>(dialogue.id);
     const [dialogueName, setDialogueName] = useState<string>(dialogue.name);
     const [dialogueDescription, setDialogueDescription] = useState<string>(dialogue.description);
     const [choices, setChoices] = useState<Array<Choice>>(props.dialogue.choices);
@@ -52,7 +52,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 <input type="text" id="dialogue-id" value={dialogueID}
                     onChange={(event) => {
                         const newValue = event.target.value ?? '';
-                        setDialogueID(newValue);
+                        setDialogueID(Number(newValue));
                     }}
                 />
             </div>

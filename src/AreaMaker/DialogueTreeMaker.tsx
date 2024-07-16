@@ -11,7 +11,7 @@ import { TextInput } from "../SharedComponents/TextInput/TextInput";
 export const DialogueTreeMaker = (): ReactElement => {
     const [dialogues, setDialogues] = useState<Array<Dialogue>>([
         {
-            id: 'dialogue_1',
+            id: 1,
             name: 'Dialogue 1',
             description: '',
             hiddenInfo: [],
@@ -47,14 +47,12 @@ export const DialogueTreeMaker = (): ReactElement => {
     };
 
     const createNewArea = () => {
-        let lastDialogueNumber = 1;
-        if (dialogues.length !== 0) {
-            const lastDialogue = dialogues[dialogues.length - 1];
-            lastDialogueNumber = Number(lastDialogue.id.split('_')[1]);
-        }
+        const lastDialogueNumber = dialogues.length !== 0
+            ? dialogues[dialogues.length - 1].id
+            : 1;
 
         const newArea = {
-            id: 'dialogue_' + (Number(lastDialogueNumber) + 1),
+            id: lastDialogueNumber + 1,
             name: 'Dialogue ' + (Number(lastDialogueNumber) + 1),
             description: '',
             hiddenInfo: [],
@@ -65,7 +63,7 @@ export const DialogueTreeMaker = (): ReactElement => {
         setDialogues([...dialogues, newArea]);
     };
 
-    const onAreaClick = (areaID: string) => {
+    const onAreaClick = (areaID: number) => {
         const clickedAreaIndex = dialogues.findIndex((area: Dialogue) => {
             return area.id === areaID;
         });

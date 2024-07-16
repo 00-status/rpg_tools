@@ -1,14 +1,14 @@
 import { SerializedEdge, SerializedNode } from "graphology-types";
 import { Dialogue } from "./types";
 
-type AreaMap = Map<string, { x: number, y: number }>;
+type AreaMap = Map<number, { x: number, y: number }>;
 
 export const convertAreasToNodes = (areas: Array<Dialogue>, existingAreas: AreaMap): Array<SerializedNode> => {
     const nodes = areas.map((area: Dialogue) => {
         const graphArea = existingAreas.get(area.id);
 
         return {
-            key: area.id,
+            key: String(area.id),
             node: area.id,
             attributes: {
                 x: graphArea ? graphArea.x : 0,
@@ -28,13 +28,13 @@ export const convertAreasToEdges = (areas: Array<Dialogue>): Array<SerializedEdg
         const edges: Array<SerializedEdge> = area.choices
             .filter((choice) => {
                 // TODO: Make this more efficient
-                return areas.find(area => area.id === choice.nextAreaID);
+                return areas.find(area => area.id === Number(choice.nextAreaID));
             })
             .map((choice) => {
                 return {
                     key: area.id + '-' + choice.nextAreaID,
                     undirected: false,
-                    source: area.id,
+                    source: String(area.id),
                     target: choice.nextAreaID,
                     attributes: [{ label: choice.shortDescription }]
                 };

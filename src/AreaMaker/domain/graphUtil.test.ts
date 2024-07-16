@@ -28,12 +28,12 @@ describe('graphUtil', () => {
                 {
                     key: 'area_1',
                     node: 'area_1',
-                    attributes: { x: 0, y: 0, label: "Area one", size: 20, color: '#CC1818' }
+                    attributes: { x: 0, y: 0, label: "Area one", size: 20, color: '#d6a840' }
                 },
                 {
                     key: 'area_2',
                     node: 'area_2',
-                    attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#CC1818' }
+                    attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#d6a840' }
                 },
             ]);
         });
@@ -66,12 +66,12 @@ describe('graphUtil', () => {
                 {
                     key: 'area_1',
                     node: 'area_1',
-                    attributes: { x: 1, y: 2, label: "Area one", size: 20, color: '#CC1818' }
+                    attributes: { x: 1, y: 2, label: "Area one", size: 20, color: '#d6a840' }
                 },
                 {
                     key: 'area_2',
                     node: 'area_2',
-                    attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#CC1818' }
+                    attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#d6a840' }
                 },
             ]);
         });

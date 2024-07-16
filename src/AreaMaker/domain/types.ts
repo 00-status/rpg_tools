@@ -1,5 +1,5 @@
 export type Dialogue = {
-    id: string;
+    id: number;
     name: string;
     description: string;
     hiddenInfo: Array<HiddenInfo>;
