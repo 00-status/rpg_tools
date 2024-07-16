@@ -3,14 +3,22 @@
     flex-direction: column;
 }
 
-.hidden-info-form--delete-button {
+.hidden-info-form__inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+    gap: 20px;
+}
+
+.hidden-info-form__delete-button {
     margin: 8px 0;
 
     background-color: #a02e2f;
     border: none;
 }
 
-.hidden-info-form--delete-button:hover {
+.hidden-info-form__delete-button:hover {
     background-color: #CC1818;
     box-shadow: 1px 1px 4px #1f2028;
 }

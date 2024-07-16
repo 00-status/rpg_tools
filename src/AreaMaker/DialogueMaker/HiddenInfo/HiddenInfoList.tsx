@@ -13,6 +13,7 @@ export const HiddenInfoList = (props: Props): ReactElement => {
     const { hiddenInfos, setHiddenInfos } = props;
 
     return <div className="hidden-info">
+        <hr className="divider" />
         {hiddenInfos.map((hiddenInfo, index) => {
             return <HiddenInfoForm
                 key={hiddenInfo.id}

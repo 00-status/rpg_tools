@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from "react";
 import './dialogue-maker.css';
 import { Dialogue, HiddenInfo, Choice } from "../domain/types";
 import { HiddenInfoList } from "./HiddenInfo/HiddenInfoList";
-import { ChoicesList } from "./Paths/ChoicesList";
+import { ChoicesList } from "./Choices/ChoicesList";
 
 type Props = {
     dialogue: Dialogue;
