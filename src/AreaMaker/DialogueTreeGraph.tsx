@@ -11,7 +11,7 @@ type Props = {
     onAreaClick: (clickedArea: string) => void;
 };
 
-export const AdventureGraph = (props: Props) => {
+export const DialogueTreeGraph = (props: Props) => {
     const { areas, onAreaClick } = props;
 
     const [draggedNode, setDraggedNode] = useState<string | null>(null);

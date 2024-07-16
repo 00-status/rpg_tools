@@ -3,9 +3,10 @@ import { SigmaContainer } from "@react-sigma/core";
 
 import './adventure-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
-import { DialogueMaker } from "./AreaMaker/Dialogue";
+import { DialogueMaker } from "./DialogueMaker/Dialogue";
 import { Dialogue } from "./domain/types";
-import { AdventureGraph } from "./AdventureGraph";
+import { DialogueTreeGraph } from "./DialogueTreeGraph";
+import { TextInput } from "../SharedComponents/TextInput/TextInput";
 
 export const AdventureMaker = (): ReactElement => {
     const [areas, setAreas] = useState<Array<Dialogue>>([
@@ -18,9 +19,7 @@ export const AdventureMaker = (): ReactElement => {
         }
     ]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-    const downloadURL = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(areas))}`
-
+    
     const getDownloadLink = (): string => {
         const jsonString = JSON.stringify(areas, null, 4);
         const file = new Blob([jsonString], { type: 'application/json' })
@@ -83,14 +82,8 @@ export const AdventureMaker = (): ReactElement => {
                 </a>
             </div>
             <div className="adventure-maker--container">
-                <div className="area-maker--form-stack">
-                    <label htmlFor="adventure-id">Adventure ID</label>
-                    <input type="text" id="adventure-id" />
-                </div>
-                <div className="area-maker--form-stack">
-                    <label htmlFor="adventure-name">Adventure Name</label>
-                    <input type="text" id="adventure-name" />
-                </div>
+                <TextInput id="dialogue-tree-id" label="Dialogue Tree ID" value="" onChange={() => {}} />
+                <TextInput id="dialogue-tree-name" label="Dialogue Tree Name" value="" onChange={() => {}} />
             </div>
             <div className="adventure-maker--content">
                 <div>
@@ -99,7 +92,7 @@ export const AdventureMaker = (): ReactElement => {
                         <button onClick={() => createNewArea()}>Create dialogue</button>
                     </div>
                     <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
-                        <AdventureGraph
+                        <DialogueTreeGraph
                             areas={areas}
                             onAreaClick={onAreaClick}
                         />

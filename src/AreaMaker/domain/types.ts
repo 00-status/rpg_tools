@@ -3,7 +3,7 @@ export type Dialogue = {
     name: string;
     description: string;
     hiddenInfo: Array<HiddenInfo>;
-    choices: Array<Choices>;
+    choices: Array<Choice>;
 };
 
 export type HiddenInfo = {
