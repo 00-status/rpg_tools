@@ -16,7 +16,7 @@ export const HiddenInfoForm = (props: Props): ReactElement => {
 
     return <div className="hidden-info-form">
         <div className="hidden-info-form__inputs">
-            <TextInput id="hidden-info-condition-ids" label="Hidden Info Condition IDs" value={conditionIDs}
+            <TextInput id="hidden-info-condition-ids" label="Hidden info condition IDs" value={conditionIDs.join(',')}
                 onChange={(value) => {
                     const newValue = value ?? '';
 
@@ -29,7 +29,7 @@ export const HiddenInfoForm = (props: Props): ReactElement => {
                     onChange(newHiddenInfo);
                 }}
             />
-            <TextInput id="hidden-info-description" label="Hidden Info Description" value={description}
+            <TextInput id="hidden-info-description" label="Hidden info description" value={description}
                 onChange={(value) => {
                     const newValue = value ?? '';
 

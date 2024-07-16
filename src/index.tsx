@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import "@react-sigma/core/lib/react-sigma.min.css";
-import { AdventureMaker } from './AreaMaker/AdventureMaker';
+import { DialogueTreeMaker } from './AreaMaker/DialogueTreeMaker';
 
 const rootDomNode = document.getElementById('app');
 
@@ -13,7 +13,7 @@ if (!rootDomNode) {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <AdventureMaker />,
+        element: <DialogueTreeMaker />,
     }
 ]);
 

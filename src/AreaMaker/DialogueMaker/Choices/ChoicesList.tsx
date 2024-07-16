@@ -33,7 +33,7 @@ export const ChoicesList = (props: Props): ReactElement => {
     };
 
     return <div className="choice-list">
-        <h2>Choices</h2>
+        <h3>Choices</h3>
         {choices.map((choice: Choice, index: number) => {
             return <div className="choice-list-item" key={choice.id}>
                 <input
@@ -62,7 +62,7 @@ export const ChoicesList = (props: Props): ReactElement => {
                 />
                 <input
                     type='text'
-                    placeholder="Short Description"
+                    placeholder="Short description"
                     id="choice-short-description"
                     onChange={(value) => {
                         const newValue = value.target.value ?? '';

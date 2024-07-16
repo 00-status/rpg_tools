@@ -1,14 +1,14 @@
 import { ReactElement, useState } from "react";
 import { SigmaContainer } from "@react-sigma/core";
 
-import './adventure-maker.css';
+import './dialogue-tree-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 import { DialogueMaker } from "./DialogueMaker/Dialogue";
 import { Dialogue } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
 
-export const AdventureMaker = (): ReactElement => {
+export const DialogueTreeMaker = (): ReactElement => {
     const [areas, setAreas] = useState<Array<Dialogue>>([
         {
             id: 'area_1',
@@ -72,22 +72,22 @@ export const AdventureMaker = (): ReactElement => {
     };
 
     return <Page title="RPG Tools">
-        <div className="adventure-maker">
+        <div className="dialogue-tree-maker">
             <div>
-                <h1>Adventure Maker</h1>
+                <h1>Dialogue Tree Maker</h1>
                 <a
-                    download={"adventure.json"}
+                    download={"dialogue-tree.json"}
                     href={getDownloadLink()}>
                     Download Adventure
                 </a>
             </div>
-            <div className="adventure-maker--container">
-                <TextInput id="dialogue-tree-id" label="Dialogue Tree ID" value="" onChange={() => {}} />
-                <TextInput id="dialogue-tree-name" label="Dialogue Tree Name" value="" onChange={() => {}} />
+            <div className="dialogue-tree-maker--container">
+                <TextInput id="dialogue-tree-id" label="Dialogue tree ID" value="" onChange={() => {}} />
+                <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
             </div>
-            <div className="adventure-maker--content">
+            <div className="dialogue-tree-maker--content">
                 <div>
-                    <div className="adventure-maker__dialogue-tree-title">
+                    <div className="dialogue-tree-maker__dialogue-tree-title">
                         <h2>Dialogue Tree</h2>
                         <button onClick={() => createNewArea()}>Create dialogue</button>
                     </div>

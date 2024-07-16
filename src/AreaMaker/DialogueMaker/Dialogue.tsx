@@ -68,7 +68,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
         </div>
         <div className="dialogue-maker--content">
             <div className="dialogue-maker__description">
-                <h2>Description</h2>
+                <h3>Description</h3>
                 <div className="dialogue-maker--description">
                     <label htmlFor="dialogue-description">Dialogue description</label>
                     <textarea className="dialogue-maker--text-box" id="dialogue-description" value={dialogueDescription}

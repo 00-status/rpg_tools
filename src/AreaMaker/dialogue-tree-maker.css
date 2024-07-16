@@ -1,15 +1,15 @@
 
-.adventure-maker {
+.dialogue-tree-maker {
     width: 100%;
 }
 
-.adventure-maker__dialogue-tree-title {
+.dialogue-tree-maker__dialogue-tree-title {
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.adventure-maker--container {
+.dialogue-tree-maker--container {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -17,9 +17,9 @@
     margin-bottom: 32px;
 }
 
-.adventure-maker--content {
+.dialogue-tree-maker--content {
     display: flex;
     flex-direction: column;
 
-    gap: 80px;
+    gap: 28px;
 }
