@@ -16,15 +16,10 @@ export const DialogueMaker = (props: Props): ReactElement => {
 
     return <div className="dialogue-maker">
         <div className="dialogue-maker--title">
-            <h2>Dialogue</h2>
+            <h2>{dialogue.name} | ID: {dialogue.id}</h2>
             <button onClick={onDelete} className="dialogue-maker--delete-button">Delete dialogue</button>
         </div>
         <div className="dialogue-maker--form-inline">
-            <div className="dialogue-maker--form-stack">
-                {/* TODO: Replace these with TextInput compoennts */}
-                <label htmlFor="dialogue-id">Dialogue ID</label>
-                <input readOnly type="text" id="dialogue-id" value={dialogue.id} />
-            </div>
             <div className="dialogue-maker--form-stack">
                 <label htmlFor="dialogue-name">Dialogue name</label>
                 <input type="text" id="dialogue-name" value={dialogue.name}
