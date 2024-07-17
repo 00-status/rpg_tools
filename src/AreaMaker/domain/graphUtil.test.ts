@@ -7,14 +7,14 @@ describe('graphUtil', () => {
         it('should convert areas to a list of nodes', () => {
             const areas: Array<Dialogue> = [
                 {
-                    id: 'area_1',
+                    id: 1,
                     name: "Area one",
                     description: 'Description one',
                     choices: [],
                     hiddenInfo: []
                 },
                 {
-                    id: 'area_2',
+                    id: 2,
                     name: "Area two",
                     description: 'Description two',
                     choices: [],
@@ -26,13 +26,13 @@ describe('graphUtil', () => {
 
             expect(result).toEqual([
                 {
-                    key: 'area_1',
-                    node: 'area_1',
+                    key: '1',
+                    node: 1,
                     attributes: { x: 0, y: 0, label: "Area one", size: 20, color: '#d6a840' }
                 },
                 {
-                    key: 'area_2',
-                    node: 'area_2',
+                    key: '2',
+                    node: 2,
                     attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#d6a840' }
                 },
             ]);
@@ -41,14 +41,14 @@ describe('graphUtil', () => {
         it('should convert areas to a list of nodes with x and y coords provided', () => {
             const areas: Array<Dialogue> = [
                 {
-                    id: 'area_1',
+                    id: 1,
                     name: "Area one",
                     description: 'Description one',
                     choices: [],
                     hiddenInfo: []
                 },
                 {
-                    id: 'area_2',
+                    id: 2,
                     name: "Area two",
                     description: 'Description two',
                     choices: [],
@@ -57,20 +57,20 @@ describe('graphUtil', () => {
             ];
 
             const coordsMap = new Map([
-                ['area_1', { x: 1, y: 2 }]
+                [1, { x: 1, y: 2 }]
             ]);
 
             const result = convertAreasToNodes(areas, coordsMap);
 
             expect(result).toEqual([
                 {
-                    key: 'area_1',
-                    node: 'area_1',
+                    key: '1',
+                    node: 1,
                     attributes: { x: 1, y: 2, label: "Area one", size: 20, color: '#d6a840' }
                 },
                 {
-                    key: 'area_2',
-                    node: 'area_2',
+                    key: '2',
+                    node: 2,
                     attributes: { x: 0, y: 0, label: "Area two", size: 20, color: '#d6a840' }
                 },
             ]);
@@ -86,34 +86,34 @@ describe('graphUtil', () => {
         it('should return an edge for each choice on a node.', () => {
             const areas: Array<Dialogue> = [
                 {
-                    id: 'area_1',
+                    id: 1,
                     name: "Area one",
                     description: 'Description one',
                     choices: [
                         {
                             id: 'id_1',
                             conditionID: '',
-                            nextAreaID: 'area_2',
+                            nextAreaID: '2',
                             shortDescription: 'description 1',
                         },
                         {
                             id: 'id_2',
                             conditionID: '',
-                            nextAreaID: 'area_3',
+                            nextAreaID: '3',
                             shortDescription: 'description 2',
                         },
                     ],
                     hiddenInfo: []
                 },
                 {
-                    id: 'area_2',
+                    id: 2,
                     name: "Area two",
                     description: 'Description two',
                     choices: [],
                     hiddenInfo: []
                 },
                 {
-                    id: 'area_3',
+                    id: 3,
                     name: "Area three",
                     description: 'Description three',
                     choices: [],
@@ -125,17 +125,17 @@ describe('graphUtil', () => {
 
             const expected: Array<SerializedEdge> = [
                 {
-                    key: 'area_1-area_2',
+                    key: '1-2',
                     undirected: false,
-                    source: 'area_1',
-                    target: 'area_2',
+                    source: '1',
+                    target: '2',
                     attributes: [ { label: 'description 1' } ]
                 },
                 {
-                    key: 'area_1-area_3',
+                    key: '1-3',
                     undirected: false,
-                    source: 'area_1',
-                    target: 'area_3',
+                    source: '1',
+                    target: '3',
                     attributes: [ { label: 'description 2' } ]
                 },
             ];
@@ -145,14 +145,14 @@ describe('graphUtil', () => {
         it('should NOT map choices that point to nodes that do not exist', () => {
             const areas: Array<Dialogue> = [
                 {
-                    id: 'area_1',
+                    id: 1,
                     name: "Area one",
                     description: 'Description one',
                     choices: [
                         {
                             id: 'id_1',
                             conditionID: '',
-                            nextAreaID: 'area_45',
+                            nextAreaID: '45',
                             shortDescription: 'description 1',
                         },
                     ],
@@ -173,7 +173,7 @@ describe('graphUtil', () => {
         it('should return an empty array when each area has no choices.', () => {
             const areas: Array<Dialogue> = [
                 {
-                    id: 'area_1',
+                    id: 1,
                     name: "Area one",
                     description: 'Description one',
                     choices: [],
