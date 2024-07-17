@@ -90,6 +90,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
             </div>
             <div className="dialogue-tree-maker--content">
+                <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteArea} />
                 <div>
                     <div className="dialogue-tree-maker__dialogue-tree-title">
                         <h2>Dialogue Tree</h2>
@@ -102,7 +103,6 @@ export const DialogueTreeMaker = (): ReactElement => {
                         />
                     </SigmaContainer>
                 </div>
-                <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteArea} />
             </div>
         </div>
     </Page>;
