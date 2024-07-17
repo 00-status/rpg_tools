@@ -6,7 +6,7 @@ import { HiddenInfoForm } from "./HiddenInfoForm";
 
 type Props = {
     hiddenInfos: Array<HiddenInfo>;
-    setHiddenInfos: Dispatch<SetStateAction<Array<HiddenInfo>>>;
+    setHiddenInfos: (hiddenInfos: Array<HiddenInfo>) => void;
 };
 
 export const HiddenInfoList = (props: Props): ReactElement => {
@@ -34,10 +34,7 @@ export const HiddenInfoList = (props: Props): ReactElement => {
             />
         })}
         <button onClick={() => {
-            setHiddenInfos(state => [
-                ...state,
-                { id: crypto.randomUUID(), conditionIDs: [''], description: '' }
-            ]);
+            setHiddenInfos([...hiddenInfos, { id: crypto.randomUUID(), conditionIDs: [''], description: '' }])
         }}>
             Create Hidden Info
         </button>

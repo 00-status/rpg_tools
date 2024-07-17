@@ -14,50 +14,24 @@ type Props = {
 export const DialogueMaker = (props: Props): ReactElement => {
     const { dialogue, onSave, onDelete } = props;
 
-    const [dialogueID, setDialogueID] = useState<number>(dialogue.id);
-    const [dialogueName, setDialogueName] = useState<string>(dialogue.name);
-    const [dialogueDescription, setDialogueDescription] = useState<string>(dialogue.description);
-    const [choices, setChoices] = useState<Array<Choice>>(props.dialogue.choices);
-    const [hiddenInfos, setHiddenInfos] = useState<Array<HiddenInfo>>(props.dialogue.hiddenInfo);
-
-    useEffect(() => {
-        setDialogueID(dialogue.id);
-        setDialogueName(dialogue.name);
-        setDialogueDescription(dialogue.description);
-        setChoices(dialogue.choices);
-        setHiddenInfos(dialogue.hiddenInfo);
-    }, [ dialogue, setDialogueID, setDialogueName, setDialogueDescription, setChoices, setHiddenInfos ]);
-
-    const onSaveClick = () => {
-        const updatedDialogue: Dialogue = {
-            id: dialogueID,
-            name: dialogueName,
-            description: dialogueDescription,
-            choices,
-            hiddenInfo: hiddenInfos
-        };
-
-        onSave(updatedDialogue);
-    };
-
     return <div className="dialogue-maker">
         <div className="dialogue-maker--title">
             <h2>Dialogue</h2>
-            <button onClick={onSaveClick} className="dialogue-maker--title-button">Save dialogue</button>
             <button onClick={onDelete} className="dialogue-maker--delete-button">Delete dialogue</button>
         </div>
         <div className="dialogue-maker--form-inline">
             <div className="dialogue-maker--form-stack">
                 {/* TODO: Replace these with TextInput compoennts */}
                 <label htmlFor="dialogue-id">Dialogue ID</label>
-                <input readOnly type="text" id="dialogue-id" value={dialogueID} />
+                <input readOnly type="text" id="dialogue-id" value={dialogue.id} />
             </div>
             <div className="dialogue-maker--form-stack">
                 <label htmlFor="dialogue-name">Dialogue name</label>
-                <input type="text" id="dialogue-name" value={dialogueName}
+                <input type="text" id="dialogue-name" value={dialogue.name}
                     onChange={(event) => {
                         const newValue = event.target.value ?? '';
-                        setDialogueName(newValue);
+
+                        onSave({...dialogue, name: newValue});
                     }}
                 />
             </div>
@@ -67,20 +41,31 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 <h3>Description</h3>
                 <div className="dialogue-maker--description">
                     <label htmlFor="dialogue-description">Dialogue description</label>
-                    <textarea className="dialogue-maker--text-box" id="dialogue-description" value={dialogueDescription}
+                    <textarea
+                        className="dialogue-maker--text-box"
+                        id="dialogue-description"
+                        value={dialogue.description}
                         onChange={(event) => {
                             const newValue = event.target.value ?? '';
-                            setDialogueDescription(newValue);
+
+                            onSave({...dialogue, description: newValue});
                         }}
                     />
                 </div>
                 <HiddenInfoList
-                    hiddenInfos={hiddenInfos}
-                    setHiddenInfos={setHiddenInfos}
+                    hiddenInfos={dialogue.hiddenInfo}
+                    setHiddenInfos={(hiddenInfo: Array<HiddenInfo>) => {
+                        onSave({...dialogue, hiddenInfo: hiddenInfo});
+                    }}
                 />
             </div>
             <div className="dialogue-maker__choices">
-                <ChoicesList choices={choices} onChange={setChoices} />
+                <ChoicesList
+                    choices={dialogue.choices}
+                    onChange={(choices: Array<Choice>) => {
+                        onSave({...dialogue, choices});
+                    }}
+                />
             </div>
         </div>
     </div>;
