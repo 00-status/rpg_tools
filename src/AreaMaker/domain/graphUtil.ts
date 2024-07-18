@@ -23,18 +23,25 @@ export const convertAreasToNodes = (areas: Array<Dialogue>, existingAreas: AreaM
     return nodes;
 };
 
-export const convertAreasToEdges = (areas: Array<Dialogue>): Array<SerializedEdge> => {
-    const mappedEdges = areas.reduce<Array<SerializedEdge>>((acc, area) => {
-        const edges: Array<SerializedEdge> = area.choices
-            .filter((choice) => {
+export const convertAreasToEdges = (dialogues: Array<Dialogue>): Array<SerializedEdge> => {
+    const mappedEdges = dialogues.reduce<Array<SerializedEdge>>((acc, dialogue) => {
+        const edges: Array<SerializedEdge> = dialogue.choices
+            .filter((choice, position) => {
                 // TODO: Make this more efficient
-                return areas.find(area => area.id === Number(choice.nextAreaID));
+                const firstChoiceOccurance = dialogue.choices.findIndex((innerChoice) =>
+                    innerChoice.nextAreaID == choice.nextAreaID
+                );
+                const isUniqueChoice = firstChoiceOccurance === position;
+
+                const doesNextAreaExist = !!dialogues.find(dialogue => dialogue.id === Number(choice.nextAreaID));
+
+                return doesNextAreaExist && isUniqueChoice;
             })
             .map((choice) => {
                 return {
-                    key: area.id + '-' + choice.nextAreaID,
+                    key: dialogue.id + '-' + choice.nextAreaID,
                     undirected: false,
-                    source: String(area.id),
+                    source: String(dialogue.id),
                     target: choice.nextAreaID,
                     attributes: [{ label: choice.shortDescription }]
                 };

@@ -165,6 +165,42 @@ describe('graphUtil', () => {
             expect(result).toHaveLength(0);
         });
 
+        it('should NOT map choices that have duplicate nextAreaIDs', () => {
+            const areas: Array<Dialogue> = [
+                {
+                    id: 1,
+                    name: "Dialogue 1",
+                    description: 'Description one',
+                    choices: [
+                        {
+                            id: 'id_1',
+                            conditionID: '',
+                            nextAreaID: '2',
+                            shortDescription: 'description 1',
+                        },
+                        {
+                            id: 'id_2',
+                            conditionID: '',
+                            nextAreaID: '2',
+                            shortDescription: 'description 1',
+                        },
+                    ],
+                    hiddenInfo: []
+                },
+                {
+                    id: 2,
+                    name: "Area two",
+                    description: 'Description two',
+                    choices: [],
+                    hiddenInfo: []
+                },
+            ];
+
+            const result = convertAreasToEdges(areas);
+
+            expect(result).toHaveLength(1);
+        });
+
         it('should return an empty array when areas is empty.', () => {
             const result = convertAreasToEdges([]);
             expect(result).toHaveLength(0);
