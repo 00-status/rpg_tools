@@ -13,30 +13,36 @@ export const HiddenInfoList = (props: Props): ReactElement => {
     const { hiddenInfos, setHiddenInfos } = props;
 
     return <div className="hidden-info">
-        <hr className="divider" />
-        {hiddenInfos.map((hiddenInfo, index) => {
-            return <HiddenInfoForm
-                key={hiddenInfo.id}
-                id={hiddenInfo.id}
-                conditionIDs={hiddenInfo.conditionIDs}
-                description={hiddenInfo.description}
-                onChange={(hiddenInfo: HiddenInfo|null) => {
-                    const hiddenInfosCopy = [...hiddenInfos];
-
-                    if (!hiddenInfo) {
-                        hiddenInfosCopy.splice(index, 1);
-                    } else {
-                        hiddenInfosCopy[index] = hiddenInfo;
-                    }
-
-                    setHiddenInfos(hiddenInfosCopy);
+        <div className="hidden-info__title">
+            <h3>Hidden Info</h3>
+            <button onClick={() => {
+                    const newHiddenInfo = { id: crypto.randomUUID(), conditionIDs: [''], description: '' };
+                    setHiddenInfos([...hiddenInfos, newHiddenInfo])
                 }}
-            />
-        })}
-        <button onClick={() => {
-            setHiddenInfos([...hiddenInfos, { id: crypto.randomUUID(), conditionIDs: [''], description: '' }])
-        }}>
-            Create Hidden Info
-        </button>
+            >
+                Create Hidden Info
+            </button>
+        </div>
+        <div className="hidden-info__list">
+            {hiddenInfos.map((hiddenInfo, index) => {
+                return <HiddenInfoForm
+                    key={hiddenInfo.id}
+                    id={hiddenInfo.id}
+                    conditionIDs={hiddenInfo.conditionIDs}
+                    description={hiddenInfo.description}
+                    onChange={(hiddenInfo: HiddenInfo|null) => {
+                        const hiddenInfosCopy = [...hiddenInfos];
+
+                        if (!hiddenInfo) {
+                            hiddenInfosCopy.splice(index, 1);
+                        } else {
+                            hiddenInfosCopy[index] = hiddenInfo;
+                        }
+
+                        setHiddenInfos(hiddenInfosCopy);
+                    }}
+                />
+            })}
+        </div>
     </div>;
 };

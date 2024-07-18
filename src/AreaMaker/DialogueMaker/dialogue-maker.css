@@ -4,8 +4,6 @@
     width: 100%;
     gap: 16px;
     padding: 24px;
-
-    background-color: #313137
 }
 
 .dialogue-maker--title {
@@ -16,39 +14,12 @@
     gap: 20px;
 }
 
-.dialogue-maker--title-button {
-    margin: 8px 0;
-}
-
 .dialogue-maker--delete-button { 
     margin: 8px 0;
     background-color: #a02e2f;
 }
-
 .dialogue-maker--delete-button:hover {
     background-color: #CC1818;
-}
-
-.dialogue-maker--form-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.dialogue-maker--form-inline {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 16px;
-}
-
-.dialogue-maker--description {
-    display: flex;
-    flex-direction: column;
-}
-
-.dialogue-maker--text-box {
-    height: 90px;
-    resize: vertical;
 }
 
 .dialogue-maker--content {
@@ -57,8 +28,29 @@
     gap: 20px;
 }
 
-.dialogue-maker__description {
+.dialogue-maker__description-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
     flex: 1;
+}
+
+.dialogue-maker__text-area-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px #1f2028;
+
+    background-color: #313137;
+}
+
+.dialogue-maker__text-area {
+    height: 90px;
+    resize: vertical;
 }
 
 .dialogue-maker__choices {
