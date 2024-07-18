@@ -5,6 +5,7 @@ import { Dialogue, HiddenInfo, Choice } from "../domain/types";
 import { HiddenInfoList } from "./HiddenInfo/HiddenInfoList";
 import { ChoicesList } from "./Choices/ChoicesList";
 import { TextInput } from "../../SharedComponents/TextInput/TextInput";
+import { Card } from "../../SharedComponents/Card/Card";
 
 type Props = {
     dialogue: Dialogue;
@@ -30,8 +31,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
         />
         <div className="dialogue-maker--content">
             <div className="dialogue-maker__description-container">
-                <div className="dialogue-maker__text-area-container">
-                    <h3>Description</h3>
+                <Card title="Description" >
                     <label htmlFor="dialogue-description">Dialogue description</label>
                     <textarea
                         className="dialogue-maker__text-area"
@@ -43,7 +43,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                             onSave({...dialogue, description: newValue});
                         }}
                     />
-                </div>
+                </Card>
                 <div>
                     <HiddenInfoList
                         hiddenInfos={dialogue.hiddenInfo}

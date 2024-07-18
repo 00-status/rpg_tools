@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 
 import './choices-list.css';
 import { Choice } from "../../domain/types";
+import { Card } from "../../../SharedComponents/Card/Card";
 
 type Props = {
     choices: Array<Choice>;
@@ -32,11 +33,7 @@ export const ChoicesList = (props: Props): ReactElement => {
         );
     };
 
-    return <div className="choice-list">
-        <div className="choices-list__title">
-            <h3>Choices</h3>
-            <button onClick={onAddNew}>Add choice</button>
-        </div>
+    return <Card title="Chocies" buttonName="Add choice" buttonAction={onAddNew}>
         <div className="choices-list__container">
             {choices.map((choice: Choice, index: number) => {
                 return <div className="choice-list-item" key={choice.id}>
@@ -80,5 +77,5 @@ export const ChoicesList = (props: Props): ReactElement => {
                 </div>;
             })}
         </div>
-    </div>;
+    </Card>;
 };

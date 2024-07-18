@@ -3,6 +3,7 @@ import { Dispatch, ReactElement, SetStateAction } from "react";
 import './hidden-info-list.css';
 import { HiddenInfo } from "../../domain/types";
 import { HiddenInfoForm } from "./HiddenInfoForm";
+import { Card } from "../../../SharedComponents/Card/Card";
 
 type Props = {
     hiddenInfos: Array<HiddenInfo>;
@@ -12,17 +13,12 @@ type Props = {
 export const HiddenInfoList = (props: Props): ReactElement => {
     const { hiddenInfos, setHiddenInfos } = props;
 
-    return <div className="hidden-info">
-        <div className="hidden-info__title">
-            <h3>Hidden Info</h3>
-            <button onClick={() => {
-                    const newHiddenInfo = { id: crypto.randomUUID(), conditionIDs: [''], description: '' };
-                    setHiddenInfos([...hiddenInfos, newHiddenInfo])
-                }}
-            >
-                Create Hidden Info
-            </button>
-        </div>
+    const onCreateNewHiddenInfo = () => {
+        const newHiddenInfo = { id: crypto.randomUUID(), conditionIDs: [''], description: '' };
+        setHiddenInfos([...hiddenInfos, newHiddenInfo])
+    };
+
+    return <Card title="Hidden Info" buttonName="Create hidden info" buttonAction={onCreateNewHiddenInfo} >
         <div className="hidden-info__list">
             {hiddenInfos.map((hiddenInfo, index) => {
                 return <HiddenInfoForm
@@ -44,5 +40,5 @@ export const HiddenInfoList = (props: Props): ReactElement => {
                 />
             })}
         </div>
-    </div>;
+    </Card>;
 };
