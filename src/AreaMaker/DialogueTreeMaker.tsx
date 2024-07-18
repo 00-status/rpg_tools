@@ -17,7 +17,9 @@ export const DialogueTreeMaker = (): ReactElement => {
             name: 'Dialogue 1',
             description: '',
             hiddenInfo: [],
-            choices: []
+            choices: [
+                { id: crypto.randomUUID(), conditionID: null, nextAreaID: '', shortDescription: '' }
+            ]
         }
     ]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
