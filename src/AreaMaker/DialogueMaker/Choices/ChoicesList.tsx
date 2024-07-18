@@ -33,48 +33,52 @@ export const ChoicesList = (props: Props): ReactElement => {
     };
 
     return <div className="choice-list">
-        <h3>Choices</h3>
-        {choices.map((choice: Choice, index: number) => {
-            return <div className="choice-list-item" key={choice.id}>
-                <input
-                    type="text"
-                    placeholder="Next-area ID"
-                    id="choice-next-area-id"
-                    onChange={(value) => {
-                        const newValue = value.target.value ?? '';
-                        const newChoice: Choice = { ...choice, nextAreaID: newValue };
-                        
-                        onChange(newChoice, index);
-                    }}
-                    value={choice.nextAreaID}
-                />
-                <input
-                    type='text'
-                    placeholder="Short description"
-                    id="choice-short-description"
-                    onChange={(value) => {
-                        const newValue = value.target.value ?? '';
-                        const newChoice: Choice = { ...choice, shortDescription: newValue };
-                        
-                        onChange(newChoice, index);
-                    }}
-                    value={choice.shortDescription}
-                />
-                <input
-                    type="text"
-                    placeholder="Condition ID"
-                    id="choice-condition-id"
-                    onChange={(value) => {
-                        const newValue = value.target.value ?? '';
-                        const newChoice: Choice = { ...choice, conditionID: newValue };
+        <div className="choices-list__title">
+            <h3>Choices</h3>
+            <button onClick={onAddNew}>Add choice</button>
+        </div>
+        <div className="choices-list__container">
+            {choices.map((choice: Choice, index: number) => {
+                return <div className="choice-list-item" key={choice.id}>
+                    <input
+                        type="text"
+                        placeholder="Next-area ID"
+                        id="choice-next-area-id"
+                        onChange={(value) => {
+                            const newValue = value.target.value ?? '';
+                            const newChoice: Choice = { ...choice, nextAreaID: newValue };
+                            
+                            onChange(newChoice, index);
+                        }}
+                        value={choice.nextAreaID}
+                    />
+                    <input
+                        type='text'
+                        placeholder="Short description"
+                        id="choice-short-description"
+                        onChange={(value) => {
+                            const newValue = value.target.value ?? '';
+                            const newChoice: Choice = { ...choice, shortDescription: newValue };
+                            
+                            onChange(newChoice, index);
+                        }}
+                        value={choice.shortDescription}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Condition ID"
+                        id="choice-condition-id"
+                        onChange={(value) => {
+                            const newValue = value.target.value ?? '';
+                            const newChoice: Choice = { ...choice, conditionID: newValue };
 
-                        onChange(newChoice, index);
-                    }}
-                    value={choice.conditionID ?? ''}
-                />
-                <button className="delete-button" onClick={() => onChange(null, index)}>Delete choice</button>
-            </div>;
-        })}
-        <button onClick={onAddNew}>Add choice</button>
+                            onChange(newChoice, index);
+                        }}
+                        value={choice.conditionID ?? ''}
+                    />
+                    <button className="delete-button" onClick={() => onChange(null, index)}>Delete choice</button>
+                </div>;
+            })}
+        </div>
     </div>;
 };

@@ -83,8 +83,9 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <h1>Dialogue Tree Maker</h1>
                 <a
                     download={"dialogue-tree.json"}
-                    href={getDownloadLink()}>
-                    Download Adventure
+                    href={getDownloadLink()}
+                >
+                    Download Dialogue Tree
                 </a>
             </div>
             <div className="dialogue-tree-maker--form">
