@@ -8,8 +8,6 @@ import { Dialogue } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
 
-// TODO: Filter out duplicate edges - that crashes Sigma.
-
 export const DialogueTreeMaker = (): ReactElement => {
     const [dialogues, setDialogues] = useState<Array<Dialogue>>([
         {

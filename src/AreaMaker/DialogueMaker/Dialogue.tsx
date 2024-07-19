@@ -53,15 +53,13 @@ export const DialogueMaker = (props: Props): ReactElement => {
                     />
                 </div>
             </div>
-            <div>
-                <div className="dialogue-maker__choices">
-                    <ChoicesList
-                        choices={dialogue.choices}
-                        onChange={(choices: Array<Choice>) => {
-                            onSave({...dialogue, choices});
-                        }}
-                    />
-                </div>
+            <div className="dialogue-maker__choices">
+                <ChoicesList
+                    choices={dialogue.choices}
+                    onChange={(choices: Array<Choice>) => {
+                        onSave({...dialogue, choices});
+                    }}
+                />
             </div>
         </div>
     </div>;
