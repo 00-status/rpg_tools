@@ -4,11 +4,13 @@ import { SigmaContainer } from "@react-sigma/core";
 import './dialogue-tree-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 import { DialogueMaker } from "./DialogueMaker/Dialogue";
-import { Dialogue } from "./domain/types";
+import { Character, Dialogue } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
+import { CharacterList } from "./Character/CharacterList";
 
 export const DialogueTreeMaker = (): ReactElement => {
+    const [characters, setCharacters] = useState<Array<Character>>([]);
     const [dialogues, setDialogues] = useState<Array<Dialogue>>([
         {
             id: 1,
@@ -92,6 +94,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <TextInput id="dialogue-tree-id" label="Dialogue tree ID" value="" onChange={() => {}} />
                 <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
             </div>
+            <CharacterList characters={characters} setCharacters={setCharacters} />
             <div className="dialogue-tree-maker--content">
                 <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteArea} />
                 <div>

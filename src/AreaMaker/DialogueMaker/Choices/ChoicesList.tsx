@@ -10,22 +10,26 @@ type Props = {
 };
 
 export const ChoicesList = (props: Props): ReactElement => {
-    const { choices } = props;
+    const { choices, onChange } = props;
 
-    const onChange = (choice: Choice|null, index: number) => {
+    const updateChoice = (choice: Choice, index: number) => {
         const choicesCopy = [...choices];
 
-        if (!choice) {
-            choicesCopy.splice(index, 1);
-        } else {
-            choicesCopy[index] = choice;
-        }
+        choicesCopy[index] = choice;
 
-        props.onChange(choicesCopy);
+        onChange(choicesCopy);
+    };
+
+    const deleteChoice = (index: number) => {
+        const choicesCopy = [...choices];
+
+        choicesCopy.splice(index, 1);
+
+        onChange(choicesCopy);
     };
 
     const onAddNew = () => {
-        props.onChange(
+        onChange(
             [
                 ...choices,
                 { id: crypto.randomUUID(), conditionID: null, nextAreaID: '', shortDescription: '' }
@@ -45,7 +49,7 @@ export const ChoicesList = (props: Props): ReactElement => {
                             const newValue = value.target.value ?? '';
                             const newChoice: Choice = { ...choice, nextAreaID: newValue };
                             
-                            onChange(newChoice, index);
+                            updateChoice(newChoice, index);
                         }}
                         value={choice.nextAreaID}
                     />
@@ -57,7 +61,7 @@ export const ChoicesList = (props: Props): ReactElement => {
                             const newValue = value.target.value ?? '';
                             const newChoice: Choice = { ...choice, shortDescription: newValue };
                             
-                            onChange(newChoice, index);
+                            updateChoice(newChoice, index);
                         }}
                         value={choice.shortDescription}
                     />
@@ -69,11 +73,11 @@ export const ChoicesList = (props: Props): ReactElement => {
                             const newValue = value.target.value ?? '';
                             const newChoice: Choice = { ...choice, conditionID: newValue };
 
-                            onChange(newChoice, index);
+                            updateChoice(newChoice, index);
                         }}
                         value={choice.conditionID ?? ''}
                     />
-                    <button className="delete-button" onClick={() => onChange(null, index)}>Delete choice</button>
+                    <button className="delete-button" onClick={() => deleteChoice(index)}>Delete choice</button>
                 </div>;
             })}
         </div>
