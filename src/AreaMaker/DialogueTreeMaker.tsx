@@ -11,6 +11,8 @@ import { CharacterList } from "./Character/CharacterList";
 
 // TODO: Move characters into a different tab of the app.
 // TODO: Allow the user to select a character via dropdown.
+// TODO: Allow the user to select character name by colour wheel.
+// TODO: Allow a user to upload an existing dialogue tree.
 
 export const DialogueTreeMaker = (): ReactElement => {
     const [characters, setCharacters] = useState<Array<Character>>([]);
