@@ -15,6 +15,7 @@ export const TextInput = (props: Props) => {
     return <div className="text-input">
         {label && <label htmlFor="id">{label}</label>}
         <input
+            className='text-input__input'
             readOnly={readonly}
             type="text"
             id={id}

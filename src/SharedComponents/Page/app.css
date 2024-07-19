@@ -81,6 +81,13 @@ input[type=number] {
     appearance: textfield;
 }
 
+.delete-button {
+    background-color: #a02e2f;
+}
+.delete-button:hover {
+    background-color: #CC1818;
+}
+
 .divider {
     width: 90%;
     border: none;

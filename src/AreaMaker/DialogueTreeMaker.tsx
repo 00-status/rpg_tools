@@ -9,6 +9,9 @@ import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
 import { CharacterList } from "./Character/CharacterList";
 
+// TODO: Move characters into a different tab of the app.
+// TODO: Allow the user to select a character via dropdown.
+
 export const DialogueTreeMaker = (): ReactElement => {
     const [characters, setCharacters] = useState<Array<Character>>([]);
     const [dialogues, setDialogues] = useState<Array<Dialogue>>([
@@ -90,11 +93,16 @@ export const DialogueTreeMaker = (): ReactElement => {
                     Download Dialogue Tree
                 </a>
             </div>
-            <div className="dialogue-tree-maker--form">
-                <TextInput id="dialogue-tree-id" label="Dialogue tree ID" value="" onChange={() => {}} />
-                <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
+            <div className="dialogue-tree-maker__top">
+                <div className="dialogue-tree-maker__top--form">
+                    <TextInput id="dialogue-tree-id" label="Dialogue tree ID" value="" onChange={() => {}} />
+                    <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
+                </div>
+                <div className="dialogue-tree-maker__top--characters">
+                    <CharacterList characters={characters} setCharacters={setCharacters} />
+                </div>
             </div>
-            <CharacterList characters={characters} setCharacters={setCharacters} />
+            <hr className="divider" />
             <div className="dialogue-tree-maker--content">
                 <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteArea} />
                 <div>

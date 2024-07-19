@@ -1,3 +1,5 @@
+
+import './character-list.css';
 import { Card } from "../../SharedComponents/Card/Card";
 import { TextInput } from "../../SharedComponents/TextInput/TextInput";
 import { Character } from "../domain/types";
@@ -32,22 +34,33 @@ export const CharacterList = (props: Props) => {
         setCharacters(charactersCopy);
     };
 
-    return <Card title="Characters" buttonName="Add new character" buttonAction={addNewCharacter}>
-        {characters.map((character: Character, index: number) => {
-            return <div>
-                    <TextInput
-                        key={character.id}
-                        id={character.id}
-                        label="Name"
-                        value={character.name}
-                        onChange={(newValue) => {
-                            const newCharacter = { ...character, name: newValue ?? '' };
+    return <Card title="Characters" buttonName="Add character" buttonAction={addNewCharacter}>
+        <div className='character-list'>
+            {characters.map((character: Character, index: number) => {
+                return <div key={character.id} className="character-list__item">
+                        <TextInput
+                            id={character.name}
+                            placeholder='Character Name'
+                            value={character.name}
+                            onChange={(newValue) => {
+                                const newCharacter = { ...character, name: newValue ?? '' };
 
-                            onCharacterChange(newCharacter, index);
-                        }}
-                    />
-                    <button onClick={() => deleteCharacter(index)} >Delete</button>
-                </div>;
-        })}
+                                onCharacterChange(newCharacter, index);
+                            }}
+                        />
+                        <TextInput
+                            id={character.nameColor}
+                            placeholder='Character Name Color'
+                            value={character.nameColor}
+                            onChange={(newValue) => {
+                                const newCharacter = { ...character, nameColour: newValue ?? '' };
+
+                                onCharacterChange(newCharacter, index);
+                            }}
+                        />
+                        <button className='delete-button' onClick={() => deleteCharacter(index)} >Delete</button>
+                    </div>;
+            })}
+        </div>
     </Card>;
 };

@@ -1,0 +1,15 @@
+.character-list {
+    height: 180px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.character-list__item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 2%;
+
+    margin: 8px 0;
+}
