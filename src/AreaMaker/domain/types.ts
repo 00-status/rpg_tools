@@ -14,20 +14,13 @@ export type Dialogue = {
 
 export type HiddenInfo = {
     id: string;
-    conditionIDs: Array<string>;
+    conditionIDs: Array<HiddenInfoCondition>;
     description: string;
 };
 
 export type HiddenInfoCondition = {
     id: string;
     name: string;
-};
-
-export enum PointOfInterestType {
-    social = 'social',
-    item = 'item',
-    combat = 'combat',
-    experience = 'experience',
 };
 
 export type Choice = {

@@ -6,6 +6,7 @@ import { HiddenInfoCondition } from "../../domain/types";
 
 type Props = {
     conditions: Array<HiddenInfoCondition>;
+    updateConditions: (newConditions: Array<HiddenInfoCondition>) => void; 
 };
 
 // TODO Convert conditionIDs from a comma-separated string to an array of strings.
@@ -15,12 +16,22 @@ type Props = {
 // Create a mini-form to Allow the user to create new conditions.
 
 export const HiddenInfoConditions = (props: Props) => {
-    const { conditions } = props;
+    const { conditions, updateConditions } = props;
 
     const [newConditionID, setNewConditionID] = useState<string>('');
     const [newConditionName, setNewConditionName] = useState<string>('');
 
     const isReadyToSubmit = !!newConditionID && !!newConditionName;
+
+    const onAdd = () => {
+        const newConditions = [...conditions];
+        newConditions.push({ id: newConditionID, name: newConditionName });
+
+        updateConditions(newConditions);
+
+        setNewConditionID('');
+        setNewConditionName('');
+    };
 
     return <div className="hidden-info-conditions">
         <div className="hidden-info-conditions__form">
@@ -38,7 +49,7 @@ export const HiddenInfoConditions = (props: Props) => {
                     setNewConditionName(newValue ?? '');
                 }}
             />
-            <button disabled={!isReadyToSubmit} onClick={() => console.log('BANANA')}>
+            <button disabled={!isReadyToSubmit} onClick={onAdd}>
                 Add Condition
             </button>
         </div>
