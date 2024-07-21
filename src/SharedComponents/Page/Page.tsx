@@ -24,6 +24,7 @@ export const Page = (props: Props): ReactElement => {
             <div className="page-title">{props.title}</div>
             <nav className="nav-list" >
                 <a className="nav-item" onClick={() => goToRoute('/')}>Dialogue Tree</a>
+                <a className="nav-item" onClick={() => goToRoute('/characters')}>Characters</a>
             </nav>
         </div>
         <div className="page-content-container">

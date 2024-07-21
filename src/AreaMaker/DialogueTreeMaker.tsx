@@ -4,18 +4,17 @@ import { SigmaContainer } from "@react-sigma/core";
 import './dialogue-tree-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 import { DialogueMaker } from "./DialogueMaker/Dialogue";
-import { Character, Dialogue } from "./domain/types";
+import { Dialogue } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
-import { CharacterList } from "./Character/CharacterList";
 
 // TODO: Move characters into a different tab of the app.
 // TODO: Allow the user to select a character via dropdown.
 // TODO: Allow the user to select character name by colour wheel.
 // TODO: Allow a user to upload an existing dialogue tree.
+// TODO: Filter out empty choices and hidden infos when exporting.
 
 export const DialogueTreeMaker = (): ReactElement => {
-    const [characters, setCharacters] = useState<Array<Character>>([]);
     const [dialogues, setDialogues] = useState<Array<Dialogue>>([
         {
             id: 1,
@@ -99,9 +98,6 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <div className="dialogue-tree-maker__top--form">
                     <TextInput id="dialogue-tree-id" label="Dialogue tree ID" value="" onChange={() => {}} />
                     <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
-                </div>
-                <div className="dialogue-tree-maker__top--characters">
-                    <CharacterList characters={characters} setCharacters={setCharacters} />
                 </div>
             </div>
             <hr className="divider" />

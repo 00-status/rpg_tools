@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import "@react-sigma/core/lib/react-sigma.min.css";
 import { DialogueTreeMaker } from './AreaMaker/DialogueTreeMaker';
+import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
 const rootDomNode = document.getElementById('app');
 
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <DialogueTreeMaker />,
+    },
+    {
+        path: "/characters",
+        element: <CharacterMaker />,
     }
 ]);
 
