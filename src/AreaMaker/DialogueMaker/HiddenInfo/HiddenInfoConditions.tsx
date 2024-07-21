@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+import './hidden-info-conditions.css';
 import { TextInput } from "../../../SharedComponents/TextInput/TextInput";
 import { HiddenInfoCondition } from "../../domain/types";
 
@@ -20,11 +22,11 @@ export const HiddenInfoConditions = (props: Props) => {
 
     const isReadyToSubmit = !!newConditionID && !!newConditionName;
 
-    return <div>
-        <div>
+    return <div className="hidden-info-conditions">
+        <div className="hidden-info-conditions__form">
             <TextInput
                 placeholder="Condition ID"
-                value={newConditionName}
+                value={newConditionID}
                 onChange={(newValue) => {
                     setNewConditionID(newValue ?? '');
                 }}
@@ -36,7 +38,9 @@ export const HiddenInfoConditions = (props: Props) => {
                     setNewConditionName(newValue ?? '');
                 }}
             />
-            <button disabled={!isReadyToSubmit}>Create Condition</button>
+            <button disabled={!isReadyToSubmit} onClick={() => console.log('BANANA')}>
+                Add Condition
+            </button>
         </div>
         <div>
             {conditions.map((condition) => condition.name)}
