@@ -18,6 +18,11 @@ export type HiddenInfo = {
     description: string;
 };
 
+export type HiddenInfoCondition = {
+    id: string;
+    name: string;
+};
+
 export enum PointOfInterestType {
     social = 'social',
     item = 'item',

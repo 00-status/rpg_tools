@@ -3,7 +3,7 @@ import './text-info.css';
 type Props = {
     label?: string;
     value: string|number;
-    id: string;
+    id?: string;
     placeholder?: string;
     onChange: (value?: string) => void;
     readonly?: boolean;

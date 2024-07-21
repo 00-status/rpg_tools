@@ -6,7 +6,7 @@ import { Page } from "../SharedComponents/Page/Page";
 export const CharacterMaker = () => {
     const [characters, setCharacters] = useState<Array<Character>>([]);
 
-    return <Page title="RPG_Tools">
+    return <Page title="RPG Tools">
         <div>
             <h1>Character Maker</h1>
             <div>
