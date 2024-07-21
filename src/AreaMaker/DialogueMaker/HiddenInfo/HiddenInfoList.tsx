@@ -18,26 +18,39 @@ export const HiddenInfoList = (props: Props): ReactElement => {
         setHiddenInfos([...hiddenInfos, newHiddenInfo])
     };
 
+    const onChange = (hiddenInfo: HiddenInfo, index: number) => {
+        const hiddenInfosCopy = [...hiddenInfos];
+    
+        hiddenInfosCopy[index] = hiddenInfo;
+    
+        setHiddenInfos(hiddenInfosCopy);
+    }
+    
+    const deleteHiddenInfo = (index: number) => {
+        const hiddenInfosCopy = [...hiddenInfos];
+    
+        hiddenInfosCopy.splice(index, 1);
+    
+        setHiddenInfos(hiddenInfosCopy);
+    };
+
     return <Card title="Hidden Info" buttonName="Create hidden info" buttonAction={onCreateNewHiddenInfo} >
         <div className="hidden-info__list">
             {hiddenInfos.map((hiddenInfo, index) => {
-                return <HiddenInfoForm
-                    key={hiddenInfo.id}
-                    id={hiddenInfo.id}
-                    conditionIDs={hiddenInfo.conditionIDs}
-                    description={hiddenInfo.description}
-                    onChange={(hiddenInfo: HiddenInfo|null) => {
-                        const hiddenInfosCopy = [...hiddenInfos];
+                return <div>
+                    <div>Conditions</div>
+                    <textarea
+                        value={hiddenInfo.description}
+                        onChange={(event) => {
+                            const newValue = event.target.value ?? '';
 
-                        if (!hiddenInfo) {
-                            hiddenInfosCopy.splice(index, 1);
-                        } else {
-                            hiddenInfosCopy[index] = hiddenInfo;
-                        }
-
-                        setHiddenInfos(hiddenInfosCopy);
-                    }}
-                />
+                            const newHiddenInfo = { ...hiddenInfo, description: newValue };
+                            onChange(newHiddenInfo, index);
+                        }}
+                    />
+                    <button className="delete-button" onClick={() => deleteHiddenInfo(index)}>Delete</button>
+                    <hr className="divider" />
+                </div>;
             })}
         </div>
     </Card>;
