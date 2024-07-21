@@ -19,7 +19,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
     return <div className="dialogue-maker">
         <div className="dialogue-maker--title">
             <h2>{dialogue.name} | ID: {dialogue.id}</h2>
-            <button onClick={onDelete} className="dialogue-maker--delete-button">Delete dialogue</button>
+            <button onClick={onDelete} className="delete-button">Delete dialogue</button>
         </div>
         <TextInput
             id="dialogue-name"
@@ -30,21 +30,21 @@ export const DialogueMaker = (props: Props): ReactElement => {
             }}
         />
         <div className="dialogue-maker--content">
-            <div className="dialogue-maker__description-container">
-                <Card title="Description" >
-                    <label htmlFor="dialogue-description">Dialogue description</label>
-                    <textarea
-                        className="dialogue-maker__text-area"
-                        id="dialogue-description"
-                        value={dialogue.description}
-                        onChange={(event) => {
-                            const newValue = event.target.value ?? '';
+            <Card title="Description" >
+                <label htmlFor="dialogue-description">Dialogue description</label>
+                <textarea
+                    className="dialogue-maker__text-area"
+                    id="dialogue-description"
+                    value={dialogue.description}
+                    onChange={(event) => {
+                        const newValue = event.target.value ?? '';
 
-                            onSave({...dialogue, description: newValue});
-                        }}
-                    />
-                </Card>
-                <div>
+                        onSave({...dialogue, description: newValue});
+                    }}
+                />
+            </Card>
+            <div className="dialogue-maker__widgets">
+                <div className="dialogue-maker__widgets--hidden-info">
                     <HiddenInfoList
                         hiddenInfos={dialogue.hiddenInfo}
                         setHiddenInfos={(hiddenInfo: Array<HiddenInfo>) => {
@@ -52,14 +52,14 @@ export const DialogueMaker = (props: Props): ReactElement => {
                         }}
                     />
                 </div>
-            </div>
-            <div className="dialogue-maker__choices">
-                <ChoicesList
-                    choices={dialogue.choices}
-                    onChange={(choices: Array<Choice>) => {
-                        onSave({...dialogue, choices});
-                    }}
-                />
+                <div className="dialogue-maker__widgets--choices">
+                    <ChoicesList
+                        choices={dialogue.choices}
+                        onChange={(choices: Array<Choice>) => {
+                            onSave({...dialogue, choices});
+                        }}
+                    />
+                </div>
             </div>
         </div>
     </div>;
