@@ -4,3 +4,10 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+.hidden-info__list-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
