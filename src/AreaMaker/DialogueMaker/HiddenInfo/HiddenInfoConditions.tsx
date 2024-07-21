@@ -3,17 +3,15 @@ import { useState } from "react";
 import './hidden-info-conditions.css';
 import { TextInput } from "../../../SharedComponents/TextInput/TextInput";
 import { HiddenInfoCondition } from "../../domain/types";
+import { Pill } from "../../../SharedComponents/Pill/Pill";
 
 type Props = {
     conditions: Array<HiddenInfoCondition>;
     updateConditions: (newConditions: Array<HiddenInfoCondition>) => void; 
 };
 
-// TODO Convert conditionIDs from a comma-separated string to an array of strings.
-//      Condition: { id: string, name: string }
 // Render each condition as a pill.
 // Clicking the pill destroys the condition.
-// Create a mini-form to Allow the user to create new conditions.
 
 export const HiddenInfoConditions = (props: Props) => {
     const { conditions, updateConditions } = props;
@@ -53,8 +51,8 @@ export const HiddenInfoConditions = (props: Props) => {
                 Add Condition
             </button>
         </div>
-        <div>
-            {conditions.map((condition) => condition.name)}
+        <div className="hidden-info-conditions__pills">
+            {conditions.map((condition) => <Pill>{condition.name}</Pill>)}
         </div>
     </div>;
 };

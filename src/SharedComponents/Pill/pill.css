@@ -1,0 +1,7 @@
+.pill {
+    height: 24px;
+    border-radius: 28px;
+
+    background-color: blue;
+    text-align: center;
+}
