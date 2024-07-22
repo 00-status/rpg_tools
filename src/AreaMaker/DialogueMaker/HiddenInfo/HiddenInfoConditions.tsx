@@ -10,7 +10,6 @@ type Props = {
     updateConditions: (newConditions: Array<HiddenInfoCondition>) => void; 
 };
 
-// Render each condition as a pill.
 // Clicking the pill destroys the condition.
 
 export const HiddenInfoConditions = (props: Props) => {
@@ -29,6 +28,14 @@ export const HiddenInfoConditions = (props: Props) => {
 
         setNewConditionID('');
         setNewConditionName('');
+    };
+
+    const deleteCondition = (index: number): void => {
+        const newConditions = [...conditions];
+
+        newConditions.splice(index, 1);
+
+        updateConditions(newConditions);
     };
 
     return <div className="hidden-info-conditions">
@@ -52,7 +59,7 @@ export const HiddenInfoConditions = (props: Props) => {
             </button>
         </div>
         <div className="hidden-info-conditions__pills">
-            {conditions.map((condition) => <Pill>{condition.name}</Pill>)}
+            {conditions.map((condition, index)=> <Pill onClick={() => deleteCondition(index)} >{condition.name}</Pill>)}
         </div>
     </div>;
 };

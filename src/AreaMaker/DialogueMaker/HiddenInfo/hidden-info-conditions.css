@@ -14,7 +14,7 @@
 .hidden-info-conditions__pills {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     gap: 8px;
