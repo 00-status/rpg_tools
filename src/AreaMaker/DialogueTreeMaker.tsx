@@ -14,6 +14,8 @@ import { TextInput } from "../SharedComponents/TextInput/TextInput";
 // TODO: Allow a user to upload an existing dialogue tree.
 // TODO: Filter out empty choices and hidden infos when exporting.
 
+// Strapi - nodeJS
+
 export const DialogueTreeMaker = (): ReactElement => {
     const [dialogues, setDialogues] = useState<Array<Dialogue>>([
         {
@@ -43,7 +45,7 @@ export const DialogueTreeMaker = (): ReactElement => {
         setDialogues(copiedAreas);
     };
 
-    const deleteArea = () => {
+    const deleteDialogue = () => {
         if (dialogues.length === 1) {
             return;
         }
@@ -54,7 +56,7 @@ export const DialogueTreeMaker = (): ReactElement => {
         setDialogues(areasCopy);
     };
 
-    const createNewArea = () => {
+    const createNewDialogue = () => {
         const lastDialogueNumber = dialogues.length !== 0
             ? dialogues[dialogues.length - 1].id
             : 1;
@@ -71,7 +73,7 @@ export const DialogueTreeMaker = (): ReactElement => {
         setDialogues([...dialogues, newArea]);
     };
 
-    const onAreaClick = (areaID: number) => {
+    const onDialogueClick = (areaID: number) => {
         const clickedAreaIndex = dialogues.findIndex((area: Dialogue) => {
             return area.id === areaID;
         });
@@ -102,16 +104,16 @@ export const DialogueTreeMaker = (): ReactElement => {
             </div>
             <hr className="divider" />
             <div className="dialogue-tree-maker--content">
-                <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteArea} />
+                <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteDialogue} />
                 <div>
                     <div className="dialogue-tree-maker__dialogue-tree-title">
                         <h2>Dialogue Tree</h2>
-                        <button onClick={() => createNewArea()}>Create dialogue</button>
+                        <button onClick={() => createNewDialogue()}>Create dialogue</button>
                     </div>
                     <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <DialogueTreeGraph
                             areas={dialogues}
-                            onAreaClick={onAreaClick}
+                            onAreaClick={onDialogueClick}
                         />
                     </SigmaContainer>
                 </div>

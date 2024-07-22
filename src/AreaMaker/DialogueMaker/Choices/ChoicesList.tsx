@@ -37,7 +37,7 @@ export const ChoicesList = (props: Props): ReactElement => {
         );
     };
 
-    return <Card title="Chocies" buttonName="Add choice" buttonAction={onAddNew}>
+    return <Card title="Choices" buttonName="Add choice" buttonAction={onAddNew}>
         <div className="choices-list__container">
             {choices.map((choice: Choice, index: number) => {
                 return <div className="choice-list-item" key={choice.id}>

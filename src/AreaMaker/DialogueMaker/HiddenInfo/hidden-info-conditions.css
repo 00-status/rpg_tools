@@ -12,8 +12,10 @@
 }
 
 .hidden-info-conditions__pills {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 8px;
 }
