@@ -38,7 +38,7 @@ describe('HiddenInfoList', () => {
 
         getByPlaceholderText('Condition ID');
         getByPlaceholderText('Condition name');
-        getByText('Add Condition');
+        getByText('Add condition');
 
         getByText('Condition 1');
         getByText('Condition 2');

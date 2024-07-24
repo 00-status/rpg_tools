@@ -58,11 +58,13 @@ export const HiddenInfoConditions = (props: Props) => {
                 }}
             />
             <button disabled={!isReadyToSubmit} onClick={onAdd}>
-                Add Condition
+                Add condition
             </button>
         </div>
         <div className="hidden-info-conditions__pills">
-            {conditions.map((condition, index)=> <Pill key={condition.id} onClick={() => deleteCondition(index)} >{condition.name}</Pill>)}
+            {conditions.map((condition, index) =>
+                <Pill key={condition.id} onClick={() => deleteCondition(index)}>{condition.name}</Pill>)
+            }
         </div>
     </div>;
 };

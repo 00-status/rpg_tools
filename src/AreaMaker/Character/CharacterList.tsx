@@ -38,28 +38,28 @@ export const CharacterList = (props: Props) => {
         <div className='character-list'>
             {characters.map((character: Character, index: number) => {
                 return <div key={character.id} className="character-list__item">
-                        <TextInput
-                            id={character.name}
-                            placeholder='Character Name'
-                            value={character.name}
-                            onChange={(newValue) => {
-                                const newCharacter = { ...character, name: newValue ?? '' };
+                    <TextInput
+                        id={character.name}
+                        placeholder='Character Name'
+                        value={character.name}
+                        onChange={(newValue) => {
+                            const newCharacter = { ...character, name: newValue ?? '' };
 
-                                onCharacterChange(newCharacter, index);
-                            }}
-                        />
-                        <TextInput
-                            id={character.nameColor}
-                            placeholder='Character Name Color'
-                            value={character.nameColor}
-                            onChange={(newValue) => {
-                                const newCharacter = { ...character, nameColour: newValue ?? '' };
+                            onCharacterChange(newCharacter, index);
+                        }}
+                    />
+                    <TextInput
+                        id={character.nameColor}
+                        placeholder='Character Name Color'
+                        value={character.nameColor}
+                        onChange={(newValue) => {
+                            const newCharacter = { ...character, nameColor: newValue ?? '' };
 
-                                onCharacterChange(newCharacter, index);
-                            }}
-                        />
-                        <button className='delete-button' onClick={() => deleteCharacter(index)} >Delete</button>
-                    </div>;
+                            onCharacterChange(newCharacter, index);
+                        }}
+                    />
+                    <button className='delete-button' onClick={() => deleteCharacter(index)}>Delete</button>
+                </div>;
             })}
         </div>
     </Card>;

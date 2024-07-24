@@ -1,10 +1,10 @@
-import { useState } from "react";
+
 import { CharacterList } from "../AreaMaker/Character/CharacterList";
-import { Character } from "../AreaMaker/domain/types";
 import { Page } from "../SharedComponents/Page/Page";
+import { useCharacters } from "./useCharacters";
 
 export const CharacterMaker = () => {
-    const [characters, setCharacters] = useState<Array<Character>>([]);
+    const { characters, setCharacters } = useCharacters();
 
     return <Page title="RPG Tools">
         <div>

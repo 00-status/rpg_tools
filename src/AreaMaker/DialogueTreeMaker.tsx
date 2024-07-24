@@ -14,6 +14,10 @@ import { TextInput } from "../SharedComponents/TextInput/TextInput";
 // TODO: Allow a user to upload an existing dialogue tree.
 // TODO: Filter out empty choices and hidden infos when exporting.
 
+// LocalStorage
+// characters: [{ id: string, name: string, nameHexColor: string }]
+// characters: Array<Dialogue>
+
 // Strapi - nodeJS
 
 export const DialogueTreeMaker = (): ReactElement => {
