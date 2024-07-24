@@ -8,15 +8,7 @@ import { Dialogue } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
 
-// TODO: Move characters into a different tab of the app.
-// TODO: Allow the user to select a character via dropdown.
 // TODO: Allow the user to select character name by colour wheel.
-// TODO: Allow a user to upload an existing dialogue tree.
-// TODO: Filter out empty choices and hidden infos when exporting.
-
-// LocalStorage
-// characters: [{ id: string, name: string, nameHexColor: string }]
-// characters: Array<Dialogue>
 
 // Strapi - nodeJS
 
