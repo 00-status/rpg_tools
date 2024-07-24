@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Character } from "../AreaMaker/domain/types";
+import { Character } from "./domain/types";
 
 type UseCharacters = {
     characters: Array<Character>;

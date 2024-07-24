@@ -1,9 +1,3 @@
-export type Character = {
-    id: string;
-    name: string;
-    nameColor: string;
-};
-
 export type Dialogue = {
     id: number;
     name: string;

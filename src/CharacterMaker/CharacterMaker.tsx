@@ -1,5 +1,5 @@
 
-import { CharacterList } from "../AreaMaker/Character/CharacterList";
+import { CharacterList } from "./Character/CharacterList";
 import { Page } from "../SharedComponents/Page/Page";
 import { useCharacters } from "./useCharacters";
 
