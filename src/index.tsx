@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import "@react-sigma/core/lib/react-sigma.min.css";
-import { DialogueTreeMaker } from './AreaMaker/DialogueTreeMaker';
+import { DialogueTreeMaker } from './DialogueTreeMaker/DialogueTreeMaker';
 import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
 const rootDomNode = document.getElementById('app');
