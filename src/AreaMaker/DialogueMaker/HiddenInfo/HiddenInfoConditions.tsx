@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import './hidden-info-conditions.css';
 import { TextInput } from "../../../SharedComponents/TextInput/TextInput";
@@ -10,13 +10,13 @@ type Props = {
     updateConditions: (newConditions: Array<HiddenInfoCondition>) => void; 
 };
 
-// Clicking the pill destroys the condition.
-
 export const HiddenInfoConditions = (props: Props) => {
     const { conditions, updateConditions } = props;
 
     const [newConditionID, setNewConditionID] = useState<string>('');
     const [newConditionName, setNewConditionName] = useState<string>('');
+
+    const reference = useRef<HTMLInputElement|null>(null);
 
     const isReadyToSubmit = !!newConditionID && !!newConditionName;
 
@@ -28,6 +28,8 @@ export const HiddenInfoConditions = (props: Props) => {
 
         setNewConditionID('');
         setNewConditionName('');
+
+        reference?.current?.focus();
     };
 
     const deleteCondition = (index: number): void => {
@@ -41,6 +43,7 @@ export const HiddenInfoConditions = (props: Props) => {
     return <div className="hidden-info-conditions">
         <div className="hidden-info-conditions__form">
             <TextInput
+                ref={reference}
                 placeholder="Condition ID"
                 value={newConditionID}
                 onChange={(newValue) => {
@@ -59,7 +62,7 @@ export const HiddenInfoConditions = (props: Props) => {
             </button>
         </div>
         <div className="hidden-info-conditions__pills">
-            {conditions.map((condition, index)=> <Pill onClick={() => deleteCondition(index)} >{condition.name}</Pill>)}
+            {conditions.map((condition, index)=> <Pill key={condition.id} onClick={() => deleteCondition(index)} >{condition.name}</Pill>)}
         </div>
     </div>;
 };

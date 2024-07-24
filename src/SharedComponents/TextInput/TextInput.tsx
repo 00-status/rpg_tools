@@ -1,3 +1,5 @@
+
+import { forwardRef, Ref, useRef } from 'react';
 import './text-info.css';
 
 type Props = {
@@ -9,12 +11,13 @@ type Props = {
     readonly?: boolean;
 };
 
-export const TextInput = (props: Props) => {
+export const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref) => {
     const { label, value, id, placeholder, onChange, readonly } = props;
 
     return <div className="text-input">
         {label && <label htmlFor="id">{label}</label>}
         <input
+            ref={ref}
             className='text-input__input'
             readOnly={readonly}
             type="text"
@@ -27,4 +30,4 @@ export const TextInput = (props: Props) => {
             }}
         />
     </div>;
-};
+});
