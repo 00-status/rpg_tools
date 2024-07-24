@@ -20,6 +20,12 @@ export const useCharacters = (): UseCharacters => {
         }
     }, [setCharacters]);
 
+    useEffect(() => {
+        const charactersJson = JSON.stringify(characters);
+
+        localStorage.setItem('characters', charactersJson);
+    }, [characters]);
+
     return {
         characters,
         setCharacters
