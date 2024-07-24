@@ -1,12 +1,14 @@
-import { render } from "@testing-library/react";
+import { getByText, render } from "@testing-library/react";
 import { HiddenInfoList } from "./HiddenInfoList";
 import userEvent from "@testing-library/user-event";
 import { HiddenInfo } from "../../domain/types";
 
 describe('HiddenInfoList', () => {
-    it('should render a "Create new" button when there are no Hidden Infos created yet.', () => {
+    it('should render the hidden info card', () => {
         const { getByText } = render(<HiddenInfoList hiddenInfos={[]} setHiddenInfos={jest.fn()} />);
-        getByText('Create Hidden Info');
+
+        getByText('Hidden Info');
+        getByText('Create hidden info');
     });
 
     it('should render a form after pressing the "create new" Button.', async () => {
@@ -14,7 +16,7 @@ describe('HiddenInfoList', () => {
         const { getByText } = render(<HiddenInfoList hiddenInfos={[]} setHiddenInfos={onSaveMock} />);
 
         expect(onSaveMock).toHaveBeenCalledTimes(0);
-        await userEvent.click(getByText('Create Hidden Info'));
+        await userEvent.click(getByText('Create hidden info'));
         expect(onSaveMock).toHaveBeenCalledTimes(1);
     });
 
@@ -22,18 +24,25 @@ describe('HiddenInfoList', () => {
         const hiddenInfos: Array<HiddenInfo> = [
             {
                 id: 'id_1',
-                conditionIDs: ['condition_1', 'condition_2'],
-                description: 'descripting_things'
+                conditionIDs: [
+                    { id: 'condition_1', name: 'Condition 1' },
+                    { id: 'condition_2', name: 'Condition 2' }
+                ],
+                description: 'Description!'
             }
         ];
-        const { getByLabelText, getByDisplayValue } =render(
+        const { getByText, getByDisplayValue, getByPlaceholderText } =render(
             <HiddenInfoList hiddenInfos={hiddenInfos} setHiddenInfos={jest.fn()} />
         );
 
-        getByLabelText('Hidden Info Condition IDs');
-        getByLabelText('Hidden Info Description');
 
-        getByDisplayValue('condition_1,condition_2');
-        getByDisplayValue('descripting_things');
+        getByPlaceholderText('Condition ID');
+        getByPlaceholderText('Condition name');
+        getByText('Add Condition');
+
+        getByText('Condition 1');
+        getByText('Condition 2');
+
+        getByDisplayValue('Description!');
     });
 });
