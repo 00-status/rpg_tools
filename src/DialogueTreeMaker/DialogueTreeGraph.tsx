@@ -22,25 +22,6 @@ export const DialogueTreeGraph = (props: Props) => {
     const registerEvents = useRegisterEvents();
     const loadgraph = useLoadGraph();
 
-    // If the graph does NOT have any nodes yet,
-    //      create existing nodes from the x/y values on each Dialogue.
-    // else
-    //      Create existingNodes from the x/y values on the graph.
-
-    const existingNodes = sigma.getGraph().reduceNodes((acc, node, nodeAttributes) => {
-        acc.set(
-            Number(node),
-            {
-                x: nodeAttributes['x'],
-                y: nodeAttributes['y']
-            }
-        );
-
-        return acc;
-    }, new Map());
-
-    console.log(dialogueCoordiantes);
-
     sigma.setSetting('labelColor', { color: '#FCFEFF' });
 
     useEffect(() => {
@@ -51,7 +32,7 @@ export const DialogueTreeGraph = (props: Props) => {
                 multi: false,
                 type: 'directed'
             },
-            nodes: convertAreasToNodes(dialogues, existingNodes.size > 0 ? existingNodes : dialogueCoordiantes),
+            nodes: convertAreasToNodes(dialogues, dialogueCoordiantes),
             edges: convertAreasToEdges(dialogues)
         };
         const graph = DirectedGraph.from(serializedGraph);
@@ -72,7 +53,7 @@ export const DialogueTreeGraph = (props: Props) => {
                     const nodeID = Number(draggedNode);
 
                     const position = sigma.viewportToGraph(event);
-                    onDialogueMoveFinish(nodeID, position.x, position.y);
+                    
                     onDialogueClick(nodeID);
 
                     setDraggedNode(null);
@@ -88,6 +69,8 @@ export const DialogueTreeGraph = (props: Props) => {
                     const position = sigma.viewportToGraph(event);
                     sigma.getGraph().setNodeAttribute(draggedNode, "x", position.x);
                     sigma.getGraph().setNodeAttribute(draggedNode, "y", position.y);
+
+                    onDialogueMoveFinish(Number(draggedNode), position.x, position.y);
 
                     // Prevent sigma from moving the camera
                     event.preventSigmaDefault();

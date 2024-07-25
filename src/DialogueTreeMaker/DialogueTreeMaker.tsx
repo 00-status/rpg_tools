@@ -83,8 +83,6 @@ export const DialogueTreeMaker = (): ReactElement => {
     };
 
     const onDialogueMoveFinish = (id: number, x: number, y: number) => {
-        const test = new Map(dialogueCoordinates.set(id, { x, y }));
-
         setDialogueCoordinates(new Map(dialogueCoordinates.set(id, { x, y })));
     };
 
