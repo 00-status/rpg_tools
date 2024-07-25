@@ -6,6 +6,8 @@ type UseDialogueTree = {
     dialogueTreeID: string;
     dialogueTreeName: string;
     dialogues: Array<Dialogue>;
+    setDialogueTreeID: (id: string) => void;
+    setDialogueTreeName: (name: string) => void;
     setDialogues: (dialogues: Array<Dialogue>) => void;
 };
 
@@ -38,6 +40,8 @@ export const useDialgoueTree = (): UseDialogueTree => {
         dialogueTreeID,
         dialogueTreeName,
         dialogues,
-        setDialogues
+        setDialogues,
+        setDialogueTreeID,
+        setDialogueTreeName
     };
 };

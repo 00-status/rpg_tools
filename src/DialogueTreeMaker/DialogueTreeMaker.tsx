@@ -14,7 +14,14 @@ import { useDialgoueTree } from "./useDialogueTree";
 // Strapi - nodeJS
 
 export const DialogueTreeMaker = (): ReactElement => {
-    const { dialogues, setDialogues } = useDialgoueTree();
+    const {
+        dialogueTreeID,
+        dialogueTreeName,
+        dialogues,
+        setDialogueTreeID,
+        setDialogueTreeName,
+        setDialogues
+    } = useDialgoueTree();
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     
@@ -86,8 +93,22 @@ export const DialogueTreeMaker = (): ReactElement => {
             </div>
             <div className="dialogue-tree-maker__top">
                 <div className="dialogue-tree-maker__top--form">
-                    <TextInput id="dialogue-tree-id" label="Dialogue tree ID" value="" onChange={() => {}} />
-                    <TextInput id="dialogue-tree-name" label="Dialogue tree name" value="" onChange={() => {}} />
+                    <TextInput
+                        id="dialogue-tree-id"
+                        label="Dialogue tree ID"
+                        value={dialogueTreeID}
+                        onChange={(newValue) => {
+                            setDialogueTreeID(newValue ?? '');
+                        }}
+                    />
+                    <TextInput
+                        id="dialogue-tree-name"
+                        label="Dialogue tree name"
+                        value={dialogueTreeName}
+                        onChange={(newValue) => {
+                            setDialogueTreeName(newValue ?? '');
+                        }}
+                    />
                 </div>
             </div>
             <hr className="divider" />
