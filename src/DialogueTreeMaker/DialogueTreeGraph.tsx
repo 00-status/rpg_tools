@@ -7,18 +7,23 @@ import { convertAreasToEdges, convertAreasToNodes } from "./domain/graphUtil";
 import { Dialogue } from "./domain/types";
 
 type Props = {
-    areas: Array<Dialogue>;
-    onAreaClick: (clickedArea: number) => void;
+    dialogues: Array<Dialogue>;
+    onDialogueClick: (clickedArea: number) => void;
 };
 
 export const DialogueTreeGraph = (props: Props) => {
-    const { areas, onAreaClick } = props;
+    const { dialogues, onDialogueClick } = props;
 
     const [draggedNode, setDraggedNode] = useState<string | null>(null);
 
     const sigma = useSigma();
     const registerEvents = useRegisterEvents();
     const loadgraph = useLoadGraph();
+
+    // If the graph does NOT have any nodes yet,
+    //      create existing nodes from the x/y values on each Dialogue.
+    // else
+    //      Create existingNodes from the x/y values on the graph.
 
     const existingNodes = sigma.getGraph().reduceNodes((acc, node, nodeAttributes) => {
         acc.set(
@@ -42,19 +47,19 @@ export const DialogueTreeGraph = (props: Props) => {
                 multi: false,
                 type: 'directed'
             },
-            nodes: convertAreasToNodes(areas, existingNodes),
-            edges: convertAreasToEdges(areas)
+            nodes: convertAreasToNodes(dialogues, existingNodes),
+            edges: convertAreasToEdges(dialogues)
         };
         const graph = DirectedGraph.from(serializedGraph);
 
         loadgraph(graph);
-    }, [loadgraph, areas]);
+    }, [loadgraph, dialogues]);
 
     useEffect(() => {
         registerEvents({
             clickNode: (event) => {
                 event.preventSigmaDefault();
-                onAreaClick(Number(event.node));
+                onDialogueClick(Number(event.node));
             },
             downNode: (event) => {
                 setDraggedNode(event.node);

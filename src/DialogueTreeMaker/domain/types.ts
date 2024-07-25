@@ -2,6 +2,13 @@ export type DialogueTree = {
     id: string;
     name: string;
     dialogues: Array<Dialogue>;
+    dialogueCoordinates?: Array<DialogueCoordinate>;
+};
+
+export type DialogueCoordinate = {
+    dialogueID: number;
+    x: number;
+    y: number;
 };
 
 export type Dialogue = {

@@ -119,8 +119,8 @@ export const DialogueTreeMaker = (): ReactElement => {
                     </div>
                     <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <DialogueTreeGraph
-                            areas={dialogues}
-                            onAreaClick={onDialogueClick}
+                            dialogues={dialogues}
+                            onDialogueClick={onDialogueClick}
                         />
                     </SigmaContainer>
                 </div>
