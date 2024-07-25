@@ -1,6 +1,7 @@
 
 .dialogue-tree-maker {
     width: 100%;
+    margin-bottom: 100px;
 }
 
 .dialogue-tree-maker__dialogue-tree-title {
@@ -18,6 +19,10 @@
 
 .dialogue-tree-maker__top--form {
     flex: 1;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .dialogue-tree-maker__top--characters {

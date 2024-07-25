@@ -111,20 +111,20 @@ export const DialogueTreeMaker = (): ReactElement => {
                     />
                 </div>
             </div>
-            <hr className="divider" />
             <div className="dialogue-tree-maker--content">
-            <div>
-                <div className="dialogue-tree-maker__dialogue-tree-title">
-                    <h2>Dialogue Tree</h2>
-                    <button onClick={() => createNewDialogue()}>Create dialogue</button>
+                <div>
+                    <div className="dialogue-tree-maker__dialogue-tree-title">
+                        <h2>Dialogue Tree</h2>
+                        <button onClick={() => createNewDialogue()}>Create dialogue</button>
+                    </div>
+                    <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
+                        <DialogueTreeGraph
+                            areas={dialogues}
+                            onAreaClick={onDialogueClick}
+                        />
+                    </SigmaContainer>
                 </div>
-                <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
-                    <DialogueTreeGraph
-                        areas={dialogues}
-                        onAreaClick={onDialogueClick}
-                    />
-                </SigmaContainer>
-            </div>
+                <hr className="divider" />
                 {dialogues.length > 0 ? <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteDialogue} /> : null}
             </div>
         </div>
