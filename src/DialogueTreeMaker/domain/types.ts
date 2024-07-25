@@ -1,3 +1,9 @@
+export type DialogueTree = {
+    id: string;
+    name: string;
+    dialogues: Array<Dialogue>;
+};
+
 export type Dialogue = {
     id: number;
     name: string;
