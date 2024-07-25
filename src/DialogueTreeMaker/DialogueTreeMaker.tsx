@@ -18,9 +18,11 @@ export const DialogueTreeMaker = (): ReactElement => {
         dialogueTreeID,
         dialogueTreeName,
         dialogues,
+        dialogueCoordinates,
         setDialogueTreeID,
         setDialogueTreeName,
-        setDialogues
+        setDialogues,
+        setDialogueCoordinates
     } = useDialgoueTree();
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -80,6 +82,12 @@ export const DialogueTreeMaker = (): ReactElement => {
         setCurrentIndex(clickedAreaIndex);
     };
 
+    const onDialogueMoveFinish = (id: number, x: number, y: number) => {
+        const test = new Map(dialogueCoordinates.set(id, { x, y }));
+
+        setDialogueCoordinates(new Map(dialogueCoordinates.set(id, { x, y })));
+    };
+
     return <Page title="RPG Tools">
         <div className="dialogue-tree-maker">
             <div>
@@ -120,7 +128,9 @@ export const DialogueTreeMaker = (): ReactElement => {
                     <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <DialogueTreeGraph
                             dialogues={dialogues}
+                            dialogueCoordiantes={dialogueCoordinates}
                             onDialogueClick={onDialogueClick}
+                            onDialogueMoveFinish={onDialogueMoveFinish}
                         />
                     </SigmaContainer>
                 </div>

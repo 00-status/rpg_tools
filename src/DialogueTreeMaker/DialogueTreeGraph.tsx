@@ -4,15 +4,17 @@ import { SerializedGraph } from "graphology-types";
 import { DirectedGraph } from "graphology";
 
 import { convertAreasToEdges, convertAreasToNodes } from "./domain/graphUtil";
-import { Dialogue } from "./domain/types";
+import { Dialogue, DialogueCoordinate } from "./domain/types";
 
 type Props = {
     dialogues: Array<Dialogue>;
-    onDialogueClick: (clickedArea: number) => void;
+    dialogueCoordiantes: DialogueCoordinate;
+    onDialogueClick: (dialogueID: number) => void;
+    onDialogueMoveFinish: (dialogueID: number, x: number, y: number) => void;
 };
 
 export const DialogueTreeGraph = (props: Props) => {
-    const { dialogues, onDialogueClick } = props;
+    const { dialogues, dialogueCoordiantes, onDialogueClick, onDialogueMoveFinish } = props;
 
     const [draggedNode, setDraggedNode] = useState<string | null>(null);
 
@@ -37,6 +39,8 @@ export const DialogueTreeGraph = (props: Props) => {
         return acc;
     }, new Map());
 
+    console.log(dialogueCoordiantes);
+
     sigma.setSetting('labelColor', { color: '#FCFEFF' });
 
     useEffect(() => {
@@ -47,7 +51,7 @@ export const DialogueTreeGraph = (props: Props) => {
                 multi: false,
                 type: 'directed'
             },
-            nodes: convertAreasToNodes(dialogues, existingNodes),
+            nodes: convertAreasToNodes(dialogues, existingNodes.size > 0 ? existingNodes : dialogueCoordiantes),
             edges: convertAreasToEdges(dialogues)
         };
         const graph = DirectedGraph.from(serializedGraph);
@@ -59,13 +63,18 @@ export const DialogueTreeGraph = (props: Props) => {
         registerEvents({
             clickNode: (event) => {
                 event.preventSigmaDefault();
-                onDialogueClick(Number(event.node));
             },
             downNode: (event) => {
                 setDraggedNode(event.node);
             },
             mouseup: (event) => {
                 if (draggedNode) {
+                    const nodeID = Number(draggedNode);
+
+                    const position = sigma.viewportToGraph(event);
+                    onDialogueMoveFinish(nodeID, position.x, position.y);
+                    onDialogueClick(nodeID);
+
                     setDraggedNode(null);
                 }
             },

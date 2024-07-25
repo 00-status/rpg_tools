@@ -2,14 +2,10 @@ export type DialogueTree = {
     id: string;
     name: string;
     dialogues: Array<Dialogue>;
-    dialogueCoordinates?: Array<DialogueCoordinate>;
+    dialogueCoordinates?: DialogueCoordinate;
 };
 
-export type DialogueCoordinate = {
-    dialogueID: number;
-    x: number;
-    y: number;
-};
+export type DialogueCoordinate = Map<number, {x: number, y: number}>;
 
 export type Dialogue = {
     id: number;

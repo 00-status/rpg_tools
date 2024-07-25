@@ -3,8 +3,8 @@ import { Dialogue } from "./types";
 
 type AreaMap = Map<number, { x: number, y: number }>;
 
-export const convertAreasToNodes = (areas: Array<Dialogue>, existingAreas: AreaMap): Array<SerializedNode> => {
-    const nodes = areas.map((area: Dialogue) => {
+export const convertAreasToNodes = (dialogues: Array<Dialogue>, existingAreas: AreaMap): Array<SerializedNode> => {
+    const nodes = dialogues.map((area: Dialogue) => {
         const graphArea = existingAreas.get(area.id);
 
         return {
