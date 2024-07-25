@@ -17,8 +17,6 @@ export const useDialgoueTree = (): UseDialogueTree => {
     useEffect(() => {
         const dialogueTreeJson = localStorage.getItem('dialogueTree');
 
-        console.log(dialogueTreeJson);
-
         if (dialogueTreeJson) {
             const dialogueTreeParsed: DialogueTree = JSON.parse(dialogueTreeJson);
 
@@ -28,6 +26,13 @@ export const useDialgoueTree = (): UseDialogueTree => {
         }
 
     }, [setDialogueTreeID, setDialogueTreeName, setDialogues]);
+
+    useEffect(() => {
+        const dialogueTree: DialogueTree = { id: dialogueTreeID, name: dialogueTreeName, dialogues };
+        const serializedDialogueTree = JSON.stringify(dialogueTree);
+        
+        localStorage.setItem('dialogueTree', serializedDialogueTree);
+    }, [dialogueTreeID, dialogueTreeName, dialogues]);
 
     return {
         dialogueTreeID,

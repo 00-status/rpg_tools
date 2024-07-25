@@ -73,8 +73,6 @@ export const DialogueTreeMaker = (): ReactElement => {
         setCurrentIndex(clickedAreaIndex);
     };
 
-    console.log(dialogues.length);
-
     return <Page title="RPG Tools">
         <div className="dialogue-tree-maker">
             <div>
