@@ -87,20 +87,19 @@ export const DialogueTreeMaker = (): ReactElement => {
             <div>
                 <div className="dialogue-tree-maker__title">
                     <h1>Dialogue Tree Maker</h1>
-                    <button>Download tree</button>
+                    <a
+                        download={"dialogue-tree.json"}
+                        href={getDownloadLink({
+                            id: dialogueTreeID,
+                            name: dialogueTreeName,
+                            dialogues,
+                            dialogueCoordinates
+                        })}
+                    >
+                        Download tree
+                    </a>
                     <button className="delete-button" onClick={resetDialogueTree}>Reset</button>
                 </div>
-                <a
-                    download={"dialogue-tree.json"}
-                    href={getDownloadLink({
-                        id: dialogueTreeID,
-                        name: dialogueTreeName,
-                        dialogues,
-                        dialogueCoordinates
-                    })}
-                >
-                    Download Dialogue Tree
-                </a>
             </div>
             <div className="dialogue-tree-maker__top">
                 <div className="dialogue-tree-maker__top--form">

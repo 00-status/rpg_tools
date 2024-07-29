@@ -37,3 +37,9 @@
 
     gap: 28px;
 }
+
+.dialogue-tree-maker__dialogue-tree-title {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
