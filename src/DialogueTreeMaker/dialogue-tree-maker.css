@@ -4,11 +4,13 @@
     margin-bottom: 100px;
 }
 
-.dialogue-tree-maker__dialogue-tree-title {
+.dialogue-tree-maker__title {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 20px;
 }
+
 .dialogue-tree-maker__top {
     display: flex;
     flex: row;

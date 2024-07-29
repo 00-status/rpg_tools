@@ -24,6 +24,13 @@ export const DialogueTreeMaker = (): ReactElement => {
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
+    const resetDialogueTree = () => {
+        setDialogueTreeID('');
+        setDialogueTreeName('');
+        setDialogues([]);
+        setDialogueCoordinates(new Map());
+    };
+
     const onSave = (updatedArea: Dialogue) => {
         const copiedAreas = [...dialogues];
         copiedAreas[currentIndex] = updatedArea;
@@ -78,7 +85,11 @@ export const DialogueTreeMaker = (): ReactElement => {
     return <Page title="RPG Tools">
         <div className="dialogue-tree-maker">
             <div>
-                <h1>Dialogue Tree Maker</h1>
+                <div className="dialogue-tree-maker__title">
+                    <h1>Dialogue Tree Maker</h1>
+                    <button>Download tree</button>
+                    <button className="delete-button" onClick={resetDialogueTree}>Reset</button>
+                </div>
                 <a
                     download={"dialogue-tree.json"}
                     href={getDownloadLink({
