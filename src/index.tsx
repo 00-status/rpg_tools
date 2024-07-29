@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
 import "@react-sigma/core/lib/react-sigma.min.css";
+
 import { DialogueTreeMaker } from './DialogueTreeMaker/DialogueTreeMaker';
 import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
@@ -12,7 +12,6 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 //      Display the list in the DialogueMaker component as a dropdown.
 
 // TODO: Local Storage
-//      Clear the whole dialogue tree.
 //      Clean up naming scheme in graph util.
 
 // TODO: Exporting and Importing
@@ -20,6 +19,7 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
 // TODO: Allow the user to select character name by colour wheel.
 // TODO: Round to a certain precision to avoid rounding errors.
+// TODO: Add download and delete icons.
 
 // Strapi - nodeJS
 
