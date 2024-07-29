@@ -1,19 +1,19 @@
 import { SerializedEdge, SerializedNode } from "graphology-types";
 import { Dialogue } from "./types";
 
-type AreaMap = Map<number, { x: number, y: number }>;
+type DialogueMap = Map<number, { x: number, y: number }>;
 
-export const convertAreasToNodes = (dialogues: Array<Dialogue>, existingAreas: AreaMap): Array<SerializedNode> => {
-    const nodes = dialogues.map((area: Dialogue) => {
-        const graphArea = existingAreas.get(area.id);
+export const convertDialoguesToNodes = (dialogues: Array<Dialogue>, existingDialogues: DialogueMap): Array<SerializedNode> => {
+    const nodes = dialogues.map((dialogue: Dialogue) => {
+        const graphDialogue = existingDialogues.get(dialogue.id);
 
         return {
-            key: String(area.id),
-            node: area.id,
+            key: String(dialogue.id),
+            node: dialogue.id,
             attributes: {
-                x: graphArea ? graphArea.x : 0,
-                y: graphArea ? graphArea.y : 0,
-                label: area.name,
+                x: graphDialogue ? graphDialogue.x : 0,
+                y: graphDialogue ? graphDialogue.y : 0,
+                label: dialogue.name,
                 size: 20,
                 color: '#d6a840'
             }
@@ -23,7 +23,7 @@ export const convertAreasToNodes = (dialogues: Array<Dialogue>, existingAreas: A
     return nodes;
 };
 
-export const convertAreasToEdges = (dialogues: Array<Dialogue>): Array<SerializedEdge> => {
+export const convertDialoguesToEdges = (dialogues: Array<Dialogue>): Array<SerializedEdge> => {
     const mappedEdges = dialogues.reduce<Array<SerializedEdge>>((acc, dialogue) => {
         const edges: Array<SerializedEdge> = dialogue.choices
             .filter((choice, position) => {
@@ -33,9 +33,9 @@ export const convertAreasToEdges = (dialogues: Array<Dialogue>): Array<Serialize
                 );
                 const isUniqueChoice = firstChoiceOccurance === position;
 
-                const doesNextAreaExist = !!dialogues.find(dialogue => dialogue.id === Number(choice.nextAreaID));
+                const doesNextDialogueExist = !!dialogues.find(dialogue => dialogue.id === Number(choice.nextAreaID));
 
-                return doesNextAreaExist && isUniqueChoice;
+                return doesNextDialogueExist && isUniqueChoice;
             })
             .map((choice) => {
                 return {

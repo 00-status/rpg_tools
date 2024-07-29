@@ -3,7 +3,7 @@ import { useLoadGraph, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { SerializedGraph } from "graphology-types";
 import { DirectedGraph } from "graphology";
 
-import { convertAreasToEdges, convertAreasToNodes } from "./domain/graphUtil";
+import { convertDialoguesToEdges, convertDialoguesToNodes } from "./domain/graphUtil";
 import { Dialogue, DialogueCoordinate } from "./domain/types";
 
 type Props = {
@@ -32,8 +32,8 @@ export const DialogueTreeGraph = (props: Props) => {
                 multi: false,
                 type: 'directed'
             },
-            nodes: convertAreasToNodes(dialogues, dialogueCoordiantes),
-            edges: convertAreasToEdges(dialogues)
+            nodes: convertDialoguesToNodes(dialogues, dialogueCoordiantes),
+            edges: convertDialoguesToEdges(dialogues)
         };
         const graph = DirectedGraph.from(serializedGraph);
 

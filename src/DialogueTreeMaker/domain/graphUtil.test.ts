@@ -1,5 +1,5 @@
 import { SerializedEdge } from "graphology-types";
-import { convertAreasToEdges, convertAreasToNodes } from "./graphUtil";
+import { convertDialoguesToEdges, convertDialoguesToNodes } from "./graphUtil";
 import { Dialogue } from "./types";
 
 describe('graphUtil', () => {
@@ -22,7 +22,7 @@ describe('graphUtil', () => {
                 },
             ];
 
-            const result = convertAreasToNodes(areas, new Map());
+            const result = convertDialoguesToNodes(areas, new Map());
 
             expect(result).toEqual([
                 {
@@ -60,7 +60,7 @@ describe('graphUtil', () => {
                 [1, { x: 1, y: 2 }]
             ]);
 
-            const result = convertAreasToNodes(areas, coordsMap);
+            const result = convertDialoguesToNodes(areas, coordsMap);
 
             expect(result).toEqual([
                 {
@@ -77,7 +77,7 @@ describe('graphUtil', () => {
         });
 
         it('should return an empty array when areas is empty', () => {
-            const result = convertAreasToNodes([], new Map());
+            const result = convertDialoguesToNodes([], new Map());
             expect(result).toHaveLength(0);
         });
     });
@@ -121,7 +121,7 @@ describe('graphUtil', () => {
                 },
             ];
 
-            const result = convertAreasToEdges(areas);
+            const result = convertDialoguesToEdges(areas);
 
             const expected: Array<SerializedEdge> = [
                 {
@@ -160,7 +160,7 @@ describe('graphUtil', () => {
                 }
             ];
 
-            const result = convertAreasToEdges(areas);
+            const result = convertDialoguesToEdges(areas);
 
             expect(result).toHaveLength(0);
         });
@@ -196,13 +196,13 @@ describe('graphUtil', () => {
                 },
             ];
 
-            const result = convertAreasToEdges(areas);
+            const result = convertDialoguesToEdges(areas);
 
             expect(result).toHaveLength(1);
         });
 
         it('should return an empty array when areas is empty.', () => {
-            const result = convertAreasToEdges([]);
+            const result = convertDialoguesToEdges([]);
             expect(result).toHaveLength(0);
         });
 
@@ -217,7 +217,7 @@ describe('graphUtil', () => {
                 }
             ];
 
-            const result = convertAreasToEdges(areas);
+            const result = convertDialoguesToEdges(areas);
 
             expect(result).toHaveLength(0);
         });
