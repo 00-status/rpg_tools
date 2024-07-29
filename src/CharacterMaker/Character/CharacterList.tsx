@@ -21,7 +21,7 @@ export const CharacterList = (props: Props) => {
     };
 
     const addNewCharacter = () => {
-        const newCharacter = { id: crypto.randomUUID(), name: '', nameColor: '' };
+        const newCharacter = { id: crypto.randomUUID(), referenceID: '', name: '', nameColor: '' };
         
         setCharacters([...characters, newCharacter]);
     };
@@ -38,6 +38,16 @@ export const CharacterList = (props: Props) => {
         <div className='character-list'>
             {characters.map((character: Character, index: number) => {
                 return <div key={character.id} className="character-list__item">
+                    <TextInput
+                        id={character.referenceID}
+                        placeholder='Reference ID'
+                        value={character.referenceID}
+                        onChange={(newValue) => {
+                            const newCharacter = { ...character, referenceID: newValue ?? '' };
+
+                            onCharacterChange(newCharacter, index);
+                        }}
+                    />
                     <TextInput
                         id={character.name}
                         placeholder='Character Name'
