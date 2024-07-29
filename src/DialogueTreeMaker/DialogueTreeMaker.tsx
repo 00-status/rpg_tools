@@ -8,10 +8,7 @@ import { Dialogue } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
 import { useDialgoueTree } from "./useDialogueTree";
-
-// TODO: Allow the user to select character name by colour wheel.
-
-// Strapi - nodeJS
+import { getDownloadLink } from "./domain/getDownloadLink";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -26,14 +23,6 @@ export const DialogueTreeMaker = (): ReactElement => {
     } = useDialgoueTree();
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    
-    const getDownloadLink = (): string => {
-        const jsonString = JSON.stringify(dialogues, null, 4);
-        const file = new Blob([jsonString], { type: 'application/json' })
-        const href = URL.createObjectURL(file);
-
-        return href;
-    };
 
     const onSave = (updatedArea: Dialogue) => {
         const copiedAreas = [...dialogues];
@@ -92,7 +81,12 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <h1>Dialogue Tree Maker</h1>
                 <a
                     download={"dialogue-tree.json"}
-                    href={getDownloadLink()}
+                    href={getDownloadLink({
+                        id: dialogueTreeID,
+                        name: dialogueTreeName,
+                        dialogues,
+                        dialogueCoordinates
+                    })}
                 >
                     Download Dialogue Tree
                 </a>
@@ -133,7 +127,10 @@ export const DialogueTreeMaker = (): ReactElement => {
                     </SigmaContainer>
                 </div>
                 <hr className="divider" />
-                {dialogues.length > 0 ? <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteDialogue} /> : null}
+                {dialogues.length > 0
+                    ? <DialogueMaker dialogue={dialogues[currentIndex]} onSave={onSave} onDelete={deleteDialogue} />
+                    : null
+                }
             </div>
         </div>
     </Page>;

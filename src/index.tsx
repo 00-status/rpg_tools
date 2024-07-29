@@ -12,14 +12,17 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 //      Display the list in the DialogueMaker component as a dropdown.
 
 // TODO: Local Storage
-//      Store the dialogue tree in local storage
-//          dialogue_tree: { treeID: string, treeName: string, dialogues: Array<Dialogue> }
 //      Clear the whoole dialogue tree.
+//      Clean up naming scheme in graph util.
 
 // TODO: Exporting and Importing
 //      Filter out empty choices and hidden infos when exporting.
 //      Allow a user to upload an existing dialogue tree.
 
+// TODO: Allow the user to select character name by colour wheel.
+// TODO: Round to a certain precision to avoid rounding errors.
+
+// Strapi - nodeJS
 
 const rootDomNode = document.getElementById('app');
 
