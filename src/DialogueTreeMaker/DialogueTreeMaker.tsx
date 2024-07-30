@@ -10,6 +10,7 @@ import { TextInput } from "../SharedComponents/TextInput/TextInput";
 import { useDialogueTree } from "./useDialogueTree";
 import { getDownloadLink } from "./domain/getDownloadLink";
 import { TrashIcon } from "../SharedComponents/Icons/TrashIcon";
+import { DownloadIcon } from "../SharedComponents/Icons/DownloadIcon";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -98,7 +99,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                             dialogueCoordinates
                         })}
                     >
-                        Download tree
+                        Download tree <DownloadIcon />
                     </a>
                     }
                     <button className="delete-button" onClick={resetDialogueTree}><TrashIcon /></button>
