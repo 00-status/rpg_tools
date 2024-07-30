@@ -7,7 +7,7 @@
 
 .choice-list-item {
     display: grid;
-    grid-template-columns: 17% 40% 17% 20%;
+    grid-template-columns: 17% 50% 17% 10%;
     grid-template-rows: auto;
 
     column-gap: 2%;

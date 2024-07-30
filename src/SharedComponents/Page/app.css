@@ -53,6 +53,7 @@ a:visited {
 }
 
 button {
+    min-width: 50px;
     height: 40px;
     border-radius: 4px;
     transition: all .1s ease-in-out;
@@ -86,6 +87,12 @@ input[type=number] {
 }
 .delete-button:hover {
     background-color: #CC1818;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: #FCFEFF;
 }
 
 .divider {

@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 import './choices-list.css';
 import { Choice } from "../../domain/types";
 import { Card } from "../../../SharedComponents/Card/Card";
+import { TrashIcon } from "../../../SharedComponents/Icons/TrashIcon";
 
 type Props = {
     choices: Array<Choice>;
@@ -77,7 +78,7 @@ export const ChoicesList = (props: Props): ReactElement => {
                         }}
                         value={choice.conditionID ?? ''}
                     />
-                    <button className="delete-button" onClick={() => deleteChoice(index)}>Delete choice</button>
+                    <button className="delete-button" onClick={() => deleteChoice(index)}><TrashIcon /></button>
                 </div>;
             })}
         </div>

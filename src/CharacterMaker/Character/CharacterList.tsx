@@ -3,6 +3,7 @@ import './character-list.css';
 import { Card } from "../../SharedComponents/Card/Card";
 import { TextInput } from "../../SharedComponents/TextInput/TextInput";
 import { Character } from "../domain/types";
+import { TrashIcon } from '../../SharedComponents/Icons/TrashIcon';
 
 type Props = {
     characters: Array<Character>;
@@ -68,7 +69,7 @@ export const CharacterList = (props: Props) => {
                             onCharacterChange(newCharacter, index);
                         }}
                     />
-                    <button className='delete-button' onClick={() => deleteCharacter(index)}>Delete</button>
+                    <button className='delete-button' onClick={() => deleteCharacter(index)}><TrashIcon /></button>
                 </div>;
             })}
         </div>

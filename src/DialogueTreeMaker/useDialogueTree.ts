@@ -13,7 +13,7 @@ type UseDialogueTree = {
     setDialogueCoordinates: (dialogueCoordinates: DialogueCoordinate) => void;
 };
 
-export const useDialgoueTree = (): UseDialogueTree => {
+export const useDialogueTree = (): UseDialogueTree => {
     const [dialogueTreeID, setDialogueTreeID] = useState<string>('tree_1');
     const [dialogueTreeName, setDialogueTreeName] = useState<string>('Tree 1');
     const [dialogues, setDialogues] = useState<Array<Dialogue>>([]);
@@ -28,13 +28,10 @@ export const useDialgoueTree = (): UseDialogueTree => {
             setDialogueTreeID(dialogueTreeParsed.id);
             setDialogueTreeName(dialogueTreeParsed.name);
             setDialogues(dialogueTreeParsed.dialogues);
-
-            if (dialogueTreeParsed?.dialogueCoordinates) {
-                setDialogueCoordinates(new Map(dialogueTreeParsed.dialogueCoordinates));
-            }
+            setDialogueCoordinates(new Map(dialogueTreeParsed.dialogueCoordinates));
         }
 
-    }, [setDialogueTreeID, setDialogueTreeName, setDialogues]);
+    }, [setDialogueTreeID, setDialogueTreeName, setDialogues, setDialogueCoordinates]);
 
     useEffect(() => {
         const dialogueTree = {

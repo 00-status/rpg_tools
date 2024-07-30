@@ -7,8 +7,9 @@ import { DialogueMaker } from "./DialogueMaker/Dialogue";
 import { Dialogue } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
-import { useDialgoueTree } from "./useDialogueTree";
+import { useDialogueTree } from "./useDialogueTree";
 import { getDownloadLink } from "./domain/getDownloadLink";
+import { TrashIcon } from "../SharedComponents/Icons/TrashIcon";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -20,7 +21,7 @@ export const DialogueTreeMaker = (): ReactElement => {
         setDialogueTreeName,
         setDialogues,
         setDialogueCoordinates
-    } = useDialgoueTree();
+    } = useDialogueTree();
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
@@ -100,7 +101,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                         Download tree
                     </a>
                     }
-                    <button className="delete-button" onClick={resetDialogueTree}>Reset</button>
+                    <button className="delete-button" onClick={resetDialogueTree}><TrashIcon /></button>
                 </div>
             </div>
             <div className="dialogue-tree-maker__top">
@@ -129,7 +130,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                         <h2>Dialogue Tree</h2>
                         <button onClick={() => createNewDialogue()}>Create dialogue</button>
                     </div>
-                    <SigmaContainer style={{ height: '300px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
+                    <SigmaContainer style={{ height: '350px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <DialogueTreeGraph
                             dialogues={dialogues}
                             dialogueCoordiantes={dialogueCoordinates}
