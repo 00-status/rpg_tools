@@ -43,7 +43,7 @@ export const convertDialoguesToEdges = (dialogues: Array<Dialogue>): Array<Seria
                     undirected: false,
                     source: String(dialogue.id),
                     target: choice.nextAreaID,
-                    attributes: [{ label: choice.shortDescription }]
+                    attributes: { label: choice.shortDescription, type: 'arrow', size: 4, undirected: false }
                 };
             });
 

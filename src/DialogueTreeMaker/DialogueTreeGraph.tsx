@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const DialogueTreeGraph = (props: Props) => {
-    const { dialogues, dialogueCoordiantes, onDialogueClick, onDialogueMoveFinish } = props;
+    const { dialogues, dialogueCoordiantes: dialogueCoordinates, onDialogueClick, onDialogueMoveFinish } = props;
 
     const [draggedNode, setDraggedNode] = useState<string | null>(null);
 
@@ -30,15 +30,15 @@ export const DialogueTreeGraph = (props: Props) => {
             options: {
                 allowSelfLoops: true,
                 multi: false,
-                type: 'directed'
+                type: 'directed',
             },
-            nodes: convertDialoguesToNodes(dialogues, dialogueCoordiantes),
-            edges: convertDialoguesToEdges(dialogues)
+            nodes: convertDialoguesToNodes(dialogues, dialogueCoordinates),
+            edges: convertDialoguesToEdges(dialogues),
         };
         const graph = DirectedGraph.from(serializedGraph);
 
         loadgraph(graph);
-    }, [loadgraph, dialogues]);
+    }, [loadgraph, dialogues, dialogueCoordinates]);
 
     useEffect(() => {
         registerEvents({
@@ -51,11 +51,8 @@ export const DialogueTreeGraph = (props: Props) => {
             mouseup: (event) => {
                 if (draggedNode) {
                     const nodeID = Number(draggedNode);
-
-                    const position = sigma.viewportToGraph(event);
                     
                     onDialogueClick(nodeID);
-
                     setDraggedNode(null);
                 }
             },
