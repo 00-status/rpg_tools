@@ -40,7 +40,6 @@ export const convertDialoguesToEdges = (dialogues: Array<Dialogue>): Array<Seria
             .map((choice) => {
                 return {
                     key: dialogue.id + '-' + choice.nextAreaID,
-                    undirected: false,
                     source: String(dialogue.id),
                     target: choice.nextAreaID,
                     attributes: { label: choice.shortDescription, type: 'arrow', size: 4, undirected: false }

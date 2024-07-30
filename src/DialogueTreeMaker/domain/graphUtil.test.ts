@@ -1,6 +1,7 @@
 import { SerializedEdge } from "graphology-types";
 import { convertDialoguesToEdges, convertDialoguesToNodes } from "./graphUtil";
 import { Dialogue } from "./types";
+import { size } from "lodash";
 
 describe('graphUtil', () => {
     describe('convertAreasToNodes', () => {
@@ -126,17 +127,15 @@ describe('graphUtil', () => {
             const expected: Array<SerializedEdge> = [
                 {
                     key: '1-2',
-                    undirected: false,
                     source: '1',
                     target: '2',
-                    attributes: [ { label: 'description 1' } ]
+                    attributes: { label: 'description 1', size: 4, type: 'arrow', undirected: false }
                 },
                 {
                     key: '1-3',
-                    undirected: false,
                     source: '1',
                     target: '3',
-                    attributes: [ { label: 'description 2' } ]
+                    attributes: { label: 'description 2', size: 4, type: 'arrow', undirected: false }
                 },
             ];
             expect(result).toEqual(expected);
