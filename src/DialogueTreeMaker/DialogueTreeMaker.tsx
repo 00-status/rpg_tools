@@ -11,6 +11,7 @@ import { useDialogueTree } from "./useDialogueTree";
 import { getDownloadLink } from "./domain/getDownloadLink";
 import { TrashIcon } from "../SharedComponents/Icons/TrashIcon";
 import { DownloadIcon } from "../SharedComponents/Icons/DownloadIcon";
+import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
