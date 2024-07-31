@@ -7,7 +7,7 @@ type Props = {
     value: string|number;
     id?: string;
     placeholder?: string;
-    onChange: (value?: string) => void;
+    onChange?: (value?: string) => void;
     readonly?: boolean;
 };
 
@@ -26,7 +26,7 @@ export const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref)
             value={value}
             onChange={(value) => {
                 const newValue = value.target.value ?? '';
-                onChange(newValue);
+                onChange ? onChange(newValue) : null;
             }}
         />
     </div>;

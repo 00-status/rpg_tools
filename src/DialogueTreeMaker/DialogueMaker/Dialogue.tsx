@@ -18,17 +18,25 @@ export const DialogueMaker = (props: Props): ReactElement => {
 
     return <div className="dialogue-maker">
         <div className="dialogue-maker--title">
-            <h2>{dialogue.name} | ID: {dialogue.id}</h2>
+            <h2>{dialogue.name}</h2>
             <button onClick={onDelete} className="delete-button">Delete dialogue</button>
         </div>
-        <TextInput
-            id="dialogue-name"
-            label="Dialogue name"
-            value={dialogue.name}
-            onChange={(value) => {
-                onSave({...dialogue, name: value ?? ''});
-            }}
-        />
+        <div className="dialogue-maker__form">
+            <TextInput
+                id="dialogue-id"
+                label="Dialogue ID"
+                value={dialogue.id}
+                readonly
+            />
+            <TextInput
+                id="dialogue-name"
+                label="Dialogue name"
+                value={dialogue.name}
+                onChange={(value) => {
+                    onSave({...dialogue, name: value ?? ''});
+                }}
+            />
+        </div>
         <div className="dialogue-maker--content">
             <Card title="Description" >
                 <label htmlFor="dialogue-description">Dialogue description</label>
