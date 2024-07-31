@@ -11,8 +11,8 @@ import { useDialogueTree } from "./useDialogueTree";
 import { getDownloadLink } from "./domain/getDownloadLink";
 import { TrashIcon } from "../SharedComponents/Icons/TrashIcon";
 import { DownloadIcon } from "../SharedComponents/Icons/DownloadIcon";
-import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
 import { Button, ButtonTheme } from "../SharedComponents/Button/Button";
+import { ButtonLink } from "../SharedComponents/ButtonLink/ButtonLink";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -92,17 +92,17 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <div className="dialogue-tree-maker__title">
                     <h1>Dialogue Tree Maker</h1>
                     {dialogueTreeID &&
-                    <a
-                        download={dialogueTreeID + ".json"}
-                        href={getDownloadLink({
-                            id: dialogueTreeID,
-                            name: dialogueTreeName,
-                            dialogues,
-                            dialogueCoordinates
-                        })}
-                    >
-                        <DownloadIcon /> Download tree
-                    </a>
+                        <ButtonLink
+                            download={dialogueTreeID + ".json"}
+                            href={getDownloadLink({
+                                id: dialogueTreeID,
+                                name: dialogueTreeName,
+                                dialogues,
+                                dialogueCoordinates
+                            })}
+                        >
+                            <DownloadIcon /> Download tree
+                        </ButtonLink>
                     }
                     <Button buttonTheme={ButtonTheme.Delete} onClick={resetDialogueTree}>
                         <TrashIcon /> Delete Tree
