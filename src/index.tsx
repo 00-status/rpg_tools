@@ -21,9 +21,6 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 // Strapi - nodeJS
 // Vercel - host
 
-// TODO: Add icon attribution
-//      Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
-
 const rootDomNode = document.getElementById('app');
 
 if (!rootDomNode) {

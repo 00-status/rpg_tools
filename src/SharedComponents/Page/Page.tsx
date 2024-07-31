@@ -31,7 +31,9 @@ export const Page = (props: Props): ReactElement => {
             {props.children}
         </div>
         <div className="footer">
-            {props.footer}
+            <div>
+                Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+            </div>
         </div>
     </div>;
 };
