@@ -8,6 +8,7 @@ import { TextInput } from "../../SharedComponents/TextInput/TextInput";
 import { Card } from "../../SharedComponents/Card/Card";
 import { Button, ButtonTheme } from "../../SharedComponents/Button/Button";
 import { TrashIcon } from "../../SharedComponents/Icons/TrashIcon";
+import { Dropdown } from "../../SharedComponents/Dropdown/Dropdown";
 
 type Props = {
     dialogue: Dialogue;
@@ -40,6 +41,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                     onSave({...dialogue, name: value ?? ''});
                 }}
             />
+            <Dropdown onOptionSelect={(thing: string) => {}} options={[ { value: 'option_1', label: 'Option 1' }, { value: 'option_2', label: 'Option 2' } ]}/>
         </div>
         <div className="dialogue-maker--content">
             <Card title="Description" >
