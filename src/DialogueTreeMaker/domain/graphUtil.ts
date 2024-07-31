@@ -29,19 +29,19 @@ export const convertDialoguesToEdges = (dialogues: Array<Dialogue>): Array<Seria
             .filter((choice, position) => {
                 // TODO: Make this more efficient
                 const firstChoiceOccurance = dialogue.choices.findIndex((innerChoice) =>
-                    innerChoice.nextAreaID == choice.nextAreaID
+                    innerChoice.nextDialogueID == choice.nextDialogueID
                 );
                 const isUniqueChoice = firstChoiceOccurance === position;
 
-                const doesNextDialogueExist = !!dialogues.find(dialogue => dialogue.id === Number(choice.nextAreaID));
+                const doesNextDialogueExist = !!dialogues.find(dialogue => dialogue.id === Number(choice.nextDialogueID));
 
                 return doesNextDialogueExist && isUniqueChoice;
             })
             .map((choice) => {
                 return {
-                    key: dialogue.id + '-' + choice.nextAreaID,
+                    key: dialogue.id + '-' + choice.nextDialogueID,
                     source: String(dialogue.id),
-                    target: choice.nextAreaID,
+                    target: choice.nextDialogueID,
                     attributes: { label: choice.shortDescription, type: 'arrow', size: 4, undirected: false }
                 };
             });

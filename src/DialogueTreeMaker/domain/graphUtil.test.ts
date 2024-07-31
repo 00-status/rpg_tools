@@ -94,13 +94,13 @@ describe('graphUtil', () => {
                         {
                             id: 'id_1',
                             conditionID: '',
-                            nextAreaID: '2',
+                            nextDialogueID: '2',
                             shortDescription: 'description 1',
                         },
                         {
                             id: 'id_2',
                             conditionID: '',
-                            nextAreaID: '3',
+                            nextDialogueID: '3',
                             shortDescription: 'description 2',
                         },
                     ],
@@ -151,7 +151,7 @@ describe('graphUtil', () => {
                         {
                             id: 'id_1',
                             conditionID: '',
-                            nextAreaID: '45',
+                            nextDialogueID: '45',
                             shortDescription: 'description 1',
                         },
                     ],
@@ -174,13 +174,13 @@ describe('graphUtil', () => {
                         {
                             id: 'id_1',
                             conditionID: '',
-                            nextAreaID: '2',
+                            nextDialogueID: '2',
                             shortDescription: 'description 1',
                         },
                         {
                             id: 'id_2',
                             conditionID: '',
-                            nextAreaID: '2',
+                            nextDialogueID: '2',
                             shortDescription: 'description 1',
                         },
                     ],

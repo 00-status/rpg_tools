@@ -17,6 +17,7 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 // TODO: Round to a certain precision to avoid rounding errors.
 // TODO: Add download and delete icons.
 // Feature Idea: Blades for Dialogue Trees.
+// Feature Idea: Put the creation of hidden info in a modal, then display the hidden info beneath the description field.
 
 // Strapi - nodeJS
 // Vercel - host

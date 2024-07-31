@@ -34,7 +34,7 @@ export const ChoicesList = (props: Props): ReactElement => {
         onChange(
             [
                 ...choices,
-                { id: crypto.randomUUID(), conditionID: null, nextAreaID: '', shortDescription: '' }
+                { id: crypto.randomUUID(), conditionID: null, nextDialogueID: '', shortDescription: '' }
             ]
         );
     };
@@ -45,15 +45,15 @@ export const ChoicesList = (props: Props): ReactElement => {
                 return <div className="choice-list-item" key={choice.id}>
                     <input
                         type="text"
-                        placeholder="Next-area ID"
+                        placeholder="Next-dialogue ID"
                         id="choice-next-area-id"
                         onChange={(value) => {
                             const newValue = value.target.value ?? '';
-                            const newChoice: Choice = { ...choice, nextAreaID: newValue };
+                            const newChoice: Choice = { ...choice, nextDialogueID: newValue };
                             
                             updateChoice(newChoice, index);
                         }}
-                        value={choice.nextAreaID}
+                        value={choice.nextDialogueID}
                     />
                     <input
                         type='text'

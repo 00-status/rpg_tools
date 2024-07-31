@@ -29,7 +29,7 @@ export type HiddenInfoCondition = {
 export type Choice = {
     id: string;
     conditionID: string | null;
-    nextAreaID: string;
+    nextDialogueID: string;
     shortDescription: string;
 };
 
