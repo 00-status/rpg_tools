@@ -4,6 +4,7 @@ import './hidden-info-list.css';
 import { HiddenInfo, HiddenInfoCondition } from "../../domain/types";
 import { Card } from "../../../SharedComponents/Card/Card";
 import { HiddenInfoConditions } from "./HiddenInfoConditions";
+import { Button, ButtonTheme } from "../../../SharedComponents/Button/Button";
 
 type Props = {
     hiddenInfos: Array<HiddenInfo>;
@@ -55,7 +56,9 @@ export const HiddenInfoList = (props: Props): ReactElement => {
                             onChange(newHiddenInfo, index);
                         }}
                     />
-                    <button className="delete-button" onClick={() => deleteHiddenInfo(index)}>Delete</button>
+                    <Button buttonTheme={ButtonTheme.Delete} onClick={() => deleteHiddenInfo(index)}>
+                        Delete
+                    </Button>
                     <hr className="divider" />
                 </div>;
             })}

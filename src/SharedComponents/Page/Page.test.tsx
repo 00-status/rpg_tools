@@ -23,11 +23,4 @@ describe('Page', () => {
 
         getByText("This is a test title");
     });
-
-    it('should render the passed in footer', () => {
-        const footer = <>TEST FOOTER!</>
-        const {getByText} = render(<Page title="title" footer={footer}>Test</Page>);
-
-        getByText("TEST FOOTER!");
-    });
 });

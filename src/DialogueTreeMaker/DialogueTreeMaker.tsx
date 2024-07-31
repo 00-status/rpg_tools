@@ -12,6 +12,7 @@ import { getDownloadLink } from "./domain/getDownloadLink";
 import { TrashIcon } from "../SharedComponents/Icons/TrashIcon";
 import { DownloadIcon } from "../SharedComponents/Icons/DownloadIcon";
 import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
+import { Button, ButtonTheme } from "../SharedComponents/Button/Button";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -100,10 +101,12 @@ export const DialogueTreeMaker = (): ReactElement => {
                             dialogueCoordinates
                         })}
                     >
-                        Download tree <DownloadIcon />
+                        <DownloadIcon /> Download tree
                     </a>
                     }
-                    <button className="delete-button" onClick={resetDialogueTree}><TrashIcon /></button>
+                    <Button buttonTheme={ButtonTheme.Delete} onClick={resetDialogueTree}>
+                        <TrashIcon /> Delete Tree
+                    </Button>
                 </div>
             </div>
             <div className="dialogue-tree-maker__top">
@@ -130,7 +133,9 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <div>
                     <div className="dialogue-tree-maker__dialogue-tree-title">
                         <h2>Dialogue Tree</h2>
-                        <button onClick={() => createNewDialogue()}>Create dialogue</button>
+                        <Button onClick={createNewDialogue}>
+                            Create dialogue
+                        </Button>
                     </div>
                     <SigmaContainer style={{ height: '350px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
                         <DialogueTreeGraph

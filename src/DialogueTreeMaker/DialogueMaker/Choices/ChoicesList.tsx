@@ -4,6 +4,7 @@ import './choices-list.css';
 import { Choice } from "../../domain/types";
 import { Card } from "../../../SharedComponents/Card/Card";
 import { TrashIcon } from "../../../SharedComponents/Icons/TrashIcon";
+import { Button, ButtonTheme } from "../../../SharedComponents/Button/Button";
 
 type Props = {
     choices: Array<Choice>;
@@ -78,7 +79,9 @@ export const ChoicesList = (props: Props): ReactElement => {
                         }}
                         value={choice.conditionID ?? ''}
                     />
-                    <button className="delete-button" onClick={() => deleteChoice(index)}><TrashIcon /></button>
+                    <Button buttonTheme={ButtonTheme.Delete} onClick={() => deleteChoice(index)}>
+                        <TrashIcon />
+                    </Button>
                 </div>;
             })}
         </div>

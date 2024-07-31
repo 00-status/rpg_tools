@@ -4,6 +4,7 @@ import './hidden-info-conditions.css';
 import { TextInput } from "../../../SharedComponents/TextInput/TextInput";
 import { HiddenInfoCondition } from "../../domain/types";
 import { Pill } from "../../../SharedComponents/Pill/Pill";
+import { Button } from "../../../SharedComponents/Button/Button";
 
 type Props = {
     conditions: Array<HiddenInfoCondition>;
@@ -57,9 +58,9 @@ export const HiddenInfoConditions = (props: Props) => {
                     setNewConditionName(newValue ?? '');
                 }}
             />
-            <button disabled={!isReadyToSubmit} onClick={onAdd}>
+            <Button disabled={!isReadyToSubmit} onClick={onAdd}>
                 Add condition
-            </button>
+            </Button>
         </div>
         <div className="hidden-info-conditions__pills">
             {conditions.map((condition, index) =>

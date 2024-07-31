@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 import './card.css';
+import { Button } from "../Button/Button";
 
 type Props = {
     title: string;
@@ -16,7 +17,7 @@ export const Card = (props: Props) => {
             {
                 props.buttonName &&
                 props.buttonAction &&
-                <button onClick={props.buttonAction}>{props.buttonName}</button>
+                <Button onClick={props.buttonAction}>{props.buttonName}</Button>
             }
         </div>
         {props.children}

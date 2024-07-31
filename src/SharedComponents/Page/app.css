@@ -52,23 +52,6 @@ a:visited {
     color: #7d9db5;
 }
 
-button {
-    min-width: 50px;
-    height: 40px;
-    border-radius: 4px;
-    transition: all .1s ease-in-out;
-
-    color: #FCFEFF;
-    background-color: #708694;
-    border: none;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background-color: #4a87ac;
-    box-shadow: 1px 1px 4px #1f2028;
-}
-
 /* Button and forms Styling */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -80,13 +63,6 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield; /* Firefox */
     appearance: textfield;
-}
-
-.delete-button {
-    background-color: #a02e2f;
-}
-.delete-button:hover {
-    background-color: #CC1818;
 }
 
 .icon {
