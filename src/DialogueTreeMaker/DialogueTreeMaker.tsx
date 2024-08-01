@@ -61,6 +61,7 @@ export const DialogueTreeMaker = (): ReactElement => {
         const newArea = {
             id: lastDialogueNumber + 1,
             name: 'Dialogue ' + (Number(lastDialogueNumber) + 1),
+            character: null,
             description: '',
             hiddenInfo: [],
             pointsOfInterest: [],

@@ -1,3 +1,5 @@
+import { Character } from "../../CharacterMaker";
+
 export type DialogueTree = {
     id: string;
     name: string;
@@ -10,6 +12,7 @@ export type DialogueCoordinate = Map<number, {x: number, y: number}>;
 export type Dialogue = {
     id: number;
     name: string;
+    character: Character | null;
     description: string;
     hiddenInfo: Array<HiddenInfo>;
     choices: Array<Choice>;

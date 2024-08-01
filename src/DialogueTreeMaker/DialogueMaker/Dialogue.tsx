@@ -48,7 +48,22 @@ export const DialogueMaker = (props: Props): ReactElement => {
                     onSave({...dialogue, name: value ?? ''});
                 }}
             />
-            <Dropdown id="character_dropdown" label="Character" onOptionSelect={(thing: string) => {}} options={characterOptions} />
+            <Dropdown
+                id="character_dropdown"
+                label="Character"
+                options={characterOptions}
+                onOptionSelect={(selectedOptionID: string) => {
+                    const selectedCharacter = characters.find((character) => {
+                        return character.id === selectedOptionID
+                    });
+
+                    if (!selectedCharacter) {
+                        return;
+                    }
+
+                    onSave({...dialogue, character: selectedCharacter});
+                }}
+            />
         </div>
         <div className="dialogue-maker__content">
             <Card title="Description">
