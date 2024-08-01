@@ -7,17 +7,16 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
 
 // TODO: Selecting Characters:
-//      Grab a list of characters using the useCharacters hook
-//      Display the list in the DialogueMaker component as a dropdown.
+//      create a default select option.
 
 // TODO: Exporting and Importing
 //      Allow a user to upload an existing dialogue tree.
 
-// TODO: Allow the user to select character name by colour wheel.
+// TODO: Allow the user to select character nameColor by colour wheel.
 // TODO: Round to a certain precision to avoid rounding errors.
-// TODO: Add download and delete icons.
 // Feature Idea: Blades for Dialogue Trees.
 // Feature Idea: Put the creation of hidden info in a modal, then display the hidden info beneath the description field.
+//      This would help visually associate hidden info with the description field.
 
 // Strapi - nodeJS
 // Vercel - host

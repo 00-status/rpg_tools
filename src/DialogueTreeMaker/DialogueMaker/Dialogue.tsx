@@ -27,6 +27,8 @@ export const DialogueMaker = (props: Props): ReactElement => {
             return { label: character.name, value: character.id }
         });
 
+    characterOptions.unshift({label: '', value: 'default'});
+
     return <div className="dialogue-maker">
         <div className="dialogue-maker__title">
             <h2>{dialogue.name}</h2>
@@ -52,7 +54,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
             <Dropdown
                 id="character_dropdown"
                 label="Character"
-                defaultValue={dialogue.character ? dialogue.character.id : ''}
+                defaultValue={dialogue.character ? dialogue.character.id : 'default'}
                 options={characterOptions}
                 onOptionSelect={(selectedOptionID: string) => {
                     const selectedCharacter = characters.find((character) => {
