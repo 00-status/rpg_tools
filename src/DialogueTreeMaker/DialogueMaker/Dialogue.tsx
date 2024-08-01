@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement } from "react";
 
 import './dialogue-maker.css';
 import { Dialogue, HiddenInfo, Choice } from "../domain/types";
@@ -9,6 +9,7 @@ import { Card } from "../../SharedComponents/Card/Card";
 import { Button, ButtonTheme } from "../../SharedComponents/Button/Button";
 import { TrashIcon } from "../../SharedComponents/Icons/TrashIcon";
 import { Dropdown } from "../../SharedComponents/Dropdown/Dropdown";
+import { useCharacters } from "../../CharacterMaker";
 
 type Props = {
     dialogue: Dialogue;
@@ -18,6 +19,12 @@ type Props = {
 
 export const DialogueMaker = (props: Props): ReactElement => {
     const { dialogue, onSave, onDelete } = props;
+
+    const { characters } = useCharacters();
+
+    const characterOptions = characters.map((character) => {
+        return { label: character.name, value: character.id }
+    });
 
     return <div className="dialogue-maker">
         <div className="dialogue-maker--title">
@@ -41,7 +48,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                     onSave({...dialogue, name: value ?? ''});
                 }}
             />
-            <Dropdown id="character_dropdown" label="Character" onOptionSelect={(thing: string) => {}} options={[ { value: 'option_1', label: 'Option 1' }, { value: 'option_2', label: 'Option 2' } ]}/>
+            <Dropdown id="character_dropdown" label="Character" onOptionSelect={(thing: string) => {}} options={characterOptions} />
         </div>
         <div className="dialogue-maker--content">
             <Card title="Description" >
