@@ -15,7 +15,7 @@ export const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref)
     const { label, value, id, placeholder, onChange, readonly } = props;
 
     return <div className="text-input">
-        {label && <label htmlFor="id">{label}</label>}
+        {label && <label htmlFor={id}>{label}</label>}
         <input
             ref={ref}
             className='text-input__input'

@@ -25,7 +25,7 @@ html {
     box-sizing: inherit;
 }
 
-body, input, textarea, button {
+body, input, textarea, button, select, option {
     font-size: 17px;
     font-family: "Source Sans 3", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
