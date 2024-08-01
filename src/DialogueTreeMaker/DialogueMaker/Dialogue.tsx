@@ -22,9 +22,10 @@ export const DialogueMaker = (props: Props): ReactElement => {
 
     const { characters } = useCharacters();
 
-    const characterOptions = characters.map((character) => {
-        return { label: character.name, value: character.id }
-    });
+    const characterOptions = characters
+        .map((character) => {
+            return { label: character.name, value: character.id }
+        });
 
     return <div className="dialogue-maker">
         <div className="dialogue-maker__title">
@@ -51,6 +52,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
             <Dropdown
                 id="character_dropdown"
                 label="Character"
+                defaultValue={dialogue.character ? dialogue.character.id : ''}
                 options={characterOptions}
                 onOptionSelect={(selectedOptionID: string) => {
                     const selectedCharacter = characters.find((character) => {
