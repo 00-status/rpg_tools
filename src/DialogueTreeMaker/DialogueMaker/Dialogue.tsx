@@ -27,7 +27,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
     });
 
     return <div className="dialogue-maker">
-        <div className="dialogue-maker--title">
+        <div className="dialogue-maker__title">
             <h2>{dialogue.name}</h2>
             <Button buttonTheme={ButtonTheme.Delete} onClick={onDelete}>
                 <TrashIcon /> Delete dialogue
@@ -50,8 +50,8 @@ export const DialogueMaker = (props: Props): ReactElement => {
             />
             <Dropdown id="character_dropdown" label="Character" onOptionSelect={(thing: string) => {}} options={characterOptions} />
         </div>
-        <div className="dialogue-maker--content">
-            <Card title="Description" >
+        <div className="dialogue-maker__content">
+            <Card title="Description">
                 <label htmlFor="dialogue-description">Dialogue description</label>
                 <textarea
                     className="dialogue-maker__text-area"
