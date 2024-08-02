@@ -1,0 +1,35 @@
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    min-height: 550px;
+
+    padding: 20px;
+
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px #1f2028;
+    border: 1px solid #444449;
+    outline: none;
+
+    background-color: #313137;
+    
+    overflow: auto;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0px;
+    background-color: #2a2b3040;
+}
+
+
+
+
+/*
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    outline: none;
+*/

@@ -10,6 +10,7 @@ import { Button, ButtonTheme } from "../../SharedComponents/Button/Button";
 import { TrashIcon } from "../../SharedComponents/Icons/TrashIcon";
 import { Dropdown } from "../../SharedComponents/Dropdown/Dropdown";
 import { useCharacters } from "../../CharacterMaker";
+import { Modal } from "../../SharedComponents/Modal/Modal";
 
 type Props = {
     dialogue: Dialogue;
@@ -29,78 +30,81 @@ export const DialogueMaker = (props: Props): ReactElement => {
 
     characterOptions.unshift({label: '', value: 'default'});
 
-    return <div className="dialogue-maker">
-        <div className="dialogue-maker__title">
-            <h2>{dialogue.name}</h2>
-            <Button buttonTheme={ButtonTheme.Delete} onClick={onDelete}>
-                <TrashIcon /> Delete dialogue
-            </Button>
-        </div>
-        <div className="dialogue-maker__form">
-            <TextInput
-                id="dialogue-id"
-                label="Dialogue ID"
-                value={dialogue.id}
-                readonly
-            />
-            <TextInput
-                id="dialogue-name"
-                label="Dialogue name"
-                value={dialogue.name}
-                onChange={(value) => {
-                    onSave({...dialogue, name: value ?? ''});
-                }}
-            />
-            <Dropdown
-                id="character_dropdown"
-                label="Character"
-                defaultValue={dialogue.character ? dialogue.character.id : 'default'}
-                options={characterOptions}
-                onOptionSelect={(selectedOptionID: string) => {
-                    const selectedCharacter = characters.find((character) => {
-                        return character.id === selectedOptionID
-                    });
-
-                    if (!selectedCharacter) {
-                        return;
-                    }
-
-                    onSave({...dialogue, character: selectedCharacter});
-                }}
-            />
-        </div>
-        <div className="dialogue-maker__content">
-            <Card title="Description">
-                <label htmlFor="dialogue-description">Dialogue description</label>
-                <textarea
-                    className="dialogue-maker__text-area"
-                    id="dialogue-description"
-                    value={dialogue.description}
-                    onChange={(event) => {
-                        const newValue = event.target.value ?? '';
-
-                        onSave({...dialogue, description: newValue});
+    return <>
+        <Modal title={'Hidden Info'} isOpen={true}><h1>Hidden Info</h1></Modal>
+        <div className="dialogue-maker">
+            <div className="dialogue-maker__title">
+                <h2>{dialogue.name}</h2>
+                <Button buttonTheme={ButtonTheme.Delete} onClick={onDelete}>
+                    <TrashIcon /> Delete dialogue
+                </Button>
+            </div>
+            <div className="dialogue-maker__form">
+                <TextInput
+                    id="dialogue-id"
+                    label="Dialogue ID"
+                    value={dialogue.id}
+                    readonly
+                />
+                <TextInput
+                    id="dialogue-name"
+                    label="Dialogue name"
+                    value={dialogue.name}
+                    onChange={(value) => {
+                        onSave({...dialogue, name: value ?? ''});
                     }}
                 />
-            </Card>
-            <div className="dialogue-maker__widgets">
-                <div className="dialogue-maker__widgets--hidden-info">
-                    <HiddenInfoList
-                        hiddenInfos={dialogue.hiddenInfo}
-                        setHiddenInfos={(hiddenInfo: Array<HiddenInfo>) => {
-                            onSave({...dialogue, hiddenInfo: hiddenInfo});
+                <Dropdown
+                    id="character_dropdown"
+                    label="Character"
+                    defaultValue={dialogue.character ? dialogue.character.id : 'default'}
+                    options={characterOptions}
+                    onOptionSelect={(selectedOptionID: string) => {
+                        const selectedCharacter = characters.find((character) => {
+                            return character.id === selectedOptionID
+                        });
+
+                        if (!selectedCharacter) {
+                            return;
+                        }
+
+                        onSave({...dialogue, character: selectedCharacter});
+                    }}
+                />
+            </div>
+            <div className="dialogue-maker__content">
+                <Card title="Description">
+                    <label htmlFor="dialogue-description">Dialogue description</label>
+                    <textarea
+                        className="dialogue-maker__text-area"
+                        id="dialogue-description"
+                        value={dialogue.description}
+                        onChange={(event) => {
+                            const newValue = event.target.value ?? '';
+
+                            onSave({...dialogue, description: newValue});
                         }}
                     />
-                </div>
-                <div className="dialogue-maker__widgets--choices">
-                    <ChoicesList
-                        choices={dialogue.choices}
-                        onChange={(choices: Array<Choice>) => {
-                            onSave({...dialogue, choices});
-                        }}
-                    />
+                </Card>
+                <div className="dialogue-maker__widgets">
+                    <div className="dialogue-maker__widgets--hidden-info">
+                        <HiddenInfoList
+                            hiddenInfos={dialogue.hiddenInfo}
+                            setHiddenInfos={(hiddenInfo: Array<HiddenInfo>) => {
+                                onSave({...dialogue, hiddenInfo: hiddenInfo});
+                            }}
+                        />
+                    </div>
+                    <div className="dialogue-maker__widgets--choices">
+                        <ChoicesList
+                            choices={dialogue.choices}
+                            onChange={(choices: Array<Choice>) => {
+                                onSave({...dialogue, choices});
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>;
+    </>;
 };

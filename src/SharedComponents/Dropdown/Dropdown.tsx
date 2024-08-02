@@ -15,7 +15,6 @@ export const Dropdown = (props: Props) => {
 
     useEffect(() => {
         setSelectedValue(defaultValue);
-        console.log(defaultValue);
     }, [defaultValue]);
 
     return <div className='dropdown'>

@@ -1,25 +1,32 @@
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import ReactModal from 'react-modal';
 import "@react-sigma/core/lib/react-sigma.min.css";
 
 import { DialogueTreeMaker } from './DialogueTreeMaker/DialogueTreeMaker';
 import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
 
-// TODO: Selecting Characters:
-//      create a default select option.
+// TODO: Create a modal compoennt
+// TODO: Put the hidden info form inside a modal.
+// TODO: Display created hidden infos insid ethe description Card.
+// ToDo: Add a nice save icon for making new dialogues and new hidden infos.
 
 // TODO: Exporting and Importing
 //      Allow a user to upload an existing dialogue tree.
 
-// TODO: Allow the user to select character nameColor by colour wheel.
-// TODO: Round to a certain precision to avoid rounding errors.
+// TODO: Misc.
+//      Allow the user to select character nameColor by colour wheel.
+//      Round to a certain precision to avoid rounding errors.
+//      Fix ID duplication in choice input forms.
 // Feature Idea: Blades for Dialogue Trees.
 // Feature Idea: Put the creation of hidden info in a modal, then display the hidden info beneath the description field.
 //      This would help visually associate hidden info with the description field.
 
 // Strapi - nodeJS
 // Vercel - host
+
+ReactModal.setAppElement('#app');
 
 const rootDomNode = document.getElementById('app');
 
