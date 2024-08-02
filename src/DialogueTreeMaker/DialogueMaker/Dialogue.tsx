@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
 import './dialogue-maker.css';
 import { Dialogue, HiddenInfo, Choice } from "../domain/types";
@@ -21,6 +21,8 @@ type Props = {
 export const DialogueMaker = (props: Props): ReactElement => {
     const { dialogue, onSave, onDelete } = props;
 
+    const [isHiddenInfoModalOpen, setIsHiddenInfoModalOpen] = useState<boolean>(false);
+
     const { characters } = useCharacters();
 
     const characterOptions = characters
@@ -31,7 +33,6 @@ export const DialogueMaker = (props: Props): ReactElement => {
     characterOptions.unshift({label: '', value: 'default'});
 
     return <>
-        <Modal title={'Hidden Info'} isOpen={true}><h1>Hidden Info</h1></Modal>
         <div className="dialogue-maker">
             <div className="dialogue-maker__title">
                 <h2>{dialogue.name}</h2>
@@ -73,7 +74,11 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 />
             </div>
             <div className="dialogue-maker__content">
-                <Card title="Description">
+                <Card
+                    title="Description"
+                    buttonName="Add hidden info"
+                    buttonAction={() => setIsHiddenInfoModalOpen(true)}
+                >
                     <label htmlFor="dialogue-description">Dialogue description</label>
                     <textarea
                         className="dialogue-maker__text-area"
@@ -106,5 +111,8 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 </div>
             </div>
         </div>
+        <Modal title={'Hidden Info'} isOpen={isHiddenInfoModalOpen} onClose={() => setIsHiddenInfoModalOpen(false)}>
+            <h1>Hidden Info</h1>
+        </Modal>
     </>;
 };

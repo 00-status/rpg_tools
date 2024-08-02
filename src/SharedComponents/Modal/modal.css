@@ -21,7 +21,13 @@
 .modal-overlay {
     position: fixed;
     inset: 0px;
-    background-color: #2a2b3040;
+    background-color: #19191c60;
+}
+
+.modal__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
