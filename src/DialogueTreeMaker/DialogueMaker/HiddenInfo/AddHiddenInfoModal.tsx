@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { HiddenInfo, HiddenInfoCondition } from "../../domain/types";
 import { HiddenInfoConditions } from "./HiddenInfoConditions";
@@ -17,6 +17,14 @@ export const AddHiddenInfoModal = (props: Props) => {
         conditionIDs: [],
         description: ''
     });
+
+    useEffect(() => {
+        setHiddenInfo({
+            id: crypto.randomUUID(),
+            conditionIDs: [],
+            description: ''
+        });
+    }, [props.isOpen]);
 
     return <Modal
         title={'Add Hidden Info'}
