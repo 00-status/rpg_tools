@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 650px;
-    min-height: 550px;
+    height: 550px;
 
     padding: 20px;
 
@@ -15,7 +15,7 @@
 
     background-color: #313137;
     
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .modal-overlay {
@@ -24,18 +24,21 @@
     background-color: #19191c60;
 }
 
+.modal__contents {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    gap: 24px;
+}
+
 .modal__title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-
-
-
-/*
-    border: 1px solid rgb(204, 204, 204);
-    background: rgb(255, 255, 255);
-    border-radius: 4px;
-    outline: none;
-*/
+.modal__footer {
+    align-self: flex-end;
+    margin-top: auto;
+}

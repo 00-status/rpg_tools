@@ -10,8 +10,7 @@ import { Button, ButtonTheme } from "../../SharedComponents/Button/Button";
 import { TrashIcon } from "../../SharedComponents/Icons/TrashIcon";
 import { Dropdown } from "../../SharedComponents/Dropdown/Dropdown";
 import { useCharacters } from "../../CharacterMaker";
-import { Modal } from "../../SharedComponents/Modal/Modal";
-import { AddHiddenInfoForm } from "./HiddenInfo/AddHiddenInfoForm";
+import { AddHiddenInfoModal } from "./HiddenInfo/AddHiddenInfoModal";
 
 type Props = {
     dialogue: Dialogue;
@@ -112,14 +111,15 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 </div>
             </div>
         </div>
-        <Modal title={'Add Hidden Info'} isOpen={isHiddenInfoModalOpen} onClose={() => setIsHiddenInfoModalOpen(false)}>
-            <AddHiddenInfoForm
-                onSave={(hiddenInfo: HiddenInfo) => {
+        <AddHiddenInfoModal
+            isOpen={isHiddenInfoModalOpen}
+            onClose={() => setIsHiddenInfoModalOpen(false)}
+            onSave={(hiddenInfo) => {
+                const newHiddenInfos = [ ...dialogue.hiddenInfo, hiddenInfo ];
 
-                    const newHiddenInfos = [...dialogue.hiddenInfo, hiddenInfo]
-                    onSave({...dialogue, hiddenInfo: newHiddenInfos});
-                }}
-            />
-        </Modal>
+                onSave({ ...dialogue, hiddenInfo: newHiddenInfos });
+                setIsHiddenInfoModalOpen(false);
+            }}
+        />
     </>;
 };
