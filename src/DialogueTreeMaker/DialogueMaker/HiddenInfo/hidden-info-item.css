@@ -1,0 +1,16 @@
+
+.hidden-info-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.hidden-info-item__actions {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+
+    gap: 8px;
+}

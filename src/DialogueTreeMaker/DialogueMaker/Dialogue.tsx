@@ -11,6 +11,7 @@ import { TrashIcon } from "../../SharedComponents/Icons/TrashIcon";
 import { Dropdown } from "../../SharedComponents/Dropdown/Dropdown";
 import { useCharacters } from "../../CharacterMaker";
 import { AddHiddenInfoModal } from "./HiddenInfo/AddHiddenInfoModal";
+import { HiddenInfoItem } from "./HiddenInfo/HiddenInfoItem";
 
 type Props = {
     dialogue: Dialogue;
@@ -79,27 +80,26 @@ export const DialogueMaker = (props: Props): ReactElement => {
                     buttonName="Add hidden info"
                     buttonAction={() => setIsHiddenInfoModalOpen(true)}
                 >
-                    <label htmlFor="dialogue-description">Dialogue description</label>
-                    <textarea
-                        className="dialogue-maker__text-area"
-                        id="dialogue-description"
-                        value={dialogue.description}
-                        onChange={(event) => {
-                            const newValue = event.target.value ?? '';
+                    <div className="dialogue-maker__description">
+                        <label htmlFor="dialogue-description">Dialogue description</label>
+                        <textarea
+                            className="dialogue-maker__text-area"
+                            id="dialogue-description"
+                            value={dialogue.description}
+                            onChange={(event) => {
+                                const newValue = event.target.value ?? '';
 
-                            onSave({...dialogue, description: newValue});
-                        }}
-                    />
-                </Card>
-                <div className="dialogue-maker__widgets">
-                    <div className="dialogue-maker__widgets--hidden-info">
-                        <HiddenInfoList
-                            hiddenInfos={dialogue.hiddenInfo}
-                            setHiddenInfos={(hiddenInfo: Array<HiddenInfo>) => {
-                                onSave({...dialogue, hiddenInfo: hiddenInfo});
+                                onSave({...dialogue, description: newValue});
                             }}
                         />
                     </div>
+                    <div className="dialogue-maker__description--hidden-info">
+                        {dialogue.hiddenInfo.map((hiddenInfo) => {
+                            return <HiddenInfoItem hiddenInfo={hiddenInfo} />;
+                        })}
+                    </div>
+                </Card>
+                <div className="dialogue-maker__widgets">
                     <div className="dialogue-maker__widgets--choices">
                         <ChoicesList
                             choices={dialogue.choices}

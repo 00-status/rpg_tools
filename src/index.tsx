@@ -7,10 +7,10 @@ import { DialogueTreeMaker } from './DialogueTreeMaker/DialogueTreeMaker';
 import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
 
-// TODO: Create a modal compoennt
-// TODO: Put the hidden info form inside a modal.
-// TODO: Display created hidden infos insid ethe description Card.
-// ToDo: Add a nice save icon for making new dialogues and new hidden infos.
+// TODO: Hidden Infos:
+//      Display created hidden infos inside the description Card.
+//      Allow one to delete hidden infos inside the description Card.
+//      Prevent horizontal scroll in hidden info modal.
 
 // TODO: Exporting and Importing
 //      Allow a user to upload an existing dialogue tree.
@@ -19,6 +19,9 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 //      Allow the user to select character nameColor by colour wheel.
 //      Round to a certain precision to avoid rounding errors.
 //      Fix ID duplication in choice input forms.
+//      Change node colour based on character name colour
+//      Add a nice save icon for making new dialogues and new hidden infos.
+
 // Feature Idea: Blades for Dialogue Trees.
 // Feature Idea: Put the creation of hidden info in a modal, then display the hidden info beneath the description field.
 //      This would help visually associate hidden info with the description field.

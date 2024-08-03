@@ -25,6 +25,19 @@
     gap: 20px;
 }
 
+.dialogue-maker__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dialogue-maker__description--hidden-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
 .dialogue-maker__text-area-container {
     display: flex;
     flex-direction: column;
@@ -48,10 +61,6 @@
     gap: 20px;
 
     justify-content: space-between;
-}
-
-.dialogue-maker__widgets--hidden-info {
-    flex: 1;
 }
 
 .dialogue-maker__widgets--choices {
