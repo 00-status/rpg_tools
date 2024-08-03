@@ -32,7 +32,7 @@ export const Page = (props: Props): ReactElement => {
         </div>
         <div className="footer">
             <div>
-                Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+                Uicons by <a target="blank" rel="noopener noreferrer" href="https://www.flaticon.com/uicons">Flaticon</a>
             </div>
         </div>
     </div>;
