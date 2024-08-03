@@ -29,8 +29,22 @@ export const DialogueMaker = (props: Props): ReactElement => {
         .map((character) => {
             return { label: character.name, value: character.id }
         });
-
     characterOptions.unshift({label: '', value: 'default'});
+
+    const deleteHiddenInfo = (hiddenInfoID: string) => {
+        const hiddenInfoToDelete = dialogue.hiddenInfo.findIndex((hiddenInfo) => {
+            return hiddenInfo.id === hiddenInfoID;
+        });
+
+        if (hiddenInfoToDelete === -1) {
+            return;
+        }
+
+        const hiddenInfosCopy = [...dialogue.hiddenInfo];
+        hiddenInfosCopy.splice(hiddenInfoToDelete, 1);
+
+        onSave({ ...dialogue, hiddenInfo: hiddenInfosCopy });
+    };
 
     return <>
         <div className="dialogue-maker">
@@ -94,7 +108,11 @@ export const DialogueMaker = (props: Props): ReactElement => {
                     </div>
                     <div className="dialogue-maker__description--hidden-info">
                         {dialogue.hiddenInfo.map((hiddenInfo) => {
-                            return <HiddenInfoItem hiddenInfo={hiddenInfo} />;
+                            return <HiddenInfoItem
+                                key={hiddenInfo.id}
+                                hiddenInfo={hiddenInfo}
+                                onDelete={deleteHiddenInfo}
+                            />;
                         })}
                     </div>
                 </Card>
