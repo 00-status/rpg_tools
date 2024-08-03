@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 
 import './dialogue-maker.css';
-import { Dialogue, Choice } from "../domain/types";
+import { Dialogue, Choice, HiddenInfo } from "../domain/types";
 import { ChoicesList } from "./Choices/ChoicesList";
 import { TextInput } from "../../SharedComponents/TextInput/TextInput";
 import { Card } from "../../SharedComponents/Card/Card";
@@ -21,7 +21,8 @@ type Props = {
 export const DialogueMaker = (props: Props): ReactElement => {
     const { dialogue, onSave, onDelete } = props;
 
-    const [isHiddenInfoModalOpen, setIsHiddenInfoModalOpen] = useState<boolean>(false);
+    const [isAddHiddenInfoModalOpen, setIsAddHiddenInfoModalOpen] = useState<boolean>(false);
+    const [hiddenInfoToEdit, setHiddenInfoToEdit] = useState<HiddenInfo|undefined>(undefined);
 
     const { characters } = useCharacters();
 
@@ -91,7 +92,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 <Card
                     title="Description"
                     buttonName="Add hidden info"
-                    buttonAction={() => setIsHiddenInfoModalOpen(true)}
+                    buttonAction={() => setIsAddHiddenInfoModalOpen(true)}
                 >
                     <div className="dialogue-maker__description">
                         <label htmlFor="dialogue-description">Dialogue description</label>
@@ -112,6 +113,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                                 key={hiddenInfo.id}
                                 hiddenInfo={hiddenInfo}
                                 onDelete={deleteHiddenInfo}
+                                onEdit={() => setHiddenInfoToEdit(hiddenInfo)}
                             />;
                         })}
                     </div>
@@ -129,13 +131,33 @@ export const DialogueMaker = (props: Props): ReactElement => {
             </div>
         </div>
         <AddHiddenInfoModal
-            isOpen={isHiddenInfoModalOpen}
-            onClose={() => setIsHiddenInfoModalOpen(false)}
+            hiddenInfoToEdit={hiddenInfoToEdit}
+            isOpen={!!hiddenInfoToEdit}
+            onClose={() => setHiddenInfoToEdit(undefined)}
+            onSave={(newHiddenInfo) => {
+                const hiddenInfoToReplace = dialogue.hiddenInfo.findIndex((existingHiddenInfo) => {
+                    return existingHiddenInfo.id === newHiddenInfo.id;
+                });
+        
+                if (hiddenInfoToReplace === -1) {
+                    return;
+                }
+
+                const hiddenInfosCopy = [...dialogue.hiddenInfo];
+                hiddenInfosCopy[hiddenInfoToReplace] = newHiddenInfo;
+
+                onSave({ ...dialogue, hiddenInfo: hiddenInfosCopy });
+                setHiddenInfoToEdit(undefined);
+            }}
+        />
+        <AddHiddenInfoModal
+            isOpen={isAddHiddenInfoModalOpen}
+            onClose={() => setIsAddHiddenInfoModalOpen(false)}
             onSave={(hiddenInfo) => {
                 const newHiddenInfos = [ ...dialogue.hiddenInfo, hiddenInfo ];
 
                 onSave({ ...dialogue, hiddenInfo: newHiddenInfos });
-                setIsHiddenInfoModalOpen(false);
+                setIsAddHiddenInfoModalOpen(false);
             }}
         />
     </>;

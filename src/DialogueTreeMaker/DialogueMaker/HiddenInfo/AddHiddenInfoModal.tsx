@@ -7,31 +7,32 @@ import { Modal } from "../../../SharedComponents/Modal/Modal";
 import { Button } from "../../../SharedComponents/Button/Button";
 
 type Props = {
+    hiddenInfoToEdit?: HiddenInfo;
     isOpen: boolean;
     onClose: () => void;
     onSave: (hiddenInfo: HiddenInfo) => void;
 };
 
 export const AddHiddenInfoModal = (props: Props) => {
-    const [hiddenInfo, setHiddenInfo] = useState<HiddenInfo>({
-        id: crypto.randomUUID(),
-        conditionIDs: [],
-        description: ''
-    });
+    const { hiddenInfoToEdit, isOpen, onClose, onSave} = props;
+
+    const [hiddenInfo, setHiddenInfo] = useState<HiddenInfo>(hiddenInfoToEdit
+        ? hiddenInfoToEdit
+        : { id: crypto.randomUUID(), conditionIDs: [], description: '' }
+    );
 
     useEffect(() => {
-        setHiddenInfo({
-            id: crypto.randomUUID(),
-            conditionIDs: [],
-            description: ''
-        });
-    }, [props.isOpen]);
+        setHiddenInfo(hiddenInfoToEdit
+            ? hiddenInfoToEdit
+            : { id: crypto.randomUUID(), conditionIDs: [], description: '' }
+        );
+    }, [isOpen]);
 
     return <Modal
         title={'Add Hidden Info'}
-        isOpen={props.isOpen}
-        onClose={props.onClose}
-        footer={<Button onClick={() => props.onSave(hiddenInfo)}>Save hidden info</Button>}
+        isOpen={isOpen}
+        onClose={onClose}
+        footer={<Button onClick={() => onSave(hiddenInfo)}>Save hidden info</Button>}
     >
         <div className="add-hidden-info-modal">
             <HiddenInfoConditions
