@@ -1,8 +1,7 @@
 import { ReactElement, useState } from "react";
 
 import './dialogue-maker.css';
-import { Dialogue, HiddenInfo, Choice } from "../domain/types";
-import { HiddenInfoList } from "./HiddenInfo/HiddenInfoList";
+import { Dialogue, Choice } from "../domain/types";
 import { ChoicesList } from "./Choices/ChoicesList";
 import { TextInput } from "../../SharedComponents/TextInput/TextInput";
 import { Card } from "../../SharedComponents/Card/Card";

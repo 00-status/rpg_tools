@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import './add-hidden-info-modal.css';
 import { HiddenInfo, HiddenInfoCondition } from "../../domain/types";
 import { HiddenInfoConditions } from "./HiddenInfoConditions";
 import { Modal } from "../../../SharedComponents/Modal/Modal";
@@ -32,7 +33,7 @@ export const AddHiddenInfoModal = (props: Props) => {
         onClose={props.onClose}
         footer={<Button onClick={() => props.onSave(hiddenInfo)}>Save hidden info</Button>}
     >
-        <div className="hidden-info__list-item">
+        <div className="add-hidden-info-modal">
             <HiddenInfoConditions
                 conditions={hiddenInfo.conditionIDs}
                 updateConditions={(newConditions: Array<HiddenInfoCondition>) => {
@@ -42,6 +43,7 @@ export const AddHiddenInfoModal = (props: Props) => {
                 }}
             />
             <textarea
+                className="add-hidden-info-modal__description"
                 value={hiddenInfo.description}
                 onChange={(event) => {
                     const newValue = event.target.value ?? '';
