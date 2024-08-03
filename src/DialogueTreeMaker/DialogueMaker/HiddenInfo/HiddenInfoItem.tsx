@@ -3,6 +3,7 @@ import './hidden-info-item.css';
 import { Button, ButtonTheme } from "../../../SharedComponents/Button/Button";
 import { TrashIcon } from "../../../SharedComponents/Icons/TrashIcon";
 import { HiddenInfo } from "../../domain/types";
+import { PencilIcon } from '../../../SharedComponents/Icons/PencilIcon';
 
 type Props = {
     hiddenInfo: HiddenInfo;
@@ -17,7 +18,7 @@ export const HiddenInfoItem = (props: Props) => {
             {hiddenInfo.conditionIDs.map(condition => <b>{'[' + condition.name + ']'}</b>)}: {hiddenInfo.description}
         </div>
         <div className="hidden-info-item__actions">
-            <Button onClick={onEdit}>Edit</Button>
+            <Button onClick={onEdit}><PencilIcon /></Button>
             <Button onClick={() => onDelete(hiddenInfo.id)} buttonTheme={ButtonTheme.Delete}><TrashIcon /></Button>
         </div>
     </div>;
