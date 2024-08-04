@@ -15,7 +15,11 @@ export const HiddenInfoItem = (props: Props) => {
     const { hiddenInfo, onEdit, onDelete } = props;
     return <div className="hidden-info-item">
         <div className="hidden-info-item__description">
-            {hiddenInfo.conditionIDs.map(condition => <b>{'[' + condition.name + ']'}</b>)}: {hiddenInfo.description}
+            {hiddenInfo.conditionIDs.map((condition) => {
+                return <span key={condition.id}>
+                    <b>{'[' + condition.name + ']'}</b>
+                </span>;
+            })}: {hiddenInfo.description}
         </div>
         <div className="hidden-info-item__actions">
             <Button onClick={onEdit}><PencilIcon /></Button>
