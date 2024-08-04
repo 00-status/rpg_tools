@@ -11,7 +11,8 @@ type Props = {
 
 export enum ButtonTheme {
     Default = 'default-button',
-    Delete = 'delete-button'
+    Delete = 'delete-button',
+    Subtle = 'subtle-button'
 };
 
 export const Button = (props: Props) => {

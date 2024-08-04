@@ -13,6 +13,7 @@ import { TrashIcon } from "../SharedComponents/Icons/TrashIcon";
 import { DownloadIcon } from "../SharedComponents/Icons/DownloadIcon";
 import { Button, ButtonTheme } from "../SharedComponents/Button/Button";
 import { ButtonLink } from "../SharedComponents/ButtonLink/ButtonLink";
+import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -135,7 +136,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                     <div className="dialogue-tree-maker__dialogue-tree-title">
                         <h2>Dialogue Tree</h2>
                         <Button onClick={createNewDialogue}>
-                            Create dialogue
+                            <PlusIcon /> Create dialogue
                         </Button>
                     </div>
                     <SigmaContainer style={{ height: '350px', backgroundColor: '#3b3b40', color: '#FCFEFF' }}>
