@@ -14,7 +14,7 @@ import { DownloadIcon } from "../SharedComponents/Icons/DownloadIcon";
 import { Button, ButtonTheme } from "../SharedComponents/Button/Button";
 import { ButtonLink } from "../SharedComponents/ButtonLink/ButtonLink";
 import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
-import { JSONFileInput } from "../SharedComponents/FileInput/FileInput";
+import { JSONFileInput } from "../SharedComponents/FileInput/JSONFileInput";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -66,7 +66,6 @@ export const DialogueTreeMaker = (): ReactElement => {
             character: null,
             description: '',
             hiddenInfo: [],
-            pointsOfInterest: [],
             choices: []
         };
 
@@ -89,29 +88,35 @@ export const DialogueTreeMaker = (): ReactElement => {
         setDialogueCoordinates(new Map(dialogueCoordinates.set(id, { x, y })));
     };
 
+    // validate uploaded file has the appropriate fields.
+    // If the file does NOT have the appropriate fields.
+    //      Do nothing.
+    // else
+    //      Reset dialogue tree.
+    //      Reset current index.
+    //      Set values to the new tree.
+
     return <Page title="RPG Tools">
         <div className="dialogue-tree-maker">
-            <div>
-                <div className="dialogue-tree-maker__title">
-                    <h1>Dialogue Tree Maker</h1>
-                    {dialogueTreeID &&
-                        <ButtonLink
-                            download={dialogueTreeID + ".json"}
-                            href={getDownloadLink({
-                                id: dialogueTreeID,
-                                name: dialogueTreeName,
-                                dialogues,
-                                dialogueCoordinates
-                            })}
-                        >
-                            <DownloadIcon /> Download tree
-                        </ButtonLink>
-                    }
-                    <Button buttonTheme={ButtonTheme.Delete} onClick={resetDialogueTree}>
-                        <TrashIcon /> Delete Tree
-                    </Button>
-                    <JSONFileInput id="upload-thing" onChange={() => {}} />
-                </div>
+            <div className="dialogue-tree-maker__title">
+                <h1>Dialogue Tree Maker</h1>
+                {dialogueTreeID &&
+                    <ButtonLink
+                        download={dialogueTreeID + ".json"}
+                        href={getDownloadLink({
+                            id: dialogueTreeID,
+                            name: dialogueTreeName,
+                            dialogues,
+                            dialogueCoordinates
+                        })}
+                    >
+                        <DownloadIcon /> Download tree
+                    </ButtonLink>
+                }
+                <Button buttonTheme={ButtonTheme.Delete} onClick={resetDialogueTree}>
+                    <TrashIcon /> Delete Tree
+                </Button>
+                <JSONFileInput id="upload-thing" onChange={() => {}} />
             </div>
             <div className="dialogue-tree-maker__top">
                 <div className="dialogue-tree-maker__top--form">

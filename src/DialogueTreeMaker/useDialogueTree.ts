@@ -30,7 +30,6 @@ export const useDialogueTree = (): UseDialogueTree => {
             setDialogues(dialogueTreeParsed.dialogues);
             setDialogueCoordinates(new Map(dialogueTreeParsed.dialogueCoordinates));
         }
-
     }, [setDialogueTreeID, setDialogueTreeName, setDialogues, setDialogueCoordinates]);
 
     useEffect(() => {

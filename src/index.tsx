@@ -10,7 +10,7 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 // TODO: Exporting and Importing
 //      Allow a user to upload an existing dialogue tree.
 
-// TODO: Misc.
+// TODO: Misc:
 //      Allow the user to select character nameColor by colour wheel.
 //      Round to a certain precision to avoid rounding errors.
 //      Change node colour based on character name colour

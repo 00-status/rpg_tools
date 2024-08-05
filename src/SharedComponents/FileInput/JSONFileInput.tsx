@@ -27,7 +27,7 @@ export const JSONFileInput = (props: Props) => {
         }
 
         const parsedJSONFile = JSON.parse(file);
-        console.log(parsedJSONFile);
+        props.onChange(parsedJSONFile);
     };
 
     return <div>
