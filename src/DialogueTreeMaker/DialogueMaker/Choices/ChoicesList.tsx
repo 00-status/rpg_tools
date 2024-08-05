@@ -46,7 +46,7 @@ export const ChoicesList = (props: Props): ReactElement => {
                     <input
                         type="text"
                         placeholder="Next-dialogue ID"
-                        id="choice-next-area-id"
+                        name="choice-next-area-id"
                         onChange={(value) => {
                             const newValue = value.target.value ?? '';
                             const newChoice: Choice = { ...choice, nextDialogueID: newValue };
@@ -58,7 +58,7 @@ export const ChoicesList = (props: Props): ReactElement => {
                     <input
                         type='text'
                         placeholder="Short description"
-                        id="choice-short-description"
+                        name="choice-short-description"
                         onChange={(value) => {
                             const newValue = value.target.value ?? '';
                             const newChoice: Choice = { ...choice, shortDescription: newValue };
@@ -70,7 +70,7 @@ export const ChoicesList = (props: Props): ReactElement => {
                     <input
                         type="text"
                         placeholder="Condition ID"
-                        id="choice-condition-id"
+                        name="choice-condition-id"
                         onChange={(value) => {
                             const newValue = value.target.value ?? '';
                             const newChoice: Choice = { ...choice, conditionID: newValue };
