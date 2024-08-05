@@ -36,3 +36,6 @@ export type Choice = {
     shortDescription: string;
 };
 
+export type UnknownObject = {
+    [key: string]: unknown;
+};

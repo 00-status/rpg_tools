@@ -1,8 +1,9 @@
 import { ChangeEvent } from "react";
+import { UnknownObject } from "../../DialogueTreeMaker/domain/types";
 
 type Props = {
     id: string;
-    onChange: (parsedFile: Array<any> | Object) => void;
+    onChange: (parsedFile: Array<any> | UnknownObject) => void;
 };
 
 export const JSONFileInput = (props: Props) => {

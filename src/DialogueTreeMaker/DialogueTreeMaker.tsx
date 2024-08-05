@@ -4,7 +4,7 @@ import { SigmaContainer } from "@react-sigma/core";
 import './dialogue-tree-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
 import { DialogueMaker } from "./DialogueMaker/Dialogue";
-import { Dialogue } from "./domain/types";
+import { Dialogue, UnknownObject } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
 import { useDialogueTree } from "./useDialogueTree";
@@ -15,6 +15,7 @@ import { Button, ButtonTheme } from "../SharedComponents/Button/Button";
 import { ButtonLink } from "../SharedComponents/ButtonLink/ButtonLink";
 import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
 import { JSONFileInput } from "../SharedComponents/FileInput/JSONFileInput";
+import { validateDialogueTree } from "./domain/validateDialogueTree";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -29,6 +30,21 @@ export const DialogueTreeMaker = (): ReactElement => {
     } = useDialogueTree();
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+    const uploadDialogueTree = (parsedTree: Array<any> | UnknownObject) => {
+        const dialogueTree = validateDialogueTree(parsedTree);
+
+        if (!dialogueTree) {
+            return;
+        }
+
+        resetDialogueTree();
+
+        setDialogueTreeID(dialogueTree.id);
+        setDialogueTreeName(dialogueTree.name);
+        setDialogues(dialogueTree.dialogues);
+        setDialogueCoordinates(dialogueTree.dialogueCoordinates);
+    };
 
     const resetDialogueTree = () => {
         setDialogueTreeID('');
@@ -88,14 +104,6 @@ export const DialogueTreeMaker = (): ReactElement => {
         setDialogueCoordinates(new Map(dialogueCoordinates.set(id, { x, y })));
     };
 
-    // validate uploaded file has the appropriate fields.
-    // If the file does NOT have the appropriate fields.
-    //      Do nothing.
-    // else
-    //      Reset dialogue tree.
-    //      Reset current index.
-    //      Set values to the new tree.
-
     return <Page title="RPG Tools">
         <div className="dialogue-tree-maker">
             <div className="dialogue-tree-maker__title">
@@ -116,7 +124,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <Button buttonTheme={ButtonTheme.Delete} onClick={resetDialogueTree}>
                     <TrashIcon /> Delete Tree
                 </Button>
-                <JSONFileInput id="upload-thing" onChange={() => {}} />
+                <JSONFileInput id="upload-thing" onChange={uploadDialogueTree} />
             </div>
             <div className="dialogue-tree-maker__top">
                 <div className="dialogue-tree-maker__top--form">
