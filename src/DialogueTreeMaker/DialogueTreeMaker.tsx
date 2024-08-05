@@ -14,6 +14,7 @@ import { DownloadIcon } from "../SharedComponents/Icons/DownloadIcon";
 import { Button, ButtonTheme } from "../SharedComponents/Button/Button";
 import { ButtonLink } from "../SharedComponents/ButtonLink/ButtonLink";
 import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
+import { JSONFileInput } from "../SharedComponents/FileInput/FileInput";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
@@ -109,6 +110,7 @@ export const DialogueTreeMaker = (): ReactElement => {
                     <Button buttonTheme={ButtonTheme.Delete} onClick={resetDialogueTree}>
                         <TrashIcon /> Delete Tree
                     </Button>
+                    <JSONFileInput id="upload-thing" onChange={() => {}} />
                 </div>
             </div>
             <div className="dialogue-tree-maker__top">

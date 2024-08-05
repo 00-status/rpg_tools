@@ -13,7 +13,6 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 // TODO: Misc.
 //      Allow the user to select character nameColor by colour wheel.
 //      Round to a certain precision to avoid rounding errors.
-//      Fix ID duplication in choice input forms.
 //      Change node colour based on character name colour
 
 // Feature Idea: Blades for Dialogue Trees.
