@@ -125,26 +125,24 @@ export const DialogueTreeMaker = (): ReactElement => {
                     <TrashIcon /> Delete Tree
                 </Button>
             </div>
-            <div className="dialogue-tree-maker__top">
-                <div className="dialogue-tree-maker__top--form">
-                    <JSONFileInput id="dialogue-tree-upload" name="Upload Dialogue Tree" onChange={uploadDialogueTree}/>
-                    <TextInput
-                        id="dialogue-tree-id"
-                        label="Dialogue tree ID"
-                        value={dialogueTreeID}
-                        onChange={(newValue) => {
-                            setDialogueTreeID(newValue ?? '');
-                        }}
-                    />
-                    <TextInput
-                        id="dialogue-tree-name"
-                        label="Dialogue tree name"
-                        value={dialogueTreeName}
-                        onChange={(newValue) => {
-                            setDialogueTreeName(newValue ?? '');
-                        }}
-                    />
-                </div>
+            <div className="dialogue-tree-maker__form">
+                <JSONFileInput id="dialogue-tree-upload" name="Upload Dialogue Tree" onChange={uploadDialogueTree}/>
+                <TextInput
+                    id="dialogue-tree-id"
+                    label="Dialogue tree ID"
+                    value={dialogueTreeID}
+                    onChange={(newValue) => {
+                        setDialogueTreeID(newValue ?? '');
+                    }}
+                />
+                <TextInput
+                    id="dialogue-tree-name"
+                    label="Dialogue tree name"
+                    value={dialogueTreeName}
+                    onChange={(newValue) => {
+                        setDialogueTreeName(newValue ?? '');
+                    }}
+                />
             </div>
             <div className="dialogue-tree-maker--content">
                 <div>
