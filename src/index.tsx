@@ -10,6 +10,7 @@ import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 //      Allow the user to select character nameColor by colour wheel.
 //      Round to a certain precision to avoid rounding errors.
 //      Change node colour based on character name colour.
+//      Make the Characters page mobile-ready.
 
 // Feature Idea: Blades for Dialogue Trees.
 // Feature Idea: Put the creation of hidden info in a modal, then display the hidden info beneath the description field.
