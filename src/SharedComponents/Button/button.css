@@ -36,3 +36,10 @@ button:hover {
 .subtle-button {
     background-color: transparent;
 }
+
+.dark-button {
+    background-color: #313137;
+}
+.dark-button:hover {
+    background-color: #3b3b40;
+}

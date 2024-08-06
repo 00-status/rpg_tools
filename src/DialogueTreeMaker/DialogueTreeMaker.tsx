@@ -124,10 +124,10 @@ export const DialogueTreeMaker = (): ReactElement => {
                 <Button buttonTheme={ButtonTheme.Delete} onClick={resetDialogueTree}>
                     <TrashIcon /> Delete Tree
                 </Button>
-                <JSONFileInput id="upload-thing" onChange={uploadDialogueTree} />
             </div>
             <div className="dialogue-tree-maker__top">
                 <div className="dialogue-tree-maker__top--form">
+                    <JSONFileInput id="dialogue-tree-upload" name="Upload Dialogue Tree" onChange={uploadDialogueTree}/>
                     <TextInput
                         id="dialogue-tree-id"
                         label="Dialogue tree ID"

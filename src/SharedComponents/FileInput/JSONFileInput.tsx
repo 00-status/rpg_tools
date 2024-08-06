@@ -1,8 +1,11 @@
 import { ChangeEvent } from "react";
+
+import './json-file-input.css';
 import { UnknownObject } from "../../DialogueTreeMaker/domain/types";
 
 type Props = {
     id: string;
+    name?: string;
     onChange: (parsedFile: Array<any> | UnknownObject) => void;
 };
 
@@ -32,6 +35,7 @@ export const JSONFileInput = (props: Props) => {
     };
 
     return <div>
-        <input id={props.id} type="file" accept="application/json" onChange={onInputChange} />
+        {props.name && <label htmlFor={props.id}>{props.name}</label>}
+        <input className="file-input" id={props.id} type="file" accept="application/json" onChange={onInputChange} />
     </div>
 };
