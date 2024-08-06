@@ -37,5 +37,18 @@
 .dialogue-tree-maker__dialogue-tree-title {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+
     gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .dialogue-tree-maker__title {
+        justify-content: center;
+    }
+
+    .dialogue-tree-maker__dialogue-tree-title {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
 }

@@ -34,8 +34,8 @@ export const JSONFileInput = (props: Props) => {
         props.onChange(parsedJSONFile);
     };
 
-    return <div>
+    return <div className="file-input">
         {props.name && <label htmlFor={props.id}>{props.name}</label>}
-        <input className="file-input" id={props.id} type="file" accept="application/json" onChange={onInputChange} />
+        <input className="file-input__input" id={props.id} type="file" accept="application/json" onChange={onInputChange} />
     </div>
 };
