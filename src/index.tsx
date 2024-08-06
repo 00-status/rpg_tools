@@ -6,14 +6,10 @@ import "@react-sigma/core/lib/react-sigma.min.css";
 import { DialogueTreeMaker } from './DialogueTreeMaker/DialogueTreeMaker';
 import { CharacterMaker } from './CharacterMaker/CharacterMaker';
 
-
-// TODO: Exporting and Importing
-//      Allow a user to upload an existing dialogue tree.
-
 // TODO: Misc:
 //      Allow the user to select character nameColor by colour wheel.
 //      Round to a certain precision to avoid rounding errors.
-//      Change node colour based on character name colour
+//      Change node colour based on character name colour.
 
 // Feature Idea: Blades for Dialogue Trees.
 // Feature Idea: Put the creation of hidden info in a modal, then display the hidden info beneath the description field.
