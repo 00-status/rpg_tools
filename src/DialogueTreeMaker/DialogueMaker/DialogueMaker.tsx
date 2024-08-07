@@ -9,8 +9,8 @@ import { Button, ButtonTheme } from "../../SharedComponents/Button/Button";
 import { TrashIcon } from "../../SharedComponents/Icons/TrashIcon";
 import { Dropdown } from "../../SharedComponents/Dropdown/Dropdown";
 import { useCharacters } from "../../CharacterMaker";
-import { AddHiddenInfoModal } from "./HiddenInfo/AddHiddenInfoModal";
 import { HiddenInfoItem } from "./HiddenInfo/HiddenInfoItem";
+import { UpdateHiddenInfoModal } from "./HiddenInfo/UpdateHiddenInfoModal";
 
 type Props = {
     dialogue: Dialogue;
@@ -130,7 +130,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 </div>
             </div>
         </div>
-        <AddHiddenInfoModal
+        <UpdateHiddenInfoModal
             hiddenInfoToEdit={hiddenInfoToEdit}
             isOpen={!!hiddenInfoToEdit}
             onClose={() => setHiddenInfoToEdit(undefined)}
@@ -150,7 +150,7 @@ export const DialogueMaker = (props: Props): ReactElement => {
                 setHiddenInfoToEdit(undefined);
             }}
         />
-        <AddHiddenInfoModal
+        <UpdateHiddenInfoModal
             isOpen={isAddHiddenInfoModalOpen}
             onClose={() => setIsAddHiddenInfoModalOpen(false)}
             onSave={(hiddenInfo) => {

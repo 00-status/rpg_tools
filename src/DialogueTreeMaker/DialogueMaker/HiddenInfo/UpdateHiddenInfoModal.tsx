@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import './add-hidden-info-modal.css';
+import './update-hidden-info-modal.css';
 import { HiddenInfo, HiddenInfoCondition } from "../../domain/types";
 import { HiddenInfoConditions } from "./HiddenInfoConditions";
 import { Modal } from "../../../SharedComponents/Modal/Modal";
@@ -13,7 +13,7 @@ type Props = {
     onSave: (hiddenInfo: HiddenInfo) => void;
 };
 
-export const AddHiddenInfoModal = (props: Props) => {
+export const UpdateHiddenInfoModal = (props: Props) => {
     const { hiddenInfoToEdit, isOpen, onClose, onSave} = props;
 
     const [hiddenInfo, setHiddenInfo] = useState<HiddenInfo>(hiddenInfoToEdit

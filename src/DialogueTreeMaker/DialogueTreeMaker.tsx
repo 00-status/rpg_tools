@@ -3,7 +3,6 @@ import { SigmaContainer } from "@react-sigma/core";
 
 import './dialogue-tree-maker.css';
 import { Page } from "../SharedComponents/Page/Page";
-import { DialogueMaker } from "./DialogueMaker/Dialogue";
 import { Dialogue, UnknownObject } from "./domain/types";
 import { DialogueTreeGraph } from "./DialogueTreeGraph";
 import { TextInput } from "../SharedComponents/TextInput/TextInput";
@@ -16,6 +15,7 @@ import { ButtonLink } from "../SharedComponents/ButtonLink/ButtonLink";
 import { PlusIcon } from "../SharedComponents/Icons/PlusIcon";
 import { JSONFileInput } from "../SharedComponents/FileInput/JSONFileInput";
 import { validateDialogueTree } from "./domain/validateDialogueTree";
+import { DialogueMaker } from "./DialogueMaker/DialogueMaker";
 
 export const DialogueTreeMaker = (): ReactElement => {
     const {
