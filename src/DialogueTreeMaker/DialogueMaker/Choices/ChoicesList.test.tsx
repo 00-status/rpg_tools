@@ -9,13 +9,13 @@ describe('PathsList', () => {
             {
                 id: '1',
                 conditionID: null,
-                nextAreaID: 'area_library',
+                nextDialogueID: 'area_library',
                 shortDescription: 'Open the heavy-looking oak door.'
             },
             {
                 id: '2',
                 conditionID: 'item_angel_key',
-                nextAreaID: 'area_angel_library',
+                nextDialogueID: 'area_angel_library',
                 shortDescription: 'Unlock the heavy, angelic oak door.'
             },
         ];
@@ -44,7 +44,7 @@ describe('PathsList', () => {
         expect(onChangeMock).toHaveBeenCalledWith([
             expect.objectContaining({
                 conditionID: null,
-                nextAreaID: '',
+                nextDialogueID: '',
                 shortDescription: ''
             })
         ]);
@@ -55,7 +55,7 @@ describe('PathsList', () => {
             {
                 id: '1',
                 conditionID: null,
-                nextAreaID: 'area_library',
+                nextDialogueID: 'area_library',
                 shortDescription: 'Open the heavy-looking oak door.'
             }
         ];
@@ -73,7 +73,7 @@ describe('PathsList', () => {
             [
                 expect.objectContaining({
                     conditionID: null,
-                    nextAreaID: 'area_librarys',
+                    nextDialogueID: 'area_librarys',
                     shortDescription: 'Open the heavy-looking oak door.'
                 })
             ]
@@ -85,16 +85,16 @@ describe('PathsList', () => {
             {
                 id: '1',
                 conditionID: null,
-                nextAreaID: 'area_library',
+                nextDialogueID: 'area_library',
                 shortDescription: 'Open the heavy-looking oak door.'
             }
         ];
 
         const onChangeMock = jest.fn();
-        const { getByText } = render(<ChoicesList choices={choices} onChange={onChangeMock} />);
+        const { getByTitle } = render(<ChoicesList choices={choices} onChange={onChangeMock} />);
 
         expect(onChangeMock).toHaveBeenCalledTimes(0);
-        await userEvent.click(getByText('Delete choice'));
+        await userEvent.click(getByTitle('Delete'));
         expect(onChangeMock).toHaveBeenCalledTimes(1);
         expect(onChangeMock).toHaveBeenCalledWith([]);
     });
