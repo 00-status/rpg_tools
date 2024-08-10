@@ -1,7 +1,6 @@
 import { SerializedEdge } from "graphology-types";
 import { convertDialoguesToEdges, convertDialoguesToNodes } from "./graphUtil";
-import { Dialogue } from "./types";
-import { size } from "lodash";
+import { Choice, Dialogue } from "./types";
 
 describe('graphUtil', () => {
     describe('convertAreasToNodes', () => {
@@ -10,17 +9,13 @@ describe('graphUtil', () => {
                 {
                     id: 1,
                     name: "Area one",
-                    description: 'Description one',
-                    choices: [],
-                    hiddenInfo: []
-                },
+                    description: 'Description one'
+                } as Dialogue,
                 {
                     id: 2,
                     name: "Area two",
-                    description: 'Description two',
-                    choices: [],
-                    hiddenInfo: []
-                },
+                    description: 'Description two'
+                } as Dialogue
             ];
 
             const result = convertDialoguesToNodes(areas, new Map());
@@ -44,17 +39,13 @@ describe('graphUtil', () => {
                 {
                     id: 1,
                     name: "Area one",
-                    description: 'Description one',
-                    choices: [],
-                    hiddenInfo: []
-                },
+                    description: 'Description one'
+                } as Dialogue,
                 {
                     id: 2,
                     name: "Area two",
-                    description: 'Description two',
-                    choices: [],
-                    hiddenInfo: []
-                },
+                    description: 'Description two'
+                } as Dialogue
             ];
 
             const coordsMap = new Map([
@@ -103,23 +94,20 @@ describe('graphUtil', () => {
                             nextDialogueID: '3',
                             shortDescription: 'description 2',
                         },
-                    ],
-                    hiddenInfo: []
-                },
+                    ]
+                } as Dialogue,
                 {
                     id: 2,
                     name: "Area two",
                     description: 'Description two',
-                    choices: [],
-                    hiddenInfo: []
-                },
+                    choices: [] as Array<Choice>
+                } as Dialogue,
                 {
                     id: 3,
                     name: "Area three",
                     description: 'Description three',
-                    choices: [],
-                    hiddenInfo: []
-                },
+                    choices: [] as Array<Choice>
+                } as Dialogue,
             ];
 
             const result = convertDialoguesToEdges(areas);
@@ -153,10 +141,9 @@ describe('graphUtil', () => {
                             conditionID: '',
                             nextDialogueID: '45',
                             shortDescription: 'description 1',
-                        },
-                    ],
-                    hiddenInfo: []
-                }
+                        }
+                    ]
+                } as Dialogue
             ];
 
             const result = convertDialoguesToEdges(areas);
@@ -182,17 +169,15 @@ describe('graphUtil', () => {
                             conditionID: '',
                             nextDialogueID: '2',
                             shortDescription: 'description 1',
-                        },
-                    ],
-                    hiddenInfo: []
-                },
+                        }
+                    ]
+                } as Dialogue,
                 {
                     id: 2,
                     name: "Area two",
                     description: 'Description two',
-                    choices: [],
-                    hiddenInfo: []
-                },
+                    choices: [] as Array<Choice>
+                } as Dialogue
             ];
 
             const result = convertDialoguesToEdges(areas);
@@ -211,9 +196,8 @@ describe('graphUtil', () => {
                     id: 1,
                     name: "Area one",
                     description: 'Description one',
-                    choices: [],
-                    hiddenInfo: []
-                }
+                    choices: [] as Array<Choice>
+                } as Dialogue
             ];
 
             const result = convertDialoguesToEdges(areas);
